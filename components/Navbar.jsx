@@ -8,7 +8,7 @@ const Navbar = () => {
     <nav className="md:max-w-[98%]  lg:max-w-[61.25rem]  z-30 py-4  px-4 bg-white flex justify-between items-center fixed md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md ">
       <div className="flex gap-x-2 text-3xl items-center   self-center">
         <div
-          className="mt-1 cursor-pointer md:hidden"
+          className=" cursor-pointer md:hidden"
           onClick={() => {
             setHamMenu(!hamMenu);
             if (!hamMenu) {
