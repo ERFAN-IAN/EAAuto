@@ -15,7 +15,10 @@ const HamMenu = () => {
     >
       <ul
         className=" font-semibold flex flex-col py-4 gap-y-6"
-        onClick={() => setHamMenu(false)}
+        onClick={() => {
+          setHamMenu(false);
+          document.body.style.overflow = "visible";
+        }}
       >
         <li>
           <Link
