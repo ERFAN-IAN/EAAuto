@@ -1,8 +1,14 @@
+"use client";
 import { useGlobalContext } from "@/context/context";
 import { useState } from "react";
+import { useEffect } from "react";
 const SearchBox = ({ place, children }) => {
-  const [search, setSearch] = useState("");
-  const { setSearchText } = useGlobalContext();
+  const { searchText, setSearchText, brand, type, color, transmission } =
+    useGlobalContext();
+  const [search, setSearch] = useState(searchText || "");
+  useEffect(() => {
+    setSearchText(search);
+  }, [brand, type, color, transmission]);
   if ((place = "Header")) {
     return (
       <div className="flex flex-col gap-y-2">
@@ -12,6 +18,12 @@ const SearchBox = ({ place, children }) => {
           id="text"
           className=" border-2 rounded-md p-2 w-full"
           onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setSearchText(search);
+            }
+          }}
+          defaultValue={searchText}
         />
         {children}
         <button

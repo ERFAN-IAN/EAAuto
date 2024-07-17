@@ -10,7 +10,7 @@ const Contextwrapper = ({ children }) => {
   const [brand, setBrand] = useState(
     brands.length !== 0 ? [...brands] : ["All"]
   );
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState(searchParams?.searchText || "");
   const [color, setColor] = useState(
     colors.length !== 0 ? [...colors] : ["All"]
   );
