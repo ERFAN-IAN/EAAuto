@@ -7,7 +7,7 @@ const CarSchema = new Schema(
       ref: "User",
       required: true,
     },
-    name: {
+    title: {
       type: String,
       required: true,
     },
@@ -37,6 +37,10 @@ const CarSchema = new Schema(
     },
     transmission: {
       type: String,
+      required: true,
+    },
+    price: {
+      type: Number,
       required: true,
     },
     description: {
