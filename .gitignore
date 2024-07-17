@@ -35,3 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env
+assets/images/A1.jpg
+assets/images/A2.jpg
+assets/images/A3.jpg
