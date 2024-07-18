@@ -27,7 +27,15 @@ export const GET = async (request) => {
     { title: searchPattern },
     { description: searchPattern },
   ];
-  console.log("final", objectSearchParams);
+  if (objectSearchParams.yearMax && objectSearchParams.yearMin) {
+    objectSearchParams.year = {
+      $gt: parseInt(objectSearchParams.yearMin) - 1,
+      $lt: parseInt(objectSearchParams.yearMax) + 1,
+    };
+    delete objectSearchParams.yearMin;
+    delete objectSearchParams.yearMax;
+  }
+  console.log("finalyy", objectSearchParams);
   try {
     await connectDB();
     const car = await Car.find(objectSearchParams);

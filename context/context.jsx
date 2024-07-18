@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useContext } from "react";
 const context = createContext();
 const Contextwrapper = ({ children }) => {
+  const [refreshYear, setRefreshYear] = useState(Math.random());
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const brands = useSearchParams().getAll("brand") || [];
   const colors = useSearchParams().getAll("color") || [];
@@ -11,6 +12,10 @@ const Contextwrapper = ({ children }) => {
     brands.length !== 0 ? [...brands] : ["All"]
   );
   const [searchText, setSearchText] = useState(searchParams?.searchText || "");
+  const [yearMin, setYearMin] = useState(searchParams.yearMin || 1920);
+  const [yearMax, setYearMax] = useState(
+    searchParams.yearMax || new Date().getFullYear()
+  );
   const [color, setColor] = useState(
     colors.length !== 0 ? [...colors] : ["All"]
   );
@@ -63,6 +68,12 @@ const Contextwrapper = ({ children }) => {
         setTransmission,
         hamMenu,
         setHamMenu,
+        yearMin,
+        setYearMin,
+        yearMax,
+        setYearMax,
+        refreshYear,
+        setRefreshYear,
       }}
     >
       {children}

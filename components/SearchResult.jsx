@@ -23,18 +23,43 @@ const SearchResult = () => {
     setTransmission,
     searchText,
     setSearchText,
+    yearMin,
+    setYearMin,
+    yearMax,
+    setYearMax,
   } = useGlobalContext();
   const router = useRouter();
   const initial = useRef(0);
+  console.log(type);
   useEffect(() => {
-    if (initial.current <= 1) {
+    if (initial.current <= 2) {
       initial.current++;
       return;
     }
-    const obj = { brand, type, color, transmission, searchText };
+    if (
+      yearMax.toString().length !== 4 ||
+      yearMin.toString().length !== 4 ||
+      yearMin > yearMax ||
+      yearMin < 1920 ||
+      yearMax > new Date().getFullYear()
+    ) {
+      console.log(typeof yearMax);
+      console.log(yearMax.toString().length);
+      return;
+    }
+
+    const obj = {
+      brand,
+      type,
+      color,
+      transmission,
+      searchText,
+      yearMin,
+      yearMax,
+    };
     const queryString = new URLSearchParams(obj);
-    router.push(`/search?${queryString.toString()}`);
-  }, [type, color, transmission, brand, searchText]);
+    router.push(`/search?${queryString.toString()}`, { scroll: false });
+  }, [type, color, transmission, brand, searchText, yearMax, yearMin]);
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const { data } = useQuery(fetchAdverts(searchParams));
   const cars = data?.car;

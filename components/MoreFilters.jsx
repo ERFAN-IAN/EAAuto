@@ -1,10 +1,11 @@
 "use client";
-import { useEffect } from "react";
 import { useGlobalContext } from "@/context/context";
 import { RxCross2 } from "react-icons/rx";
 import RectSelector from "./RectSelector";
 import { types, transmissions } from "@/data";
 import ChevronSelector from "./ChevronSelector";
+import YearToFrom from "./YearToFrom";
+import { useEffect, useState } from "react";
 function MoreFilters() {
   const {
     brand,
@@ -19,8 +20,13 @@ function MoreFilters() {
     handleColor,
     transmission,
     setTransmission,
+    yearMin,
+    setYearMin,
+    yearMax,
+    setYearMax,
+    refreshYear,
+    setRefreshYear,
   } = useGlobalContext();
-  const handleSubmit = (e) => {};
   if (moreFiltersModal) {
     return (
       <main className=" fixed top-0 left-0 w-full md:hidden h-full bg-white z-40">
@@ -33,6 +39,9 @@ function MoreFilters() {
               setType("All");
               handleColor("All");
               setTransmission("All");
+              setYearMax(2024);
+              setYearMin(1920);
+              setRefreshYear(Math.random());
             }}
           >
             Clear filters
@@ -69,18 +78,7 @@ function MoreFilters() {
             handleState={setTransmission}
             title={"Transmission"}
           />
-          <div className="flex flex-col gap-y-2">
-            <label htmlFor="year" className=" font-semibold">
-              Year
-            </label>
-            <input
-              type="number"
-              id="year"
-              className="border-2 rounded-md px-4 py-2"
-              min={1920}
-              max={new Date().getFullYear()}
-            />
-          </div>
+          <YearToFrom key={refreshYear} />
           <div className="flex flex-col gap-y-2">
             <label htmlFor="milage" className="font-semibold">
               Milage

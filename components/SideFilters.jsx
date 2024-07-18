@@ -3,6 +3,7 @@ import RectSelector from "./RectSelector";
 import { types, transmissions } from "@/data";
 import ChevronSelector from "./ChevronSelector";
 import { useGlobalContext } from "@/context/context";
+import YearToFrom from "./YearToFrom";
 const SideFilters = () => {
   const {
     brand,
@@ -17,6 +18,12 @@ const SideFilters = () => {
     handleColor,
     transmission,
     setTransmission,
+    yearMin,
+    setYearMin,
+    yearMax,
+    setYearMax,
+    refreshYear,
+    setRefreshYear,
   } = useGlobalContext();
   return (
     <main className=" w-full hidden md:flex flex-col h-full bg-white z-40">
@@ -29,6 +36,9 @@ const SideFilters = () => {
             setType("All");
             handleColor("All");
             setTransmission("All");
+            setYearMin(1920);
+            setYearMax(2024);
+            setRefreshYear(Math.random());
           }}
         >
           Clear filters
@@ -58,18 +68,7 @@ const SideFilters = () => {
           handleState={setTransmission}
           title={"Transmission"}
         />
-        <div className="flex flex-col gap-y-2">
-          <label htmlFor="year" className=" font-semibold">
-            Year
-          </label>
-          <input
-            type="number"
-            id="year"
-            className="border-2 rounded-md px-4 py-2"
-            min={1920}
-            max={new Date().getFullYear()}
-          />
-        </div>
+        <YearToFrom key={refreshYear} />
         <div className="flex flex-col gap-y-2">
           <label htmlFor="milage" className="font-semibold">
             Milage
