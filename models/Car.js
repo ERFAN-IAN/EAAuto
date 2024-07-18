@@ -21,10 +21,12 @@ const CarSchema = new Schema(
     },
     year: {
       type: Number,
+      default: 2000,
       required: true,
     },
     milage: {
       type: String,
+      default: 1000,
       required: true,
     },
     category: {
