@@ -9,6 +9,7 @@ export const fetchAdverts = (p) => {
       `${p.searchText ? p.searchText : ""}`,
       `${p.yearMin ? p.yearMin : 1920}`,
       `${p.yearMax ? p.yearMax : new Date().getFullYear()}`,
+      `${p.category ? p.category : "All"}`,
     ],
     queryFn: async () => {
       const queryString = new URLSearchParams(p).toString();

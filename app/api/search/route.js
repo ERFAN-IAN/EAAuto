@@ -35,7 +35,6 @@ export const GET = async (request) => {
     delete objectSearchParams.yearMin;
     delete objectSearchParams.yearMax;
   }
-  console.log("finalyy", objectSearchParams);
   try {
     await connectDB();
     const car = await Car.find(objectSearchParams);

@@ -89,8 +89,8 @@ body {
 }
 
 .mainSwiper {
-  width: 100vw;
-  max-width: clamp(10rem, 97%, 59rem);
+  /* width: 100vw;
+  max-width: clamp(10rem, 97%, 59rem); */
   height: 8rem;
 }
 

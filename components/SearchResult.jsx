@@ -30,9 +30,8 @@ const SearchResult = () => {
   } = useGlobalContext();
   const router = useRouter();
   const initial = useRef(0);
-  console.log(type);
   useEffect(() => {
-    if (initial.current <= 2) {
+    if (initial.current <= 1) {
       initial.current++;
       return;
     }
@@ -66,7 +65,7 @@ const SearchResult = () => {
   return (
     <section>
       {cars?.map((item, index) => {
-        return <CarAdvert title={item.title} key={index} />;
+        return <CarAdvert car={item} key={index} />;
       })}
     </section>
   );

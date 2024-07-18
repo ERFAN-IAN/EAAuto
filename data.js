@@ -47,34 +47,42 @@ export const transmissions = [
 export const mainSwiper = [
   {
     title: "New",
+    query: "type=New",
     img: newvheicle,
   },
   {
     title: "Second hand",
+    query: "type=Second+hand",
     img: Second,
   },
   {
     title: "Van",
+    query: "category=Van",
     img: van,
   },
   {
     title: "Bike",
+    query: "category=Bike",
     img: motos,
   },
   {
     title: "SUV",
+    query: "category=SUV",
     img: suv,
   },
   {
     title: "Convertible",
+    query: "category=Convertible",
     img: cabrio,
   },
   {
     title: "Coupe",
+    query: "category=Coupe",
     img: coupe,
   },
   {
     title: "Pick up",
+    query: "category=Pick+up",
     img: pickup,
   },
 ];

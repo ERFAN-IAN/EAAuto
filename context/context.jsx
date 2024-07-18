@@ -74,6 +74,8 @@ const Contextwrapper = ({ children }) => {
         setYearMax,
         refreshYear,
         setRefreshYear,
+        setColor,
+        setBrand,
       }}
     >
       {children}
