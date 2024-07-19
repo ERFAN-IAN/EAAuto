@@ -3,7 +3,25 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useGlobalContext } from "@/context/context";
 import Link from "next/link";
 const Navbar = () => {
-  const { setHamMenu, hamMenu } = useGlobalContext();
+  const {
+    setHamMenu,
+    hamMenu,
+    setRefreshYear,
+    setColor,
+    setBrand,
+    setType,
+    setTransmission,
+    setYearMin,
+    setYearMax,
+    setSearchText,
+    refreshSearchText,
+    setRefreshSearchText,
+    setRefreshMilage,
+    milageMin,
+    setMilageMin,
+    milageMax,
+    setMilageMax,
+  } = useGlobalContext();
   return (
     <nav className="md:max-w-[98%]  lg:max-w-[61.25rem]  z-30 py-4  px-4 bg-white flex justify-between items-center fixed md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md ">
       <div className="flex gap-x-2 text-3xl items-center   self-center">
@@ -29,6 +47,20 @@ const Navbar = () => {
           <Link
             href="/search"
             className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100"
+            onClick={() => {
+              setBrand(["All"]);
+              setType("All");
+              setColor(["All"]);
+              setTransmission("All");
+              setSearchText("");
+              setRefreshSearchText(Math.random()),
+                setYearMax(new Date().getFullYear());
+              setYearMin(1920);
+              setRefreshYear(Math.random());
+              setMilageMin(0),
+                setMilageMax(1000000),
+                setRefreshMilage(Math.random());
+            }}
           >
             Search
           </Link>

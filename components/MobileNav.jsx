@@ -1,4 +1,4 @@
-import MoreFilters from "./MoreFilters";
+"use client";
 import { useGlobalContext } from "@/context/context";
 const MobileNav = () => {
   const { moreFiltersModal, setMoreFiltersModal } = useGlobalContext();

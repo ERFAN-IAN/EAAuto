@@ -4,6 +4,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { GoChevronRight } from "react-icons/go";
 import { FiChevronLeft } from "react-icons/fi";
 import Image from "next/image";
+import Link from "next/link";
 const CarAdvert = ({ car }) => {
   const {
     seller_info,
@@ -23,10 +24,12 @@ const CarAdvert = ({ car }) => {
     is_featured,
     is_published,
   } = car;
-  console.log(images);
   return (
-    <div className="w-full   grid grid-cols-5 relative">
-      <div className=" col-span-2 group">
+    <Link
+      href={"/"}
+      className="w-full   grid grid-cols-5 relative rounded-xl shadow-lg hover:shadow-xl"
+    >
+      <div className=" col-span-2 group rounded-xl">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -57,8 +60,6 @@ const CarAdvert = ({ car }) => {
               </SwiperSlide>
             );
           })}
-          {/* <div className="sm:hidden h-full w-[50%] z-10 absolute  left-0 top-0 sbp"></div>
-          <div className="sm:hidden h-full w-[50%] z-10 absolute bg-red-600 right-0 top-0 sbp"></div> */}
           <div className="hidden md:block absolute left-2 top-[50%] translate-y-[-50%] z-10 bg-slate-200 brightness-90 sbp cursor-pointer p-2  rounded-full opacity-0 group-hover:opacity-100 duration-200 transition-opacity">
             <FiChevronLeft />
           </div>
@@ -87,7 +88,7 @@ const CarAdvert = ({ car }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

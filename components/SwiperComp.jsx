@@ -8,8 +8,10 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
+import LoadingComp from "./LoadingComp";
 const SwiperComp = () => {
   const [slidesPerViewNumber, setSlidesPerViewNumber] = useState(1);
+  const [load, setLoad] = useState(false);
   const router = useRouter();
   const handleScreenSize = () => {
     if (window.innerWidth < 450) {
@@ -45,8 +47,16 @@ const SwiperComp = () => {
   };
   useEffect(() => {
     handleScreenSize();
+    setLoad(true);
     window.addEventListener("resize", handleScreenSize);
   }, []);
+  if (!load) {
+    return (
+      <div className="flex justify-center items-center mt-16 h-[11.2rem] md:h-[8.2rem]">
+        <LoadingComp />
+      </div>
+    );
+  }
   return (
     <div className=" flex flex-col w-full px-4 gap-y-4 mt-16 md:mt-4">
       <div className="flex justify-between items-center">
