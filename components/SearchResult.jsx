@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useRef } from "react";
 import CarAdvert from "./CarAdvert";
+import LoadingComp from "./LoadingComp";
 const SearchResult = () => {
   const {
     brand,
@@ -27,6 +28,10 @@ const SearchResult = () => {
     setYearMin,
     yearMax,
     setYearMax,
+    milageMin,
+    setMilageMin,
+    milageMax,
+    setMilageMax,
   } = useGlobalContext();
   const router = useRouter();
   const initial = useRef(0);
@@ -40,10 +45,9 @@ const SearchResult = () => {
       yearMin.toString().length !== 4 ||
       yearMin > yearMax ||
       yearMin < 1920 ||
-      yearMax > new Date().getFullYear()
+      yearMax > new Date().getFullYear() ||
+      milageMin > milageMax
     ) {
-      console.log(typeof yearMax);
-      console.log(yearMax.toString().length);
       return;
     }
 
@@ -55,18 +59,39 @@ const SearchResult = () => {
       searchText,
       yearMin,
       yearMax,
+      milageMin,
+      milageMax,
     };
     const queryString = new URLSearchParams(obj);
     router.push(`/search?${queryString.toString()}`, { scroll: false });
-  }, [type, color, transmission, brand, searchText, yearMax, yearMin]);
+  }, [
+    type,
+    color,
+    transmission,
+    brand,
+    searchText,
+    yearMax,
+    yearMin,
+    milageMin,
+    milageMax,
+  ]);
   const searchParams = Object.fromEntries(useSearchParams()) || null;
-  const { data } = useQuery(fetchAdverts(searchParams));
+  const { data, isLoading } = useQuery(fetchAdverts(searchParams));
   const cars = data?.car;
+  if (cars?.length === 0) {
+    return <p className=" font-semibold text-2xl">No results...</p>;
+  }
   return (
-    <section>
-      {cars?.map((item, index) => {
-        return <CarAdvert car={item} key={index} />;
-      })}
+    <section className="flex flex-col gap-y-4">
+      {!isLoading ? (
+        cars?.map((item, index) => {
+          return <CarAdvert car={item} key={index} />;
+        })
+      ) : (
+        <div className="mt-40">
+          <LoadingComp />
+        </div>
+      )}
     </section>
   );
 };

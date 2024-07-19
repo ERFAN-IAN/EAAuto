@@ -5,6 +5,7 @@ import { useGlobalContext } from "@/context/context";
 import { colors, brands } from "@/data";
 import HamMenu from "./HamMenu";
 import HamMenuBackground from "./HamMenuBackground";
+import ModalBackground from "./ModalBackground";
 const ModalHouse = () => {
   const {
     brand,
@@ -15,6 +16,8 @@ const ModalHouse = () => {
     setColorModal,
     color,
     handleColor,
+    setIsModalBackgroundOpen,
+    isModalBackgroundOpen,
   } = useGlobalContext();
   return (
     <>
@@ -37,6 +40,12 @@ const ModalHouse = () => {
       <MoreFilters />
       <HamMenu />
       <HamMenuBackground />
+      <ModalBackground
+        setIsModalBackgroundOpen={setIsModalBackgroundOpen}
+        setBrandModal={setBrandModal}
+        setColorModal={setColorModal}
+        isModalBackgroundOpen={isModalBackgroundOpen}
+      />
     </>
   );
 };

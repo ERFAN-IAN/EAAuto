@@ -1,6 +1,5 @@
 "use client";
-import { useGlobalContext } from "@/context/context";
-const multiSelect = ({
+const MultiSelectDesktop = ({
   name,
   data,
   setModal,
@@ -8,15 +7,13 @@ const multiSelect = ({
   handleFunction,
   arrayResult,
 }) => {
-  const { setIsModalBackgroundOpen } = useGlobalContext();
-
   return (
     <div
       className={`${
         modalState
-          ? "fixed w-full h-full bg-white left-0 top-0  flex flex-col justify-between z-50"
+          ? "absolute bg-white right-0 translate-x-[103%] top-0 w-[20rem]  md:flex flex-col justify-between z-50"
           : "hidden w-full h-full bg-white left-0 top-0  z-10"
-      }  md:hidden`}
+      } hidden rounded-xl shadow-xl border-2`}
     >
       <div className="flex flex-col gap-y-2 p-6">
         <div className="border-b-2 py-4 cursor-pointer">
@@ -77,7 +74,6 @@ const multiSelect = ({
             onClick={() => {
               setModal(false);
               document.body.style.overflow = "visible";
-              setIsModalBackgroundOpen(false);
             }}
           >
             Close
@@ -88,4 +84,4 @@ const multiSelect = ({
   );
 };
 
-export default multiSelect;
+export default MultiSelectDesktop;

@@ -10,6 +10,8 @@ export const fetchAdverts = (p) => {
       `${p.yearMin ? p.yearMin : 1920}`,
       `${p.yearMax ? p.yearMax : new Date().getFullYear()}`,
       `${p.category ? p.category : "All"}`,
+      `${p.milageMin ? p.milageMin : 0}`,
+      `${p.milageMax ? p.milageMax : 1000000}`,
     ],
     queryFn: async () => {
       const queryString = new URLSearchParams(p).toString();
