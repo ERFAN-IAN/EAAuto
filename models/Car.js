@@ -25,7 +25,7 @@ const CarSchema = new Schema(
       required: true,
     },
     milage: {
-      type: String,
+      type: Number,
       default: 1000,
       required: true,
     },
