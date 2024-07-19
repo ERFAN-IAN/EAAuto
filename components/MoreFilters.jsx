@@ -5,7 +5,7 @@ import RectSelector from "./RectSelector";
 import { types, transmissions } from "@/data";
 import ChevronSelector from "./ChevronSelector";
 import YearToFrom from "./YearToFrom";
-import { useEffect, useState } from "react";
+import MilageToFrom from "./MilageToFrom";
 function MoreFilters() {
   const {
     brand,
@@ -26,6 +26,12 @@ function MoreFilters() {
     setYearMax,
     refreshYear,
     setRefreshYear,
+    refreshMilage,
+    setRefreshMilage,
+    milageMin,
+    setMilageMin,
+    milageMax,
+    setMilageMax,
   } = useGlobalContext();
   if (moreFiltersModal) {
     return (
@@ -42,6 +48,9 @@ function MoreFilters() {
               setYearMax(2024);
               setYearMin(1920);
               setRefreshYear(Math.random());
+              setMilageMin(0),
+                setMilageMax(1000000),
+                setRefreshMilage(Math.random());
             }}
           >
             Clear filters
@@ -79,6 +88,7 @@ function MoreFilters() {
             title={"Transmission"}
           />
           <YearToFrom key={refreshYear} />
+          <MilageToFrom key={refreshMilage} />
           <div className="flex flex-col gap-y-2">
             <label htmlFor="milage" className="font-semibold">
               Milage

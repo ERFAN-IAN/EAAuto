@@ -4,7 +4,9 @@ import { useSearchParams } from "next/navigation";
 import { useContext } from "react";
 const context = createContext();
 const Contextwrapper = ({ children }) => {
+  const [isModalBackgroundOpen, setIsModalBackgroundOpen] = useState(false);
   const [refreshYear, setRefreshYear] = useState(Math.random());
+  const [refreshMilage, setRefreshMilage] = useState(Math.random());
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const brands = useSearchParams().getAll("brand") || [];
   const colors = useSearchParams().getAll("color") || [];
@@ -12,6 +14,9 @@ const Contextwrapper = ({ children }) => {
     brands.length !== 0 ? [...brands] : ["All"]
   );
   const [searchText, setSearchText] = useState(searchParams?.searchText || "");
+  const [refreshSearchText, setRefreshSearchText] = useState(Math.random());
+  const [milageMin, setMilageMin] = useState(searchParams.milageMin || 0);
+  const [milageMax, setMilageMax] = useState(searchParams.milageMax || 1000000);
   const [yearMin, setYearMin] = useState(searchParams.yearMin || 1920);
   const [yearMax, setYearMax] = useState(
     searchParams.yearMax || new Date().getFullYear()
@@ -34,7 +39,8 @@ const Contextwrapper = ({ children }) => {
     } else if (!brand.includes(item)) {
       setBrand([...newArray, item]);
     } else {
-      setBrand(brand.filter((e) => e != item));
+      let temp = brand.filter((e) => e != item);
+      setBrand(temp.length === 0 ? ["All"] : temp);
     }
   };
   const handleColor = (item) => {
@@ -44,7 +50,8 @@ const Contextwrapper = ({ children }) => {
     } else if (!color.includes(item)) {
       setColor([...newArray, item]);
     } else {
-      setColor(color.filter((e) => e != item));
+      let temp = color.filter((e) => e != item);
+      setColor(temp.length === 0 ? ["All"] : temp);
     }
   };
   return (
@@ -76,6 +83,16 @@ const Contextwrapper = ({ children }) => {
         setRefreshYear,
         setColor,
         setBrand,
+        refreshSearchText,
+        setRefreshSearchText,
+        isModalBackgroundOpen,
+        setIsModalBackgroundOpen,
+        milageMin,
+        setMilageMin,
+        milageMax,
+        setMilageMax,
+        refreshMilage,
+        setRefreshMilage,
       }}
     >
       {children}
