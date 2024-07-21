@@ -1,5 +1,5 @@
+const NEXT_PUBLIC_API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 export const fetchAdverts = (p) => {
-  const NEXT_PUBLIC_API_DOMAIN = process.env.NEXT_PUBLIC_API_DOMAIN || null;
   return {
     queryKey: [
       `${p.color ? p.color : "All"}`,
@@ -18,6 +18,16 @@ export const fetchAdverts = (p) => {
       const response = await fetch(
         `${NEXT_PUBLIC_API_DOMAIN}/search?${queryString}`
       );
+      const tj = await response.json();
+      return tj;
+    },
+  };
+};
+export const fetchSingleAdvert = (id) => {
+  return {
+    queryKey: [`cars`, `${id}`],
+    queryFn: async () => {
+      const response = await fetch(`${NEXT_PUBLIC_API_DOMAIN}/cars/${id}`);
       const tj = await response.json();
       return tj;
     },

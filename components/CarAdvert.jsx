@@ -26,7 +26,7 @@ const CarAdvert = ({ car }) => {
   } = car;
   return (
     <Link
-      href={"/"}
+      href={`/cars/${_id}`}
       className="w-full   grid grid-cols-5 relative rounded-xl shadow-lg hover:shadow-xl"
     >
       <div className=" col-span-2 group rounded-xl">
