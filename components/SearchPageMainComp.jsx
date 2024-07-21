@@ -41,11 +41,11 @@ const SearchPageMainComp = () => {
     setType(searchParams?.type || "All");
     setColor(colors.length === 0 ? ["All"] : colors);
     setTransmission("All");
-    setSearchText("");
+    setSearchText(searchParams.searchText || "");
     setYearMax(searchParams.yearMax || new Date().getFullYear());
     setYearMin(searchParams.yearMin || 1920);
     setRefreshYear(Math.random());
-    setRefreshSearchText(Math.random());
+    // setRefreshSearchText(Math.random());
     window.addEventListener("resize", () => {
       if (window.innerWidth > 768) {
         document.body.style.overflow = "visible";

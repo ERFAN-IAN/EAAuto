@@ -1,4 +1,5 @@
 "use client";
+import { useGlobalContext } from "@/context/context";
 const MultiSelectDesktop = ({
   name,
   data,
@@ -6,14 +7,21 @@ const MultiSelectDesktop = ({
   modalState,
   handleFunction,
   arrayResult,
+  headerpage,
 }) => {
+  const { isModalBackgroundOpen, setIsModalBackgroundOpen } =
+    useGlobalContext();
   return (
     <div
       className={`${
         modalState
-          ? "absolute bg-white right-0 translate-x-[103%] top-0 w-[20rem]  md:flex flex-col justify-between z-50"
-          : "hidden w-full h-full bg-white left-0 top-0  z-10"
-      } hidden rounded-xl shadow-xl border-2`}
+          ? "absolute bg-white    md:flex flex-col justify-between z-50"
+          : " w-full h-full bg-white left-0 top-0  z-10"
+      } hidden rounded-xl shadow-xl border-2 ${
+        headerpage
+          ? ` top-100 left-0 right-0`
+          : `right-0 translate-x-[103%] top-0 w-[20rem]`
+      }`}
     >
       <div className="flex flex-col gap-y-2 p-6">
         <div className="border-b-2 py-4 cursor-pointer">
@@ -42,7 +50,14 @@ const MultiSelectDesktop = ({
         </div>
         {data.map((item, index) => {
           return (
-            <div className=" border-b-2 cursor-pointer" key={index}>
+            <div
+              className=" border-b-2 cursor-pointer"
+              key={index}
+              onClick={() => {
+                setModal(false);
+                setIsModalBackgroundOpen(false);
+              }}
+            >
               <div className="flex justify-between">
                 <label
                   htmlFor={item.title}
@@ -74,6 +89,7 @@ const MultiSelectDesktop = ({
             onClick={() => {
               setModal(false);
               document.body.style.overflow = "visible";
+              setIsModalBackgroundOpen(false);
             }}
           >
             Close
