@@ -36,7 +36,9 @@ const rectSelector = ({ data, state, handleState, title }) => {
                 key={index}
                 className={`${
                   state === item.title ? `bg-[#eef0f4]` : " bg-white"
-                } py-2 border-r-black border-r-2 rounded-l-md`}
+                } py-2 border-r-black ${
+                  index === 0 ? `border-r-2` : ` rounded-r-md`
+                } rounded-l-md`}
                 onClick={() => {
                   handleState(item.title);
                 }}

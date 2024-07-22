@@ -92,17 +92,6 @@ function MoreFilters() {
           />
           <YearToFrom key={refreshYear} />
           <MilageToFrom key={refreshMilage} />
-          <div className="flex flex-col gap-y-2">
-            <label htmlFor="milage" className="font-semibold">
-              Milage
-            </label>
-            <input
-              type="number"
-              id="milage"
-              className="border-2 rounded-md px-4 py-2"
-              min={0}
-            />
-          </div>
           <select name="number" id="number" className="w-full">
             <option value="all">All</option>
             <option value="BMW">BMW</option>

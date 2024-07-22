@@ -18,6 +18,18 @@ const ModalHouse = () => {
     handleColor,
     setIsModalBackgroundOpen,
     isModalBackgroundOpen,
+    formBrand,
+    setFormBrand,
+    formColor,
+    setFormColor,
+    formTransmission,
+    setFormTransmission,
+    formType,
+    setFormType,
+    formBrandModal,
+    setFormBrandModal,
+    formColorModal,
+    setFormColorModal,
   } = useGlobalContext();
   return (
     <>
