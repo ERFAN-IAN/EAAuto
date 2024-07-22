@@ -7,6 +7,7 @@ import "swiper/css";
 import Footer from "@/components/Footer";
 import ReactQuery from "@/react query/ReactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import CarNavbar from "@/components/CarNavbar";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "EA Auto",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
         <body className=" w-full flex flex-col items-center overflow-x-hidden">
           <Contextwrapper>
             <Navbar />
+            <CarNavbar />
             <div className="layout">{children}</div>
 
             <ModalHouse />
