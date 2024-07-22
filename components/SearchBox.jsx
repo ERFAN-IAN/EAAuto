@@ -1,5 +1,6 @@
 "use client";
 import { useGlobalContext } from "@/context/context";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useEffect } from "react";
 const SearchBox = ({ place, children }) => {
@@ -9,6 +10,7 @@ const SearchBox = ({ place, children }) => {
   useEffect(() => {
     setSearchText(search);
   }, [brand, type, color, transmission]);
+  const router = useRouter();
   if ((place = "Header")) {
     return (
       <div className="flex flex-col gap-y-2">
@@ -28,7 +30,13 @@ const SearchBox = ({ place, children }) => {
         {children}
         <button
           className=" bg-black text-white px-4 py-2 rounded-md"
-          onClick={() => setSearchText(search)}
+          onClick={() => {
+            if (search === "" || search === searchText) {
+              router.push(`/search?searchText=${search}`);
+              return;
+            }
+            setSearchText(search);
+          }}
         >
           Search
         </button>

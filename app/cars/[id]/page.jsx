@@ -20,6 +20,9 @@ const page = () => {
         <SwiperSingleCarPage images={car?.images} type={car?.type} />
 
         <CarDetails car={car} />
+        <div className=" md:hidden bg-white z-20">
+          <ContactForm />
+        </div>
       </div>
     </div>
   );
