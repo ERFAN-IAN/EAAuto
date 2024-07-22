@@ -15,6 +15,14 @@ export const types = [
     title: "Second hand",
   },
 ];
+export const formTypes = [
+  {
+    title: "New",
+  },
+  {
+    title: "Second hand",
+  },
+];
 export const brands = [
   { title: "BMW" },
   {
@@ -44,6 +52,7 @@ export const transmissions = [
   { title: "Manual" },
   { title: "Auto" },
 ];
+export const formTransmissions = [{ title: "Manual" }, { title: "Auto" }];
 export const mainSwiper = [
   {
     title: "New",

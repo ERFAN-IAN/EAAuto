@@ -54,6 +54,12 @@ const Contextwrapper = ({ children }) => {
       setColor(temp.length === 0 ? ["All"] : temp);
     }
   };
+  const [formBrand, setFormBrand] = useState("");
+  const [formBrandModal, setFormBrandModal] = useState(false);
+  const [formColor, setFormColor] = useState("");
+  const [formColorModal, setFormColorModal] = useState(false);
+  const [formTransmission, setFormTransmission] = useState("");
+  const [formType, setFormType] = useState("");
   return (
     <context.Provider
       value={{
@@ -93,6 +99,18 @@ const Contextwrapper = ({ children }) => {
         setMilageMax,
         refreshMilage,
         setRefreshMilage,
+        formBrand,
+        setFormBrand,
+        formColor,
+        setFormColor,
+        formTransmission,
+        setFormTransmission,
+        formType,
+        setFormType,
+        formBrandModal,
+        setFormBrandModal,
+        formColorModal,
+        setFormColorModal,
       }}
     >
       {children}

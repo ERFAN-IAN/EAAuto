@@ -1,5 +1,50 @@
+"use client";
 import { FaChevronRight } from "react-icons/fa6";
 const ChevronSelector = ({ setModal, data, title, place, brand }) => {
+  if (place === "form") {
+    return (
+      <>
+        <div
+          onClick={() => {
+            setModal(true);
+            document.body.style.overflow = "hidden";
+          }}
+          className="flex md:hidden flex-col gap-y-2 cursor-pointer"
+        >
+          <h4 className=" font-semibold text-sm">{title}</h4>
+          <div
+            className={`${
+              data === "" ? `py-[.82rem]` : `py-2`
+            } px-4 border-2 flex justify-between items-center rounded-md bg-white`}
+          >
+            <span>{data}</span>
+            <div className=" text-sm">
+              <FaChevronRight />
+            </div>
+          </div>
+        </div>
+        <div
+          onClick={() => {
+            setModal(true);
+            // document.body.style.overflow = "hidden";
+          }}
+          className="hidden md:flex flex-col gap-y-2 cursor-pointer"
+        >
+          <h4 className=" font-semibold text-sm">{title}</h4>
+          <div
+            className={`${
+              data === "" ? `py-[.82rem]` : `py-2`
+            } px-4 border-2 flex justify-between items-center rounded-md bg-white`}
+          >
+            <span>{data}</span>
+            <div className=" text-sm">
+              <FaChevronRight />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <>
       <div

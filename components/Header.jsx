@@ -108,7 +108,7 @@ const Header = () => {
                   <span className="font-bold text-red-600">Auto</span>
                 </p>
                 <button className="bg-black text-white px-4 py-2 rounded-md">
-                  <Link href={"/"}>Post Advert</Link>
+                  <Link href={"/newAd"}>Post Advert</Link>
                 </button>
               </div>
             )}
