@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import LoadingComp from "./LoadingComp";
 const SwiperComp = () => {
-  const [slidesPerViewNumber, setSlidesPerViewNumber] = useState(1);
+  const [slidesPerViewNumber, setSlidesPerViewNumber] = useState(3);
   const [load, setLoad] = useState(false);
   const router = useRouter();
   const handleScreenSize = () => {
@@ -52,13 +52,40 @@ const SwiperComp = () => {
   }, []);
   if (!load) {
     return (
-      <div className="flex justify-center items-center mt-16 h-[11.2rem] md:h-[8.2rem]">
-        <LoadingComp />
+      <div className="flex flex-col justify-center px-4 mt-20 md:mt-4">
+        <div className="flex justify-between items-center">
+          <p className="font-semibold">Categories</p>
+          <div className="flex gap-x-2">
+            <div className="sbp cursor-pointer p-2 border-2 rounded-full">
+              <FiChevronLeft />
+            </div>
+            <div className="sbn cursor-pointer p-2 border-2 rounded-full">
+              <GoChevronRight />
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center mt-4 md:h-[8rem]">
+          <div className="flex justify-between gap-x-2 w-full animate-pulse bg-white">
+            {Array(slidesPerViewNumber)
+              .fill(2)
+              .map((item, index) => {
+                return (
+                  <div
+                    className="w-full h-[8rem] bg-slate-200 dark:bg-slate-500 rounded-lg flex items-start"
+                    key={index}
+                  >
+                    <p className="h-4 rounded-full ml-3 mt-4 w-[4rem] bg-slate-200 dark:bg-slate-700"></p>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
       </div>
     );
   }
   return (
-    <div className=" flex flex-col w-full px-4 gap-y-4 mt-16 md:mt-4">
+    <div className=" flex flex-col w-full px-4 gap-y-4 mt-20 md:mt-4">
       <div className="flex justify-between items-center">
         <p className="font-semibold">Categories</p>
         <div className=" flex text-black z-[2] gap-x-2">
@@ -88,22 +115,24 @@ const SwiperComp = () => {
             return (
               <SwiperSlide
                 key={index}
-                className=" bg-[#eef0f4] relative  hover:text-white rounded-md cursor-pointer transition-all duration-100"
+                className=" bg-[#eef0f4] relative  rounded-md cursor-pointer  group transition-all duration-100  hover:bg-black"
                 onClick={() => router.push(`/search?${item.query}`)}
               >
-                <p className=" font-semibold text-md ml-2 absolute top-2">
-                  {item.title}
-                </p>
-                <Image
-                  src={item.img}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  alt=""
-                  className={` absolute bottom-0 ${
-                    index <= 3 ? `mb-[-.2rem]` : `mb-[.5rem]`
-                  } w-full translate-x-[.8rem] `}
-                />
+                <div className="">
+                  <p className=" font-semibold text-md ml-2 absolute top-2  group-hover:text-white">
+                    {item.title}
+                  </p>
+                  <Image
+                    src={item.img}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt=""
+                    className={` absolute bottom-0 ${
+                      index <= 3 ? `mb-[-.2rem]` : `mb-[.5rem]`
+                    } w-full translate-x-[.8rem] `}
+                  />
+                </div>
               </SwiperSlide>
             );
           })}

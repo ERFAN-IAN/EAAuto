@@ -5,7 +5,7 @@ import { Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
 import Image from "next/image";
 
-const SwiperSingleCarPage = ({ images }) => {
+const SwiperSingleCarPage = ({ images, type }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   if (!images) {
     return (
@@ -37,8 +37,11 @@ const SwiperSingleCarPage = ({ images }) => {
           swiper: thumbsSwiper,
         }}
         modules={[Navigation, Thumbs]}
-        className=" rounded-xl group"
+        className=" rounded-xl group relative"
       >
+        <div className="absolute top-2 left-2 z-10 bg-green-600 rounded-xl p-2 text-white">
+          {type || null}
+        </div>
         {images?.map((item, index) => {
           return (
             <SwiperSlide
@@ -76,7 +79,7 @@ const SwiperSingleCarPage = ({ images }) => {
         >
           {images?.map((item, index) => {
             return (
-              <SwiperSlide key={index} className="">
+              <SwiperSlide key={index} className=" cursor-pointer">
                 <Image
                   src={item.secure_url}
                   width={0}

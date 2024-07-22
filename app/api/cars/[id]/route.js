@@ -2,7 +2,6 @@ import Car from "@/models/Car";
 import connectDB from "@/config/database";
 export const GET = async (request, { params }) => {
   const { id } = params;
-  console.log("iiiii", id);
   try {
     await connectDB();
     const car = await Car.find({ _id: id });

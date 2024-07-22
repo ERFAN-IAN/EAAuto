@@ -96,9 +96,6 @@ body {
 .swiper-slide {
   position: relative;
 }
-.swiper-slide:hover {
-  background-color: #000e23;
-}
 /* .gallery-top {
   height: 80%;
   width: 100%;

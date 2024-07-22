@@ -40,7 +40,7 @@ const SearchPageMainComp = () => {
     setBrand(brands.length === 0 ? ["All"] : brands);
     setType(searchParams?.type || "All");
     setColor(colors.length === 0 ? ["All"] : colors);
-    setTransmission("All");
+    setTransmission(searchParams.transmission || "All");
     setSearchText(searchParams.searchText || "");
     setYearMax(searchParams.yearMax || new Date().getFullYear());
     setYearMin(searchParams.yearMin || 1920);
