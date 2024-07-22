@@ -17,9 +17,9 @@ const page = () => {
         <ContactForm />
       </div>
       <div className="col-span-10 md:col-span-7 col-start-1 row-start-1">
-        <SwiperSingleCarPage images={car?.images} />
+        <SwiperSingleCarPage images={car?.images} type={car?.type} />
 
-        <CarDetails />
+        <CarDetails car={car} />
       </div>
     </div>
   );
