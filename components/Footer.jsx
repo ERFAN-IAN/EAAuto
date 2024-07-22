@@ -7,7 +7,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className="bg-[#eef0f4] h-[400px] w-full flex flex-col items-center mt-40 pb-10">
+    <footer className="bg-[#eef0f4] w-full flex flex-col items-center mt-40 pb-20">
       <div className="mt-[-6.5rem]">
         <Image
           src={footerImage}

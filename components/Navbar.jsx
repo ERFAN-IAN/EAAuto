@@ -1,6 +1,7 @@
 "use client";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useGlobalContext } from "@/context/context";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 const Navbar = () => {
   const {
@@ -22,8 +23,13 @@ const Navbar = () => {
     milageMax,
     setMilageMax,
   } = useGlobalContext();
+  const carsPage = usePathname().startsWith("/cars");
   return (
-    <nav className="md:max-w-[98%]  lg:max-w-[61.25rem]  z-30 py-4  px-4 bg-white flex justify-between items-center fixed md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md ">
+    <nav
+      className={`${
+        carsPage ? `hidden` : `flex`
+      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-30 py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+    >
       <div className="flex gap-x-2 text-3xl items-center   self-center">
         <div
           className=" cursor-pointer md:hidden"

@@ -53,10 +53,10 @@ const SearchPageMainComp = () => {
     });
   }, []);
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <SearchBox key={refreshSearchText} />
-      <div className="grid grid-cols-12 gap-x-4 mt-4">
-        <div className=" col-span-4">
+      <div className="grid grid-cols-12 gap-x-4 mt-4 h-full">
+        <div className=" col-span-4 self-start sticky top-0 z-[50]">
           <SideFilters />
         </div>
         <div className=" col-span-12 md:col-span-8">

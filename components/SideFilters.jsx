@@ -39,8 +39,8 @@ const SideFilters = () => {
     setMilageMax,
   } = useGlobalContext();
   return (
-    <main
-      className={`w-full hidden md:flex flex-col h-full bg-white relative z-40 rounded-xl ${
+    <div
+      className={`w-full hidden md:flex flex-col h-full bg-white relative rounded-xl ${
         isModalBackgroundOpen && `z-50`
       }`}
     >
@@ -136,7 +136,7 @@ const SideFilters = () => {
           <option value="Porche">Porche</option>
         </select>
       </div>
-    </main>
+    </div>
   );
 };
 
