@@ -58,7 +58,10 @@ function MoreFilters() {
           <button
             className=" text-2xl p-2 mr-2"
             type="button"
-            onClick={() => setMoreFiltersModal(false)}
+            onClick={() => {
+              setMoreFiltersModal(false);
+              document.body.style.overflow = "visible";
+            }}
           >
             <RxCross2 />
           </button>

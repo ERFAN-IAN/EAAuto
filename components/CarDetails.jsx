@@ -59,10 +59,10 @@ const carDetails = ({ car }) => {
         </div>
 
         <div className="flex items-center">
-          <p className="text-red-600 font-bold text-lg md:text-2xl pr-2 border-r-2">
+          <p className="text-red-600 font-bold text-xl md:text-2xl pr-2 border-r-2">
             {formatPrice(car?.price)}
           </p>
-          <p className="text-xl pl-2">{`${car?.milage || 0} km`}</p>
+          <p className="text-lg md:text-xl pl-2">{`${car?.milage || 0} km`}</p>
         </div>
         <div className="flex gap-x-2">
           <Link

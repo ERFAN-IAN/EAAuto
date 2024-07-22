@@ -20,7 +20,10 @@ const multiSelect = ({
     >
       <div className="flex flex-col gap-y-2 p-6">
         <div className="border-b-2 py-4 cursor-pointer">
-          <div className="flex justify-between ">
+          <div
+            className="flex justify-between "
+            onClick={() => (document.body.style.overflow = "visible")}
+          >
             <label
               htmlFor="All"
               className="font-bold text-md w-full cursor-pointer"
@@ -45,7 +48,11 @@ const multiSelect = ({
         </div>
         {data.map((item, index) => {
           return (
-            <div className=" border-b-2 cursor-pointer" key={index}>
+            <div
+              className=" border-b-2 cursor-pointer"
+              key={index}
+              onClick={() => (document.body.style.overflow = "visible")}
+            >
               <div className="flex justify-between">
                 <label
                   htmlFor={item.title}
