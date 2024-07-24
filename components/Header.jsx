@@ -107,9 +107,11 @@ const Header = () => {
                   <span className=" font-bold text-black">EA </span>
                   <span className="font-bold text-red-600">Auto</span>
                 </p>
-                <button className="bg-black text-white px-4 py-2 rounded-md">
-                  <Link href={"/newAd"}>Post Advert</Link>
-                </button>
+                <Link href={"/newAd"} className="w-full">
+                  <button className="bg-black text-white px-4 py-2 rounded-md w-full">
+                    Post Advert
+                  </button>
+                </Link>
               </div>
             )}
             {!buysell && (
