@@ -7,6 +7,7 @@ import YearToFrom from "./YearToFrom";
 import MultiSelectDesktop from "./MultiSelectDesktop";
 import { colors, brands } from "@/data";
 import MilageToFrom from "./MilageToFrom";
+import Category from "./Category";
 const SideFilters = () => {
   const {
     brand,
@@ -37,6 +38,8 @@ const SideFilters = () => {
     setMilageMin,
     milageMax,
     setMilageMax,
+    category,
+    handlecategory,
   } = useGlobalContext();
   return (
     <div
@@ -59,6 +62,7 @@ const SideFilters = () => {
               setMilageMax(1000000),
               setRefreshYear(Math.random());
             setRefreshMilage(Math.random());
+            handlecategory("All");
           }}
         >
           Clear filters
@@ -127,14 +131,7 @@ const SideFilters = () => {
         <YearToFrom key={refreshYear} />
         <MilageToFrom key={refreshMilage} />
 
-        <select name="number" id="number" className="w-full">
-          <option value="all">All</option>
-          <option value="BMW">BMW</option>
-          <option value="Audi">Audi</option>
-          <option value="Ferrari">Ferrari</option>
-          <option value="Lamborgini">Lamborgini</option>
-          <option value="Porche">Porche</option>
-        </select>
+        <Category handleFunc={handlecategory} category={category} />
       </div>
     </div>
   );

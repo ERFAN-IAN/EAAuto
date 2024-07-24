@@ -32,6 +32,8 @@ const SearchResult = () => {
     setMilageMin,
     milageMax,
     setMilageMax,
+    category,
+    handlecategory,
   } = useGlobalContext();
   const router = useRouter();
   const initial = useRef(0);
@@ -61,6 +63,7 @@ const SearchResult = () => {
       yearMax,
       milageMin,
       milageMax,
+      category,
     };
     const queryString = new URLSearchParams(obj);
     router.push(`/search?${queryString.toString()}`, { scroll: false });
@@ -74,6 +77,7 @@ const SearchResult = () => {
     yearMin,
     milageMin,
     milageMax,
+    category,
   ]);
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const { data, isLoading } = useQuery(fetchAdverts(searchParams));

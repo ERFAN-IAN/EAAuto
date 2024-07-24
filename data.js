@@ -95,3 +95,35 @@ export const mainSwiper = [
     img: pickup,
   },
 ];
+export const categories = [
+  {
+    title: "SUV",
+    query: "category=SUV",
+    img: suv,
+  },
+  {
+    title: "Convertible",
+    query: "category=Convertible",
+    img: cabrio,
+  },
+  {
+    title: "Coupe",
+    query: "category=Coupe",
+    img: coupe,
+  },
+  {
+    title: "Pick up",
+    query: "category=Pick+up",
+    img: pickup,
+  },
+  {
+    title: "Van",
+    query: "category=Van",
+    img: van,
+  },
+  {
+    title: "Bike",
+    query: "category=Bike",
+    img: motos,
+  },
+];

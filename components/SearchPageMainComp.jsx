@@ -32,6 +32,8 @@ const SearchPageMainComp = () => {
     setSearchText,
     brandModal,
     colorModal,
+    category,
+    handlecategory,
   } = useGlobalContext();
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const colors = useSearchParams().getAll("color") || "All";
@@ -44,6 +46,7 @@ const SearchPageMainComp = () => {
     setSearchText(searchParams.searchText || "");
     setYearMax(searchParams.yearMax || new Date().getFullYear());
     setYearMin(searchParams.yearMin || 1920);
+    handlecategory(searchParams.category || "All");
     setRefreshYear(Math.random());
     // setRefreshSearchText(Math.random());
     window.addEventListener("resize", () => {

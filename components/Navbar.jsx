@@ -22,6 +22,8 @@ const Navbar = () => {
     setMilageMin,
     milageMax,
     setMilageMax,
+    category,
+    handlecategory,
   } = useGlobalContext();
   const carsPage = usePathname().startsWith("/cars");
   return (
@@ -66,6 +68,7 @@ const Navbar = () => {
               setMilageMin(0),
                 setMilageMax(1000000),
                 setRefreshMilage(Math.random());
+              handlecategory("All");
             }}
           >
             Search
