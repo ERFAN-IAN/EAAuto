@@ -3,6 +3,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { useGlobalContext } from "@/context/context";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 const Navbar = () => {
   const {
     setHamMenu,
@@ -26,6 +28,7 @@ const Navbar = () => {
     handlecategory,
   } = useGlobalContext();
   const carsPage = usePathname().startsWith("/cars");
+  const session = useSession();
   return (
     <nav
       className={`${
@@ -83,9 +86,21 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-x-2">
-        <button className=" px-3 rounded-3xl border-2 border-black font-semibold ">
-          <span className=" leading-20">Login</span>
-        </button>
+        {!session?.data?.user ? (
+          <Link href={`/login`}>
+            <button className=" px-3 rounded-3xl border-2 border-black font-semibold ">
+              <span className=" leading-20">Login</span>
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={() => signOut()}
+            className=" px-4 rounded-3xl border-2 bg-red-600 text-white font-semibold pb-[.1rem]"
+          >
+            logout
+          </button>
+        )}
+
         <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white">
           <span className=" leading-20">Sell</span>
         </button>

@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ReactQuery from "@/react query/ReactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CarNavbar from "@/components/CarNavbar";
+import AuthProvider from "@/authprovider/authProvider";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "EA Auto",
@@ -16,20 +17,22 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ReactQuery>
-      <html lang="en">
-        <body className=" w-full flex flex-col items-center overflow-x-hidden">
-          <Contextwrapper>
-            <Navbar />
-            <CarNavbar />
-            <div className="layout">{children}</div>
+    <AuthProvider>
+      <ReactQuery>
+        <html lang="en">
+          <body className=" w-full flex flex-col items-center overflow-x-hidden">
+            <Contextwrapper>
+              <Navbar />
+              <CarNavbar />
+              <div className="layout">{children}</div>
 
-            <ModalHouse />
-            <Footer />
-          </Contextwrapper>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </body>
-      </html>
-    </ReactQuery>
+              <ModalHouse />
+              <Footer />
+            </Contextwrapper>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </body>
+        </html>
+      </ReactQuery>
+    </AuthProvider>
   );
 }

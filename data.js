@@ -34,6 +34,9 @@ export const brands = [
   {
     title: "Audi",
   },
+  {
+    title: "Lamborghini",
+  },
 ];
 export const colors = [
   { title: "Blue" },
@@ -45,6 +48,9 @@ export const colors = [
   },
   {
     title: "Silver",
+  },
+  {
+    title: "Yellow",
   },
 ];
 export const transmissions = [

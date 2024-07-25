@@ -23,6 +23,9 @@ export const GET = async (request) => {
   if (objectSearchParams.type == "All") {
     delete objectSearchParams.type;
   }
+  if (objectSearchParams.category == "All") {
+    delete objectSearchParams.category;
+  }
   objectSearchParams.$or = [
     { title: searchPattern },
     { description: searchPattern },
