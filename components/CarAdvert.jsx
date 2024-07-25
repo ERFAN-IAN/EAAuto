@@ -27,9 +27,9 @@ const CarAdvert = ({ car }) => {
   return (
     <Link
       href={`/cars/${_id}`}
-      className="w-full   grid grid-cols-5 relative rounded-xl shadow-lg hover:shadow-xl"
+      className="w-full   grid grid-cols-7 relative rounded-xl shadow-lg hover:shadow-xl"
     >
-      <div className=" col-span-2 group rounded-xl">
+      <div className=" col-span-3 group rounded-xl">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -41,13 +41,13 @@ const CarAdvert = ({ car }) => {
             prevEl: ".sbp",
           }}
           modules={[Pagination, Navigation]}
-          className=" bg-white rounded-l-xl"
+          className=" bg-white rounded-l-xl carAdvertSwiper"
         >
           {images.map((item, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md cursor-pointer transition-all duration-100"
+                className=" bg-[#eef0f4] z-[-100]  hover:text-white rounded-md cursor-pointer transition-all duration-100"
               >
                 <Image
                   src={item.secure_url}
@@ -55,7 +55,7 @@ const CarAdvert = ({ car }) => {
                   height={0}
                   sizes="100vw"
                   alt=""
-                  className={`w-full object-cover min-h-[9rem] max-h-[12rem]`}
+                  className={`w-full h-full object-center object-cover `}
                 />
               </SwiperSlide>
             );
@@ -69,14 +69,14 @@ const CarAdvert = ({ car }) => {
           </div>
         </Swiper>
       </div>
-      <div className="col-start-3 col-span-3 p-4 rounded-r-xl border-r-2 border-b-2 border-t-2 flex flex-col justify-between">
+      <div className="col-start-4 col-span-4 p-4 rounded-r-xl border-r-2 border-b-2 border-t-2 flex flex-col justify-between">
         <div>
           <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
           <div className="flex items-center">
             <span className="text-red-600 font-bold text-lg md:text-2xl pr-2 border-r-2">
               {formatPrice(price)}
             </span>
-            <span className="text-lg pl-2">{`${milage} km`}</span>
+            <span className="md:text-lg pl-2">{`${milage} km`}</span>
           </div>
         </div>
 

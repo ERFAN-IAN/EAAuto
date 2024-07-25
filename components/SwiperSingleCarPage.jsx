@@ -9,16 +9,16 @@ const SwiperSingleCarPage = ({ images, type }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   if (!images) {
     return (
-      <div className="bg-white w-full">
-        <div className="bg-white animate-pulse rounded-xl shadow-lg w-full relative">
-          <div className="w-[100%]  flex flex-col gap-y-4 rounded-xl  relative p-[37%]">
-            <div className="w-full dark:bg-slate-300 rounded-xl absolute p-[37%] inset-0"></div>
+      <div className=" w-full">
+        <div className="bg-transparent animate-pulse rounded-xl shadow-lg w-full relative">
+          <div className="w-[100%]  flex flex-col gap-y-4 rounded-xl  relative singleCarAdvertSwiper">
+            <div className="w-full dark:bg-slate-300 rounded-xl absolute singleCarAdvertSwiper inset-0"></div>
           </div>
-          <div className="w-full relative mt-2 flex gap-x-3 rounded-xl p-[9%]">
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute p-[9%] left-0 top-0 right-[76%] bottom-0 border-2"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute p-[9%] left-[25%] top-0 right-[51%] bottom-0"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute p-[9%] left-[50%] top-0 right-[26%] bottom-0"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute p-[9%] left-[75%] top-0 right-0 bottom-0"></div>
+          <div className="w-full relative mt-2 flex gap-x-3 rounded-xl singleCarAdvertLittleSwiper">
+            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-0 top-0 right-[76%] bottom-0 border-2"></div>
+            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[25%] top-0 right-[51%] bottom-0"></div>
+            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[50%] top-0 right-[26%] bottom-0"></div>
+            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[75%] top-0 right-0 bottom-0"></div>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
           swiper: thumbsSwiper,
         }}
         modules={[Navigation, Thumbs]}
-        className=" rounded-xl group relative max-h-[35rem]"
+        className=" rounded-xl group relative singleCarAdvertSwiper"
       >
         <div className="absolute top-2 left-2 z-10 bg-green-600 rounded-xl p-2 text-white">
           {type || null}
@@ -46,7 +46,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
           return (
             <SwiperSlide
               key={index}
-              className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md cursor-pointer transition-all duration-100  object-center"
+              className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md transition-all duration-100  object-center"
             >
               <Image
                 src={item.secure_url}
@@ -54,7 +54,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
                 height={0}
                 sizes="100vw"
                 alt=""
-                className={`w-full object-cover max-h-[30rem]`}
+                className={`w-full h-full object-center object-cover`}
               />
             </SwiperSlide>
           );
@@ -73,9 +73,9 @@ const SwiperSingleCarPage = ({ images, type }) => {
           modules={[Thumbs]}
           watchSlidesProgress
           onSwiper={setThumbsSwiper}
-          className="gallery-thumbs mt-2 bg-white"
+          className="gallery-thumbs mt-2 bg-white singleCarAdvertLittleSwiper"
           slidesPerView={4}
-          spaceBetween={10}
+          spaceBetween={6}
         >
           {images?.map((item, index) => {
             return (
@@ -86,7 +86,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
                   height={0}
                   sizes="100vw"
                   alt=""
-                  className={`w-full object-cover rounded-md`}
+                  className={`w-full h-full object-center object-cover rounded-xl`}
                 />
               </SwiperSlide>
             );

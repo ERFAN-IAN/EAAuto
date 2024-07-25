@@ -114,3 +114,12 @@ body {
 .gallery-thumbs .swiper-slide-thumb-active {
   opacity: 1;
 }
+.carAdvertSwiper {
+  height: clamp(9rem, 30vw, 11rem);
+}
+.singleCarAdvertSwiper {
+  height: clamp(18.6rem, 30vw, 30rem);
+}
+.singleCarAdvertLittleSwiper {
+  height: clamp(5rem, 10vw, 8rem);
+}
