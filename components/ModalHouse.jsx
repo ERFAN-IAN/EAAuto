@@ -6,6 +6,7 @@ import { colors, brands } from "@/data";
 import HamMenu from "./HamMenu";
 import HamMenuBackground from "./HamMenuBackground";
 import ModalBackground from "./ModalBackground";
+import LoginModal from "./LoginModal";
 const ModalHouse = () => {
   const {
     brand,
@@ -18,6 +19,8 @@ const ModalHouse = () => {
     handleColor,
     setIsModalBackgroundOpen,
     isModalBackgroundOpen,
+    loginModal,
+    setLoginModal,
     formBrand,
     setFormBrand,
     formColor,
@@ -58,6 +61,7 @@ const ModalHouse = () => {
         setColorModal={setColorModal}
         isModalBackgroundOpen={isModalBackgroundOpen}
       />
+      <LoginModal setModal={setLoginModal} modalState={loginModal} />
     </>
   );
 };

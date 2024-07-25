@@ -19,6 +19,7 @@ const Contextwrapper = ({ children }) => {
   const [milageMax, setMilageMax] = useState(searchParams.milageMax || 1000000);
   const [yearMin, setYearMin] = useState(searchParams.yearMin || 1920);
   const [category, setcategory] = useState("All");
+  const [loginModal, setLoginModal] = useState(false);
   const handlecategory = (item) => {
     if (item === category) {
       setcategory("All");
@@ -124,6 +125,8 @@ const Contextwrapper = ({ children }) => {
         handlecategory,
         categoryForm,
         setcategoryForm,
+        loginModal,
+        setLoginModal,
       }}
     >
       {children}

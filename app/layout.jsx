@@ -9,6 +9,8 @@ import ReactQuery from "@/react query/ReactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CarNavbar from "@/components/CarNavbar";
 import AuthProvider from "@/authprovider/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "EA Auto",
@@ -30,6 +32,7 @@ export default function RootLayout({ children }) {
               <Footer />
             </Contextwrapper>
             <ReactQueryDevtools initialIsOpen={false} />
+            <ToastContainer />
           </body>
         </html>
       </ReactQuery>
