@@ -34,11 +34,11 @@ export const POST = async (request) => {
       owner: session?.user?.id,
     };
     const images = formObject.images;
-    if (images.length > 3) {
+    if (images.length > 4) {
       return new Response(
         JSON.stringify({
           error: {
-            message: "choose a maximum of 3 images please.",
+            message: "choose a maximum of 4 images please.",
           },
         }),
         { status: 500 }
@@ -48,7 +48,7 @@ export const POST = async (request) => {
     let i = 0;
     const imagePromises = [];
     for (let image of images) {
-      if (i >= 3) {
+      if (i >= 4) {
         break;
       }
       // const bitmap = fs.readFileSync(image.name);

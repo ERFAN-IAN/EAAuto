@@ -266,7 +266,7 @@ const NewAdFrom = () => {
       </div>
       <div className="flex flex-col">
         <label htmlFor="images" className="font-semibold">
-          Select up to 3 images
+          Select up to 4 images
         </label>
         <input
           type="file"
