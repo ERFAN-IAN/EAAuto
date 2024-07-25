@@ -18,7 +18,7 @@ const Contextwrapper = ({ children }) => {
   const [milageMin, setMilageMin] = useState(searchParams.milageMin || 0);
   const [milageMax, setMilageMax] = useState(searchParams.milageMax || 1000000);
   const [yearMin, setYearMin] = useState(searchParams.yearMin || 1920);
-  const [category, setcategory] = useState(searchParams.category || "All");
+  const [category, setcategory] = useState("All");
   const handlecategory = (item) => {
     if (item === category) {
       setcategory("All");
@@ -68,6 +68,7 @@ const Contextwrapper = ({ children }) => {
   const [formColorModal, setFormColorModal] = useState(false);
   const [formTransmission, setFormTransmission] = useState("");
   const [formType, setFormType] = useState("");
+  const [categoryForm, setcategoryForm] = useState("");
   return (
     <context.Provider
       value={{
@@ -121,6 +122,8 @@ const Contextwrapper = ({ children }) => {
         setFormColorModal,
         category,
         handlecategory,
+        categoryForm,
+        setcategoryForm,
       }}
     >
       {children}

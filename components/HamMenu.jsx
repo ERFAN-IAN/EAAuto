@@ -55,7 +55,7 @@ const HamMenu = () => {
         </li>
         <li>
           <Link
-            href={"/"}
+            href={"/newAd"}
             className="flex gap-x-4 items-center text-2xl border-b-2 pb-4 pl-4"
           >
             <span className="mt-1">

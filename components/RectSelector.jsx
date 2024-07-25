@@ -1,4 +1,4 @@
-const rectSelector = ({ data, state, handleState, title }) => {
+const rectSelector = ({ data, state, handleState, title, name }) => {
   return (
     <div className="text-sm font-semibold">
       <h2 className="text-sm font-semibold">{title}</h2>
@@ -31,20 +31,29 @@ const rectSelector = ({ data, state, handleState, title }) => {
         >
           {data.map((item, index) => {
             return (
-              <button
-                type="button"
-                key={index}
+              <label
+                htmlFor={title}
                 className={`${
                   state === item.title ? `bg-[#eef0f4]` : " bg-white"
                 } py-2 border-r-black ${
                   index === 0 ? `border-r-2` : ` rounded-r-md`
-                } rounded-l-md`}
+                } rounded-l-md cursor-pointer`}
                 onClick={() => {
                   handleState(item.title);
                 }}
+                key={index}
               >
-                {item.title}
-              </button>
+                <button type="button">{item.title}</button>
+                <input
+                  type="radio"
+                  name={name}
+                  id={item.title}
+                  value={item.title}
+                  checked={state === item.title}
+                  onChange={() => null}
+                  className="w-0 h-0"
+                />
+              </label>
             );
           })}
         </div>

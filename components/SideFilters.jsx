@@ -69,7 +69,7 @@ const SideFilters = () => {
         </button>
       </div>
 
-      <div className="p-4 flex flex-col gap-y-4">
+      <div className="p-4 flex flex-col gap-y-6">
         <RectSelector
           data={types}
           state={type}

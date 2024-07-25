@@ -37,7 +37,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
           swiper: thumbsSwiper,
         }}
         modules={[Navigation, Thumbs]}
-        className=" rounded-xl group relative"
+        className=" rounded-xl group relative max-h-[35rem]"
       >
         <div className="absolute top-2 left-2 z-10 bg-green-600 rounded-xl p-2 text-white">
           {type || null}
@@ -46,7 +46,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
           return (
             <SwiperSlide
               key={index}
-              className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md cursor-pointer transition-all duration-100"
+              className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md cursor-pointer transition-all duration-100  object-center"
             >
               <Image
                 src={item.secure_url}
@@ -54,7 +54,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
                 height={0}
                 sizes="100vw"
                 alt=""
-                className={`w-full object-cover`}
+                className={`w-full object-cover max-h-[30rem]`}
               />
             </SwiperSlide>
           );

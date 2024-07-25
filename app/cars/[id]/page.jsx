@@ -10,7 +10,6 @@ const page = () => {
   const { isLoading, data } = useQuery(fetchSingleAdvert(id));
 
   const car = data?.car;
-  console.log(car);
   return (
     <div className="h-full  md:mt-8 grid grid-cols-10  gap-x-2">
       <div className="hidden md:block sticky top-[6.3rem] bg-white z-20 col-span-3 col-start-8 self-start">
