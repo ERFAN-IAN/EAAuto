@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import ReactQuery from "@/react query/ReactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import CarNavbar from "@/components/CarNavbar";
-import AuthProvider from "@/authprovider/authProvider";
+import AuthProvider from "@/authprovider/AuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "EA Auto",

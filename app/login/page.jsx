@@ -1,5 +1,5 @@
 import { getProviders, signOut } from "next-auth/react";
-import LoginComp from "@/components/loginComp";
+import LoginComp from "@/components/LoginComp";
 const page = async () => {
   const { google } = await getProviders();
   return (
