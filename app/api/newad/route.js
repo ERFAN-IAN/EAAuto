@@ -13,9 +13,7 @@ export const POST = async (request) => {
       });
     }
     await connectDB();
-    const formData = await request.formData();
-    const formObject = Object.fromEntries(formData);
-    const amenities = formData.values();
+    const formObject = await request.json();
     const tempObject = {
       title: formObject.title,
       type: formObject.type,
@@ -35,7 +33,7 @@ export const POST = async (request) => {
       },
       owner: session?.user?.id,
     };
-    const images = formData.getAll("images");
+    const images = formObject.images;
     if (images.length > 3) {
       return new Response(
         JSON.stringify({
@@ -53,14 +51,11 @@ export const POST = async (request) => {
       if (i >= 3) {
         break;
       }
-      const bitmap = fs.readFileSync(image.name);
-      const data = new Buffer(bitmap).toString("base64");
-      const result = await cloudinary.uploader.upload(
-        `data:image/png;base64,${data}`,
-        {
-          folder: "eaauto",
-        }
-      );
+      // const bitmap = fs.readFileSync(image.name);
+      // const data = new Buffer(bitmap).toString("base64");
+      const result = await cloudinary.uploader.upload(`${image}`, {
+        folder: "eaauto",
+      });
       imagePromises.push(result);
       const uploadedImages = await Promise.all(imagePromises);
       uedimages = uploadedImages;

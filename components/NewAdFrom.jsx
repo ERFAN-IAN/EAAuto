@@ -9,11 +9,11 @@ import { useGlobalContext } from "@/context/context";
 import MultiSelectFormPage from "@/components/MultiSelectFormPage";
 import RectSelector from "@/components/RectSelector";
 import Category from "@/components/Category";
-
 import { colors, brands, formTypes, formTransmissions } from "@/data";
 
 const NewAdFrom = () => {
   const [submitting, isSubmitting] = useState(false);
+  const [base64, setBase64] = useState([]);
   const router = useRouter();
   const {
     setBrandModal,
@@ -35,13 +35,25 @@ const NewAdFrom = () => {
     categoryForm,
     setcategoryForm,
   } = useGlobalContext();
-
+  let toBase64 = (e) => {
+    let t = [];
+    for (let i of e) {
+      const reader = new FileReader();
+      reader.readAsDataURL(i);
+      reader.onload = () => {
+        t.push(reader.result);
+      };
+    }
+    setBase64(t);
+  };
   useEffect(() => {
     setFormType("");
     setFormBrand("");
     setFormColor("");
     setFormTransmission("");
   }, []);
+
+  let b;
   return (
     <form
       className="w-full max-w-[42rem] px-4 py-8 mt-12 flex flex-col gap-y-8 card shadow-xl rounded-xl"
@@ -49,15 +61,16 @@ const NewAdFrom = () => {
       // method="POST"
       onSubmit={async (e) => {
         e.preventDefault();
-
         isSubmitting(true);
         try {
           const formData = new FormData(e.currentTarget);
+          const formObject = Object.fromEntries(formData);
+          formObject.images = base64;
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_DOMAIN}/newad`,
             {
               method: "POST",
-              body: formData,
+              body: JSON.stringify(formObject),
             }
           );
           isSubmitting(false);
@@ -93,7 +106,7 @@ const NewAdFrom = () => {
           type="text"
           className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
           placeholder="eg. E39 M5"
-          required
+          // required
         ></input>
       </div>
 
@@ -142,7 +155,7 @@ const NewAdFrom = () => {
             min={1920}
             className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
             placeholder={`${new Date().getFullYear()}`}
-            required
+            // required
           ></input>
         </div>
         <div className="flex flex-col w-full">
@@ -157,7 +170,7 @@ const NewAdFrom = () => {
             max={1000000}
             className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
             placeholder="22000"
-            required
+            // required
           ></input>
         </div>
       </div>
@@ -173,7 +186,7 @@ const NewAdFrom = () => {
             min={0}
             className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
             placeholder={`2000$`}
-            required
+            // required
           ></input>
         </div>
         <div className="flex flex-col w-full">
@@ -186,7 +199,7 @@ const NewAdFrom = () => {
             type="text"
             className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
             placeholder="Ny"
-            required
+            // required
           ></input>
         </div>
       </div>
@@ -225,7 +238,7 @@ const NewAdFrom = () => {
           name="seller_info.name"
           type="text"
           className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
-          required
+          // required
         ></input>
       </div>
       <div className="flex flex-col">
@@ -237,7 +250,7 @@ const NewAdFrom = () => {
           name="seller_info.email"
           type="email"
           className="mt-2 rounded-lg p-2 border-primary border-2 focus:border-primary outline-none"
-          required
+          // required
         ></input>
       </div>
       <div className="flex flex-col">
@@ -263,6 +276,9 @@ const NewAdFrom = () => {
           multiple
           accept="image/*"
           required
+          onChange={(e) => {
+            toBase64(e.target.files);
+          }}
         ></input>
       </div>
       <button
