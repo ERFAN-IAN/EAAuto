@@ -12,7 +12,7 @@ const MultiSelectFormPage = ({
         <div
           className={`${
             modalState
-              ? "fixed w-full h-full bg-white left-0 top-0  flex flex-col justify-between z-50"
+              ? "fixed w-full h-full bg-white left-0 top-0  flex flex-col justify-between z-[61]"
               : "hidden w-full h-full bg-white left-0 top-0  z-10"
           }  md:hidden`}
         >
@@ -78,7 +78,7 @@ const MultiSelectFormPage = ({
         <div
           className={`${
             modalState
-              ? "absolute w-full bg-slate-50 flex flex-col justify-between z-50 rounded-xl mt-4 border-2  shadow-xl"
+              ? "absolute w-full bg-slate-50 flex flex-col justify-between z-[61] rounded-xl mt-4 border-2  shadow-xl"
               : "hidden"
           } `}
         >
