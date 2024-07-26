@@ -8,8 +8,8 @@ const Contextwrapper = ({ children }) => {
   const [refreshYear, setRefreshYear] = useState(Math.random());
   const [refreshMilage, setRefreshMilage] = useState(Math.random());
   const searchParams = Object.fromEntries(useSearchParams()) || null;
-  const brands = useSearchParams().getAll("brand") || [];
-  const colors = useSearchParams().getAll("color") || [];
+  const brands = useSearchParams().getAll("brand")[0]?.split(",") || [];
+  const colors = useSearchParams().getAll("color")[0]?.split(",") || [];
   const [brand, setBrand] = useState(
     brands.length !== 0 ? [...brands] : ["All"]
   );

@@ -36,8 +36,8 @@ const SearchPageMainComp = () => {
     handlecategory,
   } = useGlobalContext();
   const searchParams = Object.fromEntries(useSearchParams()) || null;
-  const colors = useSearchParams().getAll("color") || "All";
-  const brands = useSearchParams().getAll("brand") || "All";
+  const colors = useSearchParams().getAll("color")[0]?.split(",") || ["All"];
+  const brands = useSearchParams().getAll("brand")[0]?.split(",") || ["All"];
   useEffect(() => {
     setBrand(brands.length === 0 ? ["All"] : brands);
     setType(searchParams?.type || "All");

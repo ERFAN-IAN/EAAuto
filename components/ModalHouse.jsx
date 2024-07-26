@@ -61,6 +61,8 @@ const ModalHouse = () => {
         setColorModal={setColorModal}
         isModalBackgroundOpen={isModalBackgroundOpen}
         setSortOpen={setSortOpen}
+        setFormBrandModal={setFormBrandModal}
+        setFormColorModal={setFormColorModal}
       />
       <ModalBackground
         setIsModalBackgroundOpen={setSortOpen}
@@ -69,6 +71,8 @@ const ModalHouse = () => {
         isModalBackgroundOpen={sortOpen}
         setSortOpen={setSortOpen}
         sortOpen={sortOpen}
+        setFormBrandModal={setFormBrandModal}
+        setFormColorModal={setFormColorModal}
       />
       <LoginModal />
     </>

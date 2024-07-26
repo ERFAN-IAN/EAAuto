@@ -5,6 +5,8 @@ const ModalBackground = ({
   isModalBackgroundOpen,
   setSortOpen,
   sortOpen,
+  setFormBrandModal,
+  setFormColorModal,
 }) => {
   if (!isModalBackgroundOpen) {
     return null;
@@ -19,6 +21,8 @@ const ModalBackground = ({
         setBrandModal(false);
         setColorModal(false);
         setSortOpen(false);
+        setFormBrandModal(false);
+        setFormColorModal(false);
       }}
     ></div>
   );

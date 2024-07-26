@@ -53,10 +53,10 @@ const MultiSelectDesktop = ({
             <div
               className=" border-b-2 cursor-pointer"
               key={index}
-              onClick={() => {
-                setModal(false);
-                setIsModalBackgroundOpen(false);
-              }}
+              // onClick={() => {
+              //   setModal(false);
+              //   setIsModalBackgroundOpen(false);
+              // }}
             >
               <div className="flex justify-between">
                 <label

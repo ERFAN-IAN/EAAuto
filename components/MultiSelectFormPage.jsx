@@ -5,6 +5,7 @@ const MultiSelectFormPage = ({
   modalState,
   handleFunction,
   arrayResult,
+  setIsModalBackgroundOpen,
 }) => {
   return (
     <>
@@ -64,6 +65,7 @@ const MultiSelectFormPage = ({
                 onClick={() => {
                   setModal(false);
                   document.body.style.overflow = "visible";
+                  setIsModalBackgroundOpen(false);
                   //   setIsModalBackgroundOpen(false);
                 }}
               >
@@ -82,7 +84,7 @@ const MultiSelectFormPage = ({
               : "hidden"
           } `}
         >
-          <div className="flex flex-col gap-y-2 p-6">
+          <div className="flex flex-col p-6 max-h-60 overflow-y-scroll">
             {data.map((item, index) => {
               return (
                 <div
@@ -130,6 +132,7 @@ const MultiSelectFormPage = ({
                 onClick={() => {
                   setModal(false);
                   document.body.style.overflow = "visible";
+                  setIsModalBackgroundOpen(false);
                   //   setIsModalBackgroundOpen(false);
                 }}
               >

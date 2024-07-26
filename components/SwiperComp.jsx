@@ -8,7 +8,6 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useState } from "react";
-import LoadingComp from "./LoadingComp";
 const SwiperComp = () => {
   const [slidesPerViewNumber, setSlidesPerViewNumber] = useState(3);
   const [load, setLoad] = useState(false);
@@ -101,6 +100,7 @@ const SwiperComp = () => {
         <Swiper
           slidesPerView={slidesPerViewNumber}
           spaceBetween={10}
+          slidesPerGroup={slidesPerViewNumber}
           //   pagination={{
           //     clickable: true,
           //   }}

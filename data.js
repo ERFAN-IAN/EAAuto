@@ -37,8 +37,15 @@ export const brands = [
   {
     title: "Lamborghini",
   },
+  {
+    title: "Ford",
+  },
+  {
+    title: "VW",
+  },
 ];
 export const colors = [
+  { title: "Black" },
   { title: "Blue" },
   {
     title: "Red",
@@ -51,6 +58,9 @@ export const colors = [
   },
   {
     title: "Yellow",
+  },
+  {
+    title: "Orange",
   },
 ];
 export const transmissions = [

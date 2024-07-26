@@ -15,7 +15,6 @@ const LoginModal = () => {
       initial.current++;
       return;
     }
-    console.log(session.data);
     setLoginModal(session?.data ? false : true);
   }, [session]);
   return (

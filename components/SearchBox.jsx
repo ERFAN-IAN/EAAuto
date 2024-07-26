@@ -22,6 +22,12 @@ const SearchBox = ({ place, children }) => {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
+              const queryString = new URLSearchParams({
+                searchText: search,
+                brand: brand,
+              }).toString();
+              router.push(`/search?${queryString}`);
+
               setSearchText(search);
             }
           }}
@@ -31,10 +37,12 @@ const SearchBox = ({ place, children }) => {
         <button
           className=" bg-black text-white px-4 py-2 rounded-md"
           onClick={() => {
-            if (search === "" || search === searchText) {
-              router.push(`/search?searchText=${search}`);
-              return;
-            }
+            const queryString = new URLSearchParams({
+              searchText: search,
+              brand: brand,
+            }).toString();
+            router.push(`/search?${queryString}`);
+
             setSearchText(search);
           }}
         >

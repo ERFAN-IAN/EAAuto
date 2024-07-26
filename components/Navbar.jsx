@@ -106,13 +106,13 @@ const Navbar = () => {
         ) : (
           <button
             onClick={() => signOut()}
-            className=" px-4 rounded-3xl border-2 bg-red-600 text-white font-semibold pb-[.1rem]"
+            className=" px-4 rounded-3xl border-2 bg-red-600 text-white font-semibold pb-[0.1rem]"
           >
             logout
           </button>
         )}
         <Link href={`/newAd`}>
-          <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white">
+          <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white h-full">
             <span className=" leading-20">Sell</span>
           </button>
         </Link>

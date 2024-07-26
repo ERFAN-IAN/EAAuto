@@ -15,7 +15,6 @@ import { useSession } from "next-auth/react";
 import LoadingComp from "./LoadingComp";
 const NewAdFrom = () => {
   const session = useSession();
-  console.log(session);
   const [submitting, isSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [base64, setBase64] = useState([]);
@@ -39,6 +38,7 @@ const NewAdFrom = () => {
     setFormColorModal,
     categoryForm,
     setcategoryForm,
+    setIsModalBackgroundOpen,
   } = useGlobalContext();
   let toBase64 = (e) => {
     let t = [];
@@ -73,12 +73,11 @@ const NewAdFrom = () => {
       onSubmit={async (e) => {
         e.preventDefault();
         isSubmitting(true);
-        let progressToastId = toast.dismiss;
+        let progressToastId;
         try {
           const formData = new FormData(e.currentTarget);
           const formObject = Object.fromEntries(formData);
           formObject.images = base64;
-          console.log(Object.keys(formObject));
           if (!formObject.type) {
             toast.error("Please choose the advert type");
             return;
@@ -92,18 +91,16 @@ const NewAdFrom = () => {
             return;
           }
           if (
-            [
-              formObject.title === "" ||
-                formObject.year === "" ||
-                formObject.milage === "" ||
-                formObject.price === "" ||
-                formObject.city === "" ||
-                formObject.category == "" ||
-                formObject["seller_info.name"] === "" ||
-                formObject["seller_info.email"] === "" ||
-                formObject["seller_info.phone"] === "" ||
-                formObject.images === "",
-            ]
+            formObject.title === "" ||
+            formObject.year === "" ||
+            formObject.milage === "" ||
+            formObject.price === "" ||
+            formObject.city === "" ||
+            formObject.category == "" ||
+            formObject["seller_info.name"] === "" ||
+            formObject["seller_info.email"] === "" ||
+            formObject["seller_info.phone"] === "" ||
+            formObject.images === ""
           ) {
             toast.error("Please fill All the fields");
           }
@@ -165,12 +162,15 @@ const NewAdFrom = () => {
       </div>
 
       <div className="relative" onClick={() => setFormColorModal(false)}>
-        <ChevronSelector
-          setModal={setFormBrandModal}
-          data={formBrand}
-          title={"Brand"}
-          place={"form"}
-        />
+        <div onClick={() => setIsModalBackgroundOpen(true)}>
+          <ChevronSelector
+            setModal={setFormBrandModal}
+            data={formBrand}
+            title={"Brand"}
+            place={"form"}
+          />
+        </div>
+
         <MultiSelectFormPage
           name={"brand"}
           data={brands}
@@ -178,15 +178,19 @@ const NewAdFrom = () => {
           modalState={formBrandModal}
           handleFunction={setFormBrand}
           arrayResult={formBrand}
+          setIsModalBackgroundOpen={setIsModalBackgroundOpen}
         />
       </div>
       <div className="relative">
-        <ChevronSelector
-          setModal={setFormColorModal}
-          data={formColor}
-          title={"Color"}
-          place={"form"}
-        />
+        <div onClick={() => setIsModalBackgroundOpen(true)}>
+          <ChevronSelector
+            setModal={setFormColorModal}
+            data={formColor}
+            title={"Color"}
+            place={"form"}
+          />
+        </div>
+
         <MultiSelectFormPage
           name={"color"}
           data={colors}
@@ -194,6 +198,7 @@ const NewAdFrom = () => {
           modalState={formColorModal}
           handleFunction={setFormColor}
           arrayResult={formColor}
+          setIsModalBackgroundOpen={setIsModalBackgroundOpen}
         />
       </div>
       <div className="flex w-full gap-x-2 ">

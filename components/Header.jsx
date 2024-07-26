@@ -30,19 +30,6 @@ const Header = () => {
   const router = useRouter();
   const initial = useRef(0);
   useEffect(() => {
-    if (initial.current < 2) {
-      initial.current++;
-      return;
-    }
-    const obj = {
-      brand,
-      searchText,
-    };
-
-    const queryString = new URLSearchParams(obj);
-    router.push(`/search?${queryString}`);
-  }, [brand, searchText]);
-  useEffect(() => {
     setBrand(["All"]);
     setSearchText("");
     setRefreshSearchText(Math.random());
