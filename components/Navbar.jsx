@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav
       className={`${
         carsPage ? `hidden` : `flex`
-      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[60] py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
       onClick={() => {
         setSortOpen(false);
         setIsModalBackgroundOpen(false);
