@@ -23,7 +23,7 @@ const MultiSelectDesktop = ({
           : `right-0 translate-x-[103%] top-0 w-[20rem]`
       }`}
     >
-      <div className="flex flex-col gap-y-2 p-6">
+      <div className="flex flex-col p-6  max-h-60 overflow-y-scroll">
         <div className="border-b-2 py-4 cursor-pointer">
           <div className="flex justify-between ">
             <label

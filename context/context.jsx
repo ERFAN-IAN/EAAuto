@@ -39,6 +39,7 @@ const Contextwrapper = ({ children }) => {
   const [transmission, setTransmission] = useState(
     searchParams?.transmission || "All"
   );
+  const [sortOpen, setSortOpen] = useState(false);
   const [hamMenu, setHamMenu] = useState(false);
   const handleBrand = (item) => {
     let newArray = brand.filter((e) => e != "All");
@@ -125,6 +126,8 @@ const Contextwrapper = ({ children }) => {
         handlecategory,
         categoryForm,
         setcategoryForm,
+        sortOpen,
+        setSortOpen,
       }}
     >
       {children}

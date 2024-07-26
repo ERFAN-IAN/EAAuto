@@ -26,6 +26,10 @@ const Navbar = () => {
     setMilageMax,
     category,
     handlecategory,
+    setSortOpen,
+    setIsModalBackgroundOpen,
+    setBrandModal,
+    setColorModal,
   } = useGlobalContext();
   const carsPage = usePathname().startsWith("/cars");
   const session = useSession();
@@ -33,13 +37,20 @@ const Navbar = () => {
     <nav
       className={`${
         carsPage ? `hidden` : `flex`
-      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-30 py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[60] py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      onClick={() => {
+        setSortOpen(false);
+        setIsModalBackgroundOpen(false);
+        setBrandModal(false);
+        setColorModal(false);
+      }}
     >
       <div className="flex gap-x-2 text-3xl items-center   self-center">
         <div
           className=" cursor-pointer md:hidden"
           onClick={() => {
             setHamMenu(!hamMenu);
+            setSortOpen(false);
             if (!hamMenu) {
               document.body.style.overflow = "hidden";
             } else {
@@ -100,10 +111,11 @@ const Navbar = () => {
             logout
           </button>
         )}
-
-        <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white">
-          <span className=" leading-20">Sell</span>
-        </button>
+        <Link href={`/newAd`}>
+          <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white">
+            <span className=" leading-20">Sell</span>
+          </button>
+        </Link>
       </div>
     </nav>
   );

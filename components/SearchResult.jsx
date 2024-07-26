@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import CarAdvert from "./CarAdvert";
 import LoadingComp from "./LoadingComp";
+import Sort from "./Sort";
 const SearchResult = () => {
   const {
     brand,
@@ -87,6 +88,7 @@ const SearchResult = () => {
   }
   return (
     <section className="flex flex-col gap-y-4">
+      <Sort />
       {!isLoading ? (
         cars?.map((item, index) => {
           return <CarAdvert car={item} key={index} />;

@@ -8,7 +8,7 @@ const HamMenu = () => {
   const { hamMenu, setHamMenu } = useGlobalContext();
   return (
     <div
-      className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white z-20 ${
+      className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white z-[55] ${
         hamMenu ? " translate-x-[20rem]" : " translate-x-[0rem]"
       }`}
       onClick={(e) => e.stopPropagation()}
@@ -17,6 +17,7 @@ const HamMenu = () => {
         className=" font-semibold flex flex-col py-4 gap-y-6"
         onClick={() => {
           setHamMenu(false);
+
           document.body.style.overflow = "visible";
         }}
       >
