@@ -12,10 +12,12 @@ import Category from "@/components/Category";
 import { colors, brands, formTypes, formTransmissions } from "@/data";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
+import LoadingComp from "./LoadingComp";
 const NewAdFrom = () => {
   const session = useSession();
   console.log(session);
   const [submitting, isSubmitting] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [base64, setBase64] = useState([]);
   const router = useRouter();
   const {
@@ -54,7 +56,17 @@ const NewAdFrom = () => {
     setFormBrand("");
     setFormColor("");
     setFormTransmission("");
+    setLoading(false);
   }, []);
+  if (loading) {
+    return (
+      <div className="w-full h-[100vh] flex justify-center items-center">
+        <div className="mt-[-10rem]">
+          <LoadingComp />
+        </div>
+      </div>
+    );
+  }
   return (
     <form
       className="w-full max-w-[42rem] px-4 py-8 mt-12 flex flex-col gap-y-8 card shadow-xl rounded-xl"

@@ -19,8 +19,6 @@ const ModalHouse = () => {
     handleColor,
     setIsModalBackgroundOpen,
     isModalBackgroundOpen,
-    loginModal,
-    setLoginModal,
     formBrand,
     setFormBrand,
     formColor,
@@ -61,7 +59,7 @@ const ModalHouse = () => {
         setColorModal={setColorModal}
         isModalBackgroundOpen={isModalBackgroundOpen}
       />
-      <LoginModal setModal={setLoginModal} modalState={loginModal} />
+      <LoginModal />
     </>
   );
 };
