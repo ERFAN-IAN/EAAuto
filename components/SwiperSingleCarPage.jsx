@@ -8,27 +8,10 @@ import Image from "next/image";
 import { useEffect } from "react";
 const SwiperSingleCarPage = ({ images, type }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [isMounted, setIsMounted] = useState(true);
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
-  });
-  if (!images) {
-    return (
-      <div className=" w-full">
-        <div className="bg-transparent animate-pulse rounded-xl shadow-lg w-full relative">
-          <div className="w-[100%]  flex flex-col gap-y-4 rounded-xl  relative singleCarAdvertSwiper">
-            <div className="w-full dark:bg-slate-300 rounded-xl absolute singleCarAdvertSwiper inset-0"></div>
-          </div>
-          <div className="w-full relative mt-2 flex gap-x-3 rounded-xl singleCarAdvertLittleSwiper">
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-0 top-0 right-[76%] bottom-0 border-2"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[25%] top-0 right-[51%] bottom-0"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[50%] top-0 right-[26%] bottom-0"></div>
-            <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[75%] top-0 right-0 bottom-0"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  }, []);
   return (
     <div className=" bg-white">
       <Swiper
@@ -44,7 +27,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
         modules={[Navigation, Thumbs]}
         className=" rounded-xl group relative singleCarAdvertSwiper"
       >
-        <div className="absolute top-2 left-2 z-10 bg-green-600 rounded-xl p-2 text-white">
+        <div className="absolute top-2 left-2 z-10 bg-teal-700 rounded-xl p-2 text-white">
           {type || null}
         </div>
         {images?.map((item, index) => {

@@ -80,16 +80,7 @@ export const mainSwiper = [
     query: "type=Second+hand",
     img: Second,
   },
-  {
-    title: "Van",
-    query: "category=Van",
-    img: van,
-  },
-  {
-    title: "Bike",
-    query: "category=Bike",
-    img: motos,
-  },
+
   {
     title: "SUV",
     query: "category=SUV",
@@ -109,6 +100,16 @@ export const mainSwiper = [
     title: "Pick up",
     query: "category=Pick+up",
     img: pickup,
+  },
+  {
+    title: "Bike",
+    query: "category=Bike",
+    img: motos,
+  },
+  {
+    title: "Van",
+    query: "category=Van",
+    img: van,
   },
 ];
 export const categories = [

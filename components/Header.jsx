@@ -68,20 +68,16 @@ const Header = () => {
             <button
               onClick={() => setBuysell(false)}
               className={`${
-                !buysell
-                  ? "border-b-2 border-black"
-                  : "border-b-2 border-gray-100"
-              } py-4 font-semibold`}
+                !buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
+              } py-4 font-semibold text-lg text-teal-600 border-b-[.2rem]  rounded-l-xl rounded-b-sm hover:bg-slate-100 transition-colors duration-150`}
             >
               Buy
             </button>
             <button
               onClick={() => setBuysell(true)}
               className={`${
-                buysell
-                  ? "border-b-2 border-black text-black"
-                  : "border-b-2 border-gray-100"
-              } py-4 font-semibold text-lg`}
+                buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
+              } py-4 font-semibold text-lg border-b-[.2rem] text-teal-600 hover:bg-slate-100 transition-colors duration-150 rounded-r-xl rounded-b-sm`}
             >
               Sell
             </button>
@@ -92,10 +88,10 @@ const Header = () => {
                 <p className="block text-center text-xl">
                   Sell your car on{" "}
                   <span className=" font-bold text-black">EA </span>
-                  <span className="font-bold text-red-600">Auto</span>
+                  <span className="font-bold text-teal-600">Auto</span>
                 </p>
                 <Link href={"/newAd"} className="w-full">
-                  <button className="bg-black text-white px-4 py-2 rounded-md w-full">
+                  <button className="bg-teal-700 transition-colors hover:bg-teal-800 duration-150 text-white px-4 py-2 rounded-md w-full">
                     Post Advert
                   </button>
                 </Link>

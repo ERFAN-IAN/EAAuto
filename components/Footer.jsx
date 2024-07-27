@@ -20,7 +20,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row gap-y-6 justify-between mt-10 items-center max-w-[61.25rem] w-full px-4">
         <Link href={"/"} className="text-4xl">
           <span className=" font-bold text-black">EA </span>
-          <span className="font-bold text-red-600">Auto</span>
+          <span className="font-bold text-teal-600">Auto</span>
         </Link>
         <div className="flex gap-x-4 text-4xl">
           <Link href={"/"} className=" cursor-pointer">

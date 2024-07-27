@@ -23,12 +23,12 @@ const Pagination = () => {
   }
   return (
     <div className="w-full mt-12 flex justify-end pr-2">
-      <div className=" rounded-lg flex bg-slate-300 ">
+      <div className=" rounded-lg flex bg-teal-600 text-white">
         {Array.from(Array(countPages)).map((item, index) => (
           <div
             className={` py-2 px-4 ${
               index !== countPages - 1 && `border-r-2`
-            } cursor-pointer`}
+            } cursor-pointer font-semibold`}
             key={index}
             onClick={() => {
               searchParams.page = index + 1;

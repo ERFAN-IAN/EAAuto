@@ -22,7 +22,7 @@ const CarNavbar = () => {
         />
         <Link href={"/"} className="text-3xl">
           <span className=" font-bold text-black">EA </span>
-          <span className="font-bold text-red-600">Auto</span>
+          <span className="font-bold text-teal-600">Auto</span>
         </Link>
       </div>
 

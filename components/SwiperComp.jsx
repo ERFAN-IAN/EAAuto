@@ -128,9 +128,7 @@ const SwiperComp = () => {
                     height={0}
                     sizes="100vw"
                     alt=""
-                    className={` absolute bottom-0 ${
-                      index <= 3 ? `mb-[-.2rem]` : `mb-[.5rem]`
-                    } w-full translate-x-[.8rem] `}
+                    className={` absolute bottom-0 w-full translate-x-[.8rem] `}
                   />
                 </div>
               </SwiperSlide>

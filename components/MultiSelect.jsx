@@ -115,7 +115,7 @@ const multiSelect = ({
         <div className=" justify-end flex gap-x-2 text-sm font-semibold">
           <button
             type="button"
-            className=" bg-black text-white px-4 py-2 rounded-md"
+            className=" bg-teal-700 text-white px-4 py-2 rounded-md"
             onClick={() => {
               setModal(false);
               document.body.style.overflowY = "visible";

@@ -16,7 +16,7 @@ const page = async ({ params }) => {
         <SwiperSingleCarPage images={car?.images} type={car?.type} />
 
         <CarDetails car={car} />
-        <div className=" md:hidden bg-white z-20">
+        <div className=" md:hidden bg-white z-20 mt-10">
           <ContactForm />
         </div>
       </div>

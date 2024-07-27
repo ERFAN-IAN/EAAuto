@@ -35,7 +35,7 @@ const SearchBox = ({ place, children }) => {
         />
         {children}
         <button
-          className=" bg-black text-white px-4 py-2 rounded-md"
+          className=" bg-teal-700 transition-colors hover:bg-teal-800 duration-150 text-white px-4 py-2 rounded-md"
           onClick={() => {
             const queryString = new URLSearchParams({
               searchText: search,

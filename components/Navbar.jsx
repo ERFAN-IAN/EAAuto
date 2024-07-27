@@ -63,7 +63,7 @@ const Navbar = () => {
 
         <Link href={"/"} className="">
           <span className=" font-bold text-black">EA </span>
-          <span className="font-bold text-red-600">Auto</span>
+          <span className="font-bold text-teal-600">Auto</span>
         </Link>
         <div className="hidden md:flex ml-20 gap-x-4 items-center">
           <Link
@@ -112,7 +112,7 @@ const Navbar = () => {
           </button>
         )}
         <Link href={`/newAd`}>
-          <button className=" px-[1.2rem] rounded-3xl  bg-black font-semibold text-white h-full">
+          <button className=" px-[1.2rem] rounded-3xl  bg-teal-700 font-semibold text-white h-full">
             <span className=" leading-20">Sell</span>
           </button>
         </Link>

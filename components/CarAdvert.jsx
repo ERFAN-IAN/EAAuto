@@ -73,7 +73,7 @@ const CarAdvert = ({ car }) => {
         <div>
           <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
           <div className="flex items-center">
-            <span className="text-red-600 font-bold text-lg md:text-2xl pr-2 border-r-2">
+            <span className="text-teal-600 font-bold text-lg md:text-2xl pr-2 border-r-2">
               {formatPrice(price)}
             </span>
             <span className="md:text-lg pl-2">{`${milage} km`}</span>
