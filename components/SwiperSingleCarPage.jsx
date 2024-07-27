@@ -1,3 +1,4 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { GoChevronRight } from "react-icons/go";
 import { FiChevronLeft } from "react-icons/fi";
