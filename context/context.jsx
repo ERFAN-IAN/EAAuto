@@ -18,7 +18,7 @@ const Contextwrapper = ({ children }) => {
   const [milageMin, setMilageMin] = useState(searchParams.milageMin || 0);
   const [milageMax, setMilageMax] = useState(searchParams.milageMax || 1000000);
   const [yearMin, setYearMin] = useState(searchParams.yearMin || 1920);
-  const [category, setcategory] = useState("All");
+  const [category, setcategory] = useState(searchParams.category || "All");
   const handlecategory = (item) => {
     if (item === category) {
       setcategory("All");
@@ -130,6 +130,7 @@ const Contextwrapper = ({ children }) => {
         setSortOpen,
         sort,
         setSort,
+        setcategory,
       }}
     >
       {children}

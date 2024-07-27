@@ -13,12 +13,12 @@ const Pagination = () => {
   //the ref, total , useEffect and stuff is all to save the initial total valuse after fetch and keep the pagination box on the page
   const ref = useRef(1);
   const total = data?.total || ref.current;
+  let countPages = Math.ceil(total / 2);
   useEffect(() => {
     ref.current = total;
   }, [total]);
 
-  const countPages = Math.ceil(total / 2);
-  if ((ref.current === 1 && isLoading) || countPages < 2) {
+  if ((ref.current === 1 && isLoading) || countPages < 2 || data?.total === 0) {
     return null;
   }
   return (
@@ -33,7 +33,9 @@ const Pagination = () => {
             onClick={() => {
               searchParams.page = index + 1;
               const queryString = new URLSearchParams(searchParams);
-              router.push(`/search?${queryString.toString()}`);
+              router.push(`/search?${queryString.toString()}`, {
+                scroll: false,
+              });
             }}
           >
             {index + 1}

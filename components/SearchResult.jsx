@@ -99,7 +99,7 @@ const SearchResult = () => {
           return <CarAdvert car={item} key={index} />;
         })
       ) : (
-        <div className="mt-40">
+        <div className="my-40">
           <LoadingComp />
         </div>
       )}

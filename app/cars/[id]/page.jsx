@@ -8,7 +8,6 @@ const page = async ({ params }) => {
   const id = params.id;
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/cars/${id}`);
   const tj = await data.json();
-  console.log(tj);
 
   const car = tj?.car;
 

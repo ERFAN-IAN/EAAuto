@@ -37,6 +37,7 @@ const SearchPageMainComp = () => {
     handlecategory,
     sort,
     setSort,
+    setcategory,
   } = useGlobalContext();
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const colors = useSearchParams().getAll("color")[0]?.split(",") || ["All"];
@@ -49,7 +50,7 @@ const SearchPageMainComp = () => {
     setSearchText(searchParams.searchText || "");
     setYearMax(searchParams.yearMax || new Date().getFullYear());
     setYearMin(searchParams.yearMin || 1920);
-    handlecategory(searchParams.category || "All");
+    setcategory(searchParams.category || "All");
     setRefreshYear(Math.random());
     setSort(searchParams.sort || "ascending");
     // setRefreshSearchText(Math.random());
