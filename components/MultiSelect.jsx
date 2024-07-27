@@ -13,6 +13,7 @@ const multiSelect = ({
   const { setIsModalBackgroundOpen } = useGlobalContext();
   const [search, setSearch] = useState("");
   const [outline, setOutline] = useState(false);
+
   return (
     <div
       className={`${
@@ -85,7 +86,7 @@ const multiSelect = ({
               <div
                 className=" border-b-2 cursor-pointer"
                 key={index}
-                onClick={() => (document.body.style.overflow = "visible")}
+                onClick={() => (document.body.style.overflowY = "visible")}
               >
                 <div className="flex justify-between">
                   <label
@@ -117,7 +118,7 @@ const multiSelect = ({
             className=" bg-black text-white px-4 py-2 rounded-md"
             onClick={() => {
               setModal(false);
-              document.body.style.overflow = "visible";
+              document.body.style.overflowY = "visible";
               setIsModalBackgroundOpen(false);
             }}
           >

@@ -18,7 +18,7 @@ const HamMenu = () => {
         onClick={() => {
           setHamMenu(false);
 
-          document.body.style.overflow = "visible";
+          document.body.style.overflowY = "visible";
         }}
       >
         <li>

@@ -54,7 +54,7 @@ const Navbar = () => {
             if (!hamMenu) {
               document.body.style.overflow = "hidden";
             } else {
-              document.body.style.overflow = "visible";
+              document.body.style.overflowY = "visible";
             }
           }}
         >

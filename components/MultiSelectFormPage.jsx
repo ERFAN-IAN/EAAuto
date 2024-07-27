@@ -58,7 +58,7 @@ const MultiSelectFormPage = ({
                   <div
                     className=" border-b-2 cursor-pointer"
                     key={index}
-                    onClick={() => (document.body.style.overflow = "visible")}
+                    onClick={() => (document.body.style.overflowY = "visible")}
                   >
                     <div
                       className="flex justify-between"
@@ -66,7 +66,7 @@ const MultiSelectFormPage = ({
                         handleFunction(item.title);
                         setModal(false);
                         setIsModalBackgroundOpen(false);
-                        document.body.style.overflow = "visible";
+                        document.body.style.overflowY = "visible";
                       }}
                     >
                       <label
@@ -84,7 +84,7 @@ const MultiSelectFormPage = ({
                         onChange={() => {
                           handleFunction(item.title);
                           setModal(false);
-                          document.body.style.overflow = "visible";
+                          document.body.style.overflowY = "visible";
                         }}
                         checked={arrayResult === item.title}
                       />
@@ -100,7 +100,7 @@ const MultiSelectFormPage = ({
                 className=" bg-black text-white px-4 py-2 rounded-md"
                 onClick={() => {
                   setModal(false);
-                  document.body.style.overflow = "visible";
+                  document.body.style.overflowY = "visible";
                   setIsModalBackgroundOpen(false);
                   //   setIsModalBackgroundOpen(false);
                 }}
@@ -157,7 +157,7 @@ const MultiSelectFormPage = ({
                   <div
                     className=" border-b-2 cursor-pointer"
                     key={index}
-                    onClick={() => (document.body.style.overflow = "visible")}
+                    onClick={() => (document.body.style.overflowY = "visible")}
                   >
                     <div
                       className="flex justify-between"
@@ -165,7 +165,7 @@ const MultiSelectFormPage = ({
                         handleFunction(item.title);
                         setModal(false);
                         setIsModalBackgroundOpen(false);
-                        document.body.style.overflow = "visible";
+                        document.body.style.overflowY = "visible";
                       }}
                     >
                       <label
@@ -184,7 +184,7 @@ const MultiSelectFormPage = ({
                           handleFunction(item.title);
                           setModal(false);
 
-                          document.body.style.overflow = "visible";
+                          document.body.style.overflowY = "visible";
                         }}
                         checked={arrayResult === item.title}
                       />
@@ -200,7 +200,7 @@ const MultiSelectFormPage = ({
                 className=" bg-black text-white px-4 py-2 rounded-md"
                 onClick={() => {
                   setModal(false);
-                  document.body.style.overflow = "visible";
+                  document.body.style.overflowY = "visible";
                   setIsModalBackgroundOpen(false);
                   //   setIsModalBackgroundOpen(false);
                 }}

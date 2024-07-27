@@ -64,7 +64,7 @@ function MoreFilters() {
             type="button"
             onClick={() => {
               setMoreFiltersModal(false);
-              document.body.style.overflow = "visible";
+              document.body.style.overflowY = "visible";
             }}
           >
             <RxCross2 />

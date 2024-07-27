@@ -11,6 +11,7 @@ import CarNavbar from "@/components/CarNavbar";
 import AuthProvider from "@/authprovider/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OverflowComp from "@/components/OverflowComp";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "EA Auto",
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
 
               <ModalHouse />
               <Footer />
+              <OverflowComp />
             </Contextwrapper>
             <ReactQueryDevtools initialIsOpen={false} />
             <ToastContainer />

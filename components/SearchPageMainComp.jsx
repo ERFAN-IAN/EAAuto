@@ -51,7 +51,7 @@ const SearchPageMainComp = () => {
     // setRefreshSearchText(Math.random());
     window.addEventListener("resize", () => {
       if (window.innerWidth > 768) {
-        document.body.style.overflow = "visible";
+        document.body.style.overflowY = "visible";
       }
     });
   }, []);

@@ -22,7 +22,7 @@ const HamMenuBackground = () => {
       } ${t ? "z-[-3]" : "z-[11]"}`}
       onClick={() => {
         setHamMenu(false);
-        document.body.style.overflow = "visible";
+        document.body.style.overflowY = "visible";
       }}
     ></div>
   );

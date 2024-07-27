@@ -125,7 +125,7 @@ const MultiSelectDesktop = ({
             className=" bg-black text-white px-4 py-2 rounded-md"
             onClick={() => {
               setModal(false);
-              document.body.style.overflow = "visible";
+              document.body.style.overflowY = "visible";
               setIsModalBackgroundOpen(false);
             }}
           >
