@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 const SwiperSingleCarPage = ({ images, type }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(true);
   useEffect(() => {
     setIsMounted(true);
   });
