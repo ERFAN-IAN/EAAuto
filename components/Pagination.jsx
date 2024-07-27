@@ -10,6 +10,7 @@ const Pagination = () => {
   const router = useRouter();
   const searchParams = Object.fromEntries(useSearchParams());
   const { data, isLoading } = useQuery(fetchAdverts(searchParams));
+  //the ref, total , useEffect and stuff is all to save the initial total valuse after fetch and keep the pagination box on the page
   const ref = useRef(1);
   const total = data?.total || ref.current;
   useEffect(() => {
@@ -21,8 +22,8 @@ const Pagination = () => {
     return null;
   }
   return (
-    <div className="w-full mt-12 flex justify-end">
-      <div className=" rounded-lg flex bg-slate-300">
+    <div className="w-full mt-12 flex justify-end pr-2">
+      <div className=" rounded-lg flex bg-slate-300 ">
         {Array.from(Array(countPages)).map((item, index) => (
           <div
             className={` py-2 px-4 ${

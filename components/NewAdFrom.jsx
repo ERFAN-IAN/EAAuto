@@ -72,7 +72,7 @@ const NewAdFrom = () => {
       className="w-full max-w-[42rem] px-4 py-8 mt-12 flex flex-col gap-y-8 card shadow-xl rounded-xl"
       onSubmit={async (e) => {
         e.preventDefault();
-        isSubmitting(true);
+
         let progressToastId;
         try {
           const formData = new FormData(e.currentTarget);
@@ -103,6 +103,7 @@ const NewAdFrom = () => {
             formObject.images === ""
           ) {
             toast.error("Please fill All the fields");
+            return;
           }
           progressToastId = toast("Please wait", {
             closeButton: false,
@@ -115,6 +116,7 @@ const NewAdFrom = () => {
             progress: undefined,
             theme: "light",
           });
+          isSubmitting(true);
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_DOMAIN}/newad`,
             {
@@ -128,8 +130,8 @@ const NewAdFrom = () => {
             router.push(`/cars/${toJson.id}`);
           }
           // queryClient.invalidateQueries({ queryKey: ["userproperty"] });
-          if (toJson.error.message) {
-            toast.error(toJson.error.message);
+          if (toJson.error) {
+            toast.error(toJson.error);
           }
         } catch (error) {
           toast.error(error);
