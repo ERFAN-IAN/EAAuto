@@ -5,9 +5,13 @@ import { FiChevronLeft } from "react-icons/fi";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
 import Image from "next/image";
-
+import { useEffect } from "react";
 const SwiperSingleCarPage = ({ images, type }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  });
   if (!images) {
     return (
       <div className=" w-full">
@@ -69,31 +73,40 @@ const SwiperSingleCarPage = ({ images, type }) => {
           <GoChevronRight />
         </div>
       </Swiper>
-      <div className="bg-white">
-        <Swiper
-          modules={[Thumbs]}
-          watchSlidesProgress
-          onSwiper={setThumbsSwiper}
-          className="gallery-thumbs mt-2 bg-white singleCarAdvertLittleSwiper"
-          slidesPerView={4}
-          spaceBetween={6}
-        >
-          {images?.map((item, index) => {
-            return (
-              <SwiperSlide key={index} className=" cursor-pointer">
-                <Image
-                  src={item.secure_url}
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  alt=""
-                  className={`w-full h-full object-center object-cover rounded-xl`}
-                />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </div>
+      {isMounted ? (
+        <div className="bg-white">
+          <Swiper
+            modules={[Thumbs]}
+            watchSlidesProgress
+            onSwiper={setThumbsSwiper}
+            className="gallery-thumbs mt-2 bg-white singleCarAdvertLittleSwiper"
+            slidesPerView={4}
+            spaceBetween={6}
+          >
+            {images?.map((item, index) => {
+              return (
+                <SwiperSlide key={index} className=" cursor-pointer">
+                  <Image
+                    src={item.secure_url}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt=""
+                    className={`w-full h-full object-center object-cover rounded-xl`}
+                  />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
+      ) : (
+        <div className="w-full animate-pulse relative mt-2 flex gap-x-3 rounded-xl singleCarAdvertLittleSwiper">
+          <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-0 top-0 right-[76%] bottom-0 border-2"></div>
+          <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[25%] top-0 right-[51%] bottom-0"></div>
+          <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[50%] top-0 right-[26%] bottom-0"></div>
+          <div className="bg-slate-200 dark:bg-slate-300  rounded-xl absolute singleCarAdvertLittleSwiper left-[75%] top-0 right-0 bottom-0"></div>
+        </div>
+      )}
     </div>
   );
 };

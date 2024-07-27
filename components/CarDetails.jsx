@@ -27,11 +27,11 @@ const carDetails = ({ car }) => {
               <h1 className="w-[7rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></h1>
               <p className="w-[4rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
             </div>
-            <div className="flex gap-x-4">
+            <div className="flex gap-x-4 animate-pulse">
               <p className="w-[7rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
               <p className="w-[5rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
             </div>
-            <div className="flex gap-x-2">
+            <div className="flex gap-x-2 animate-pulse">
               <p className="w-[4rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
               <p className="w-[3rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
               <p className="w-[3rem] h-2 bg-slate-200 dark:bg-slate-700 rounded col-span-2"></p>
