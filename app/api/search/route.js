@@ -5,6 +5,10 @@ export const GET = async (request) => {
 
   const objectSearchParams = Object.fromEntries(searchParams);
   let car;
+  const page = objectSearchParams.page || 1;
+  const limit = 2;
+  let total;
+  const skip = (page - 1) * limit;
   const searchPattern = new RegExp(objectSearchParams.searchText, "i");
   delete objectSearchParams.searchText;
   const brands = objectSearchParams?.brand?.split(",") || null;
@@ -48,44 +52,61 @@ export const GET = async (request) => {
   }
   try {
     await connectDB();
+    total = await Car.countDocuments(objectSearchParams);
     if (objectSearchParams?.sort) {
       if (objectSearchParams?.sort === "ascending") {
-        car = await Car.find(objectSearchParams).sort({
-          createdAt: "ascending",
-        });
-        return new Response(JSON.stringify({ car: car }), {
+        car = await Car.find(objectSearchParams)
+          .sort({
+            createdAt: "ascending",
+          })
+          .skip(skip)
+          .limit(limit);
+        return new Response(JSON.stringify({ car: car, total: total }), {
           status: 200,
         });
       }
       if (objectSearchParams?.sort === "descending") {
-        car = await Car.find(objectSearchParams).sort({
-          createdAt: "descending",
-        });
-        return new Response(JSON.stringify({ car: car }), {
+        car = await Car.find(objectSearchParams)
+          .sort({
+            createdAt: "descending",
+          })
+          .skip(skip)
+          .limit(limit);
+        return new Response(JSON.stringify({ car: car, total: total }), {
           status: 200,
         });
       }
       if (objectSearchParams?.sort === "pdescending") {
-        car = await Car.find(objectSearchParams).sort({
-          price: "descending",
-        });
-        return new Response(JSON.stringify({ car: car }), {
+        car = await Car.find(objectSearchParams)
+          .sort({
+            price: "descending",
+          })
+          .skip(skip)
+          .limit(limit);
+        return new Response(JSON.stringify({ car: car, total: total }), {
           status: 200,
         });
       }
       if (objectSearchParams?.sort === "pascending") {
-        car = await Car.find(objectSearchParams).sort({
-          price: "ascending",
-        });
-        return new Response(JSON.stringify({ car: car }), {
+        car = await Car.find(objectSearchParams)
+          .sort({
+            price: "ascending",
+          })
+          .skip(skip)
+          .limit(limit);
+        return new Response(JSON.stringify({ car: car, total: total }), {
           status: 200,
         });
       }
     }
-    car = await Car.find(objectSearchParams).sort({
-      createdAt: "ascending",
-    });
-    return new Response(JSON.stringify({ car: car }), {
+    car = await Car.find(objectSearchParams)
+      .sort({
+        createdAt: "ascending",
+      })
+      .skip(skip)
+      .limit(limit);
+
+    return new Response(JSON.stringify({ car: car, total: total }), {
       status: 200,
     });
   } catch (error) {

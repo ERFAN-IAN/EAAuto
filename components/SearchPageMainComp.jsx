@@ -5,6 +5,7 @@ import SearchResult from "@/components/SearchResult";
 import { useEffect } from "react";
 import { useGlobalContext } from "@/context/context";
 import { useSearchParams } from "next/navigation";
+import Pagination from "./Pagination";
 const SearchPageMainComp = () => {
   const {
     brand,
@@ -34,6 +35,8 @@ const SearchPageMainComp = () => {
     colorModal,
     category,
     handlecategory,
+    sort,
+    setSort,
   } = useGlobalContext();
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const colors = useSearchParams().getAll("color")[0]?.split(",") || ["All"];
@@ -48,6 +51,7 @@ const SearchPageMainComp = () => {
     setYearMin(searchParams.yearMin || 1920);
     handlecategory(searchParams.category || "All");
     setRefreshYear(Math.random());
+    setSort(searchParams.sort || "ascending");
     // setRefreshSearchText(Math.random());
     window.addEventListener("resize", () => {
       if (window.innerWidth > 768) {
@@ -64,6 +68,7 @@ const SearchPageMainComp = () => {
         </div>
         <div className=" col-span-12 md:col-span-8">
           <SearchResult />
+          <Pagination />
         </div>
       </div>
     </div>

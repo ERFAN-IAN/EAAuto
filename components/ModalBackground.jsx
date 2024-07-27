@@ -13,7 +13,7 @@ const ModalBackground = ({
   }
   return (
     <div
-      className={`fixed w-full h-full inset-0  ${
+      className={`fixed w-full h-[110%] inset-0  ${
         sortOpen ? `z-[51]` : `z-[40]`
       } bg-black opacity-20`}
       onClick={() => {

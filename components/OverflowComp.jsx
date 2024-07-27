@@ -10,6 +10,7 @@ const OverflowComp = () => {
     setColorModal,
     setIsModalBackgroundOpen,
     setFormBrandModal,
+    setHamMenu,
   } = useGlobalContext();
   useEffect(() => {
     window.addEventListener("popstate", () => {
@@ -22,6 +23,7 @@ const OverflowComp = () => {
       setColorModal(false);
       setIsModalBackgroundOpen(false);
       setFormBrandModal(false);
+      setHamMenu(false);
     });
   }, []);
   return null;

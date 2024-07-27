@@ -7,7 +7,7 @@ const Sort = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const objectSearchParams = Object.fromEntries(searchParams);
-  const { sortOpen, setSortOpen, setIsModalBackgroundOpen } =
+  const { sortOpen, setSortOpen, setIsModalBackgroundOpen, sort, setSort } =
     useGlobalContext();
 
   return (
@@ -28,63 +28,44 @@ const Sort = () => {
         >
           <button
             onClick={() => {
-              objectSearchParams.sort = "ascending";
-              const queryString = new URLSearchParams(
-                objectSearchParams
-              ).toString();
-              router.push(`/search?${queryString}`);
+              setSort("ascending");
               setSortOpen(false);
             }}
             className={`${
-              objectSearchParams.sort === "ascending" ||
-              !objectSearchParams.sort
-                ? `bg-slate-300`
-                : ``
+              sort === "ascending" ? `bg-slate-300` : ``
             } p-2 w-full rounded-md text-left`}
           >
             Date ascending
           </button>
           <button
             onClick={() => {
-              objectSearchParams.sort = "descending";
-              const queryString = new URLSearchParams(
-                objectSearchParams
-              ).toString();
-              router.push(`/search?${queryString}`);
+              setSort("descending");
               setSortOpen(false);
             }}
             className={`${
-              objectSearchParams.sort === "descending" ? `bg-slate-300` : ``
+              sort === "descending" ? `bg-slate-300` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Date descending
           </button>
           <button
             onClick={() => {
-              objectSearchParams.sort = "pascending";
-              const queryString = new URLSearchParams(
-                objectSearchParams
-              ).toString();
-              router.push(`/search?${queryString}`);
+              setSort("pascending");
               setSortOpen(false);
             }}
             className={`${
-              objectSearchParams.sort === "pascending" ? `bg-slate-300` : ``
+              sort === "pascending" ? `bg-slate-300` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price ascending
           </button>
           <button
             onClick={() => {
-              objectSearchParams.sort = "pdescending";
-              const queryString = new URLSearchParams(
-                objectSearchParams
-              ).toString();
-              router.push(`/search?${queryString}`);
+              setSort("pdescending");
               setSortOpen(false);
             }}
             className={`${
-              objectSearchParams.sort === "pdescending" ? `bg-slate-300` : ``
+              sort === "pdescending" ? `bg-slate-300` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price descending

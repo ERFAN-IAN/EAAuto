@@ -13,6 +13,7 @@ export const fetchAdverts = (p) => {
       `${p.milageMin ? p.milageMin : 0}`,
       `${p.milageMax ? p.milageMax : 1000000}`,
       `${p.sort ? p.sort : "ascending"}`,
+      `${p.page ? p.page : 1}`,
     ],
     queryFn: async () => {
       const queryString = new URLSearchParams(p).toString();

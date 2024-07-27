@@ -70,7 +70,7 @@ const Contextwrapper = ({ children }) => {
   const [formTransmission, setFormTransmission] = useState("");
   const [formType, setFormType] = useState("");
   const [categoryForm, setcategoryForm] = useState("");
-
+  const [sort, setSort] = useState(searchParams.sort || "ascending");
   return (
     <context.Provider
       value={{
@@ -128,6 +128,8 @@ const Contextwrapper = ({ children }) => {
         setcategoryForm,
         sortOpen,
         setSortOpen,
+        sort,
+        setSort,
       }}
     >
       {children}

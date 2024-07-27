@@ -35,6 +35,8 @@ const SearchResult = () => {
     setMilageMax,
     category,
     handlecategory,
+    sort,
+    setSort,
   } = useGlobalContext();
   const router = useRouter();
   const initial = useRef(0);
@@ -65,6 +67,7 @@ const SearchResult = () => {
       milageMin,
       milageMax,
       category,
+      sort,
     };
     const queryString = new URLSearchParams(obj);
     router.push(`/search?${queryString.toString()}`, { scroll: false });
@@ -79,10 +82,12 @@ const SearchResult = () => {
     milageMin,
     milageMax,
     category,
+    sort,
   ]);
   const searchParams = Object.fromEntries(useSearchParams()) || null;
   const { data, isLoading } = useQuery(fetchAdverts(searchParams));
   const cars = data?.car;
+  const total = data?.total;
   if (cars?.length === 0) {
     return <p className=" font-semibold text-2xl">No results...</p>;
   }

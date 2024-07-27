@@ -22,7 +22,7 @@ const multiSelect = ({
           : "hidden w-full h-full bg-white left-0 top-0  z-10"
       }  md:hidden`}
     >
-      <div className="flex flex-col gap-y-2 p-6">
+      <div className="flex flex-col gap-y-2 p-6 max-h-[90%] overflow-y-scroll">
         <div className="">
           <div
             className={`flex border-2 ${
