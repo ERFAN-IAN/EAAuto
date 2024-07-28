@@ -40,7 +40,7 @@ const YearToFrom = () => {
           <input
             type="number"
             id="yearmin"
-            className="border-2 rounded-md px-4 py-2"
+            className="border-2 rounded-md px-4 py-2 border-teal-600 outline-none"
             min={1920}
             max={ymax}
             onBlur={(e) => {
@@ -80,7 +80,7 @@ const YearToFrom = () => {
           <input
             type="number"
             id="yearmax"
-            className="border-2 rounded-md px-4 py-2"
+            className="border-2 rounded-md px-4 py-2 border-teal-600 outline-none"
             min={ymin}
             max={new Date().getFullYear()}
             onBlur={(e) => {

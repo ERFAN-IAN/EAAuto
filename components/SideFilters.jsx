@@ -43,7 +43,7 @@ const SideFilters = () => {
   } = useGlobalContext();
   return (
     <div
-      className={`w-full hidden md:flex flex-col h-full bg-white relative rounded-xl ${
+      className={`w-full hidden md:flex flex-col h-full  relative rounded-xl ${
         isModalBackgroundOpen && `z-50`
       }`}
     >

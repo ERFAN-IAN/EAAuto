@@ -62,22 +62,26 @@ const Header = () => {
         <div
           className={`${
             isModalBackgroundOpen ? `z-50` : ``
-          } rounded-xl shadow-lg mt-[2rem] md:mt-0 bg-white flex flex-col`}
+          } rounded-xl shadow-lg mt-[2rem] md:mt-0 bg-white dark:bg-[#1e232a] flex flex-col`}
         >
           <div className="grid grid-cols-2">
             <button
               onClick={() => setBuysell(false)}
               className={`${
-                !buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
-              } py-4 font-semibold text-lg text-teal-600 border-b-[.2rem]  rounded-ss-xl hover:bg-slate-100 transition-colors duration-150`}
+                !buysell
+                  ? " border-teal-600 "
+                  : "border-b-2 border-gray-100 dark:border-[#15191E]"
+              } py-4 font-semibold text-lg text-teal-600 border-b-[.2rem]  rounded-ss-xl hover:bg-slate-100 dark:hover:bg-[#15191E] transition-colors duration-150`}
             >
               Buy
             </button>
             <button
               onClick={() => setBuysell(true)}
               className={`${
-                buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
-              } py-4 font-semibold text-lg border-b-[.2rem] text-teal-600 hover:bg-slate-100 transition-colors duration-150 rounded-se-xl`}
+                buysell
+                  ? " border-teal-600 "
+                  : "border-b-2 border-gray-100 dark:border-[#15191E]"
+              } py-4 font-semibold text-lg border-b-[.2rem] text-teal-600 dark:hover:bg-[#15191E] hover:bg-slate-100 transition-colors duration-150 rounded-se-xl`}
             >
               Sell
             </button>

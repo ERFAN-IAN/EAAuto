@@ -38,7 +38,7 @@ const Navbar = () => {
     <nav
       className={`${
         carsPage ? `hidden` : `flex`
-      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4  justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      } dark:bg-[#292F38] bg-white md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4  justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
       onClick={() => {
         setSortOpen(false);
         setIsModalBackgroundOpen(false);
@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="hidden md:flex ml-20 gap-x-4 items-center">
           <Link
             href="/search"
-            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100"
+            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 dark:bg-[#1A1E24]"
             onClick={() => {
               setBrand(["All"]);
               setType("All");
@@ -90,7 +90,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/"
-            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100"
+            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 dark:bg-[#1A1E24]"
           >
             Bookmarks
           </Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
       <div className="flex gap-x-2">
         {!session?.data?.user ? (
           <Link href={`/login`}>
-            <button className=" px-3 rounded-3xl border-2 border-black font-semibold ">
+            <button className=" px-3 rounded-3xl border-2 border-black dark:border-[#A7ADBC] font-semibold ">
               <span className=" leading-20">Login</span>
             </button>
           </Link>

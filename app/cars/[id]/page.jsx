@@ -9,14 +9,14 @@ const page = async ({ params }) => {
 
   return (
     <div className="h-full  md:mt-8 grid grid-cols-10  gap-x-2">
-      <div className="hidden md:block sticky top-[6.3rem] bg-white z-20 col-span-3 col-start-8 self-start">
+      <div className="hidden md:block sticky top-[6.3rem] light:bg-white z-20 col-span-3 col-start-8 self-start rounded-xl dark:shadow-2xl">
         <ContactForm />
       </div>
       <div className="col-span-10 md:col-span-7 col-start-1 row-start-1">
         <SwiperSingleCarPage images={car?.images} type={car?.type} />
 
         <CarDetails car={car} />
-        <div className=" md:hidden bg-white z-20 mt-10">
+        <div className=" md:hidden light:bg-white z-20 mt-10">
           <ContactForm />
         </div>
       </div>

@@ -18,7 +18,7 @@ const multiSelect = ({
     <div
       className={`${
         modalState
-          ? "fixed w-full h-full bg-white left-0 top-0  flex flex-col justify-between z-[61]"
+          ? "fixed w-full h-full bg-white dark:bg-inherit left-0 top-0  flex flex-col justify-between z-[61]"
           : "hidden w-full h-full bg-white left-0 top-0  z-10"
       }  md:hidden`}
     >

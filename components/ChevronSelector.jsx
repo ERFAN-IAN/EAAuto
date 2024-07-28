@@ -9,13 +9,13 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
             setModal(true);
             document.body.style.overflow = "hidden";
           }}
-          className="flex md:hidden flex-col gap-y-2 cursor-pointer"
+          className="flex md:hidden flex-col gap-y-2 cursor-pointer "
         >
           <h4 className=" font-semibold text-sm">{title}</h4>
           <div
             className={`${
               data === "" ? `py-[.82rem]` : `py-2`
-            } px-4 border-2 flex justify-between items-center rounded-md bg-white`}
+            } px-4 border-2 flex justify-between items-center rounded-md bg-white dark:bg-inherit border-teal-600`}
           >
             <span>{data}</span>
             <div className=" text-sm">
@@ -34,7 +34,7 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
           <div
             className={`${
               data === "" ? `py-[.82rem]` : `py-2`
-            } px-4 border-2 flex justify-between items-center rounded-md bg-white`}
+            } px-4 border-2 flex justify-between items-center rounded-md bg-white dark:bg-inherit border-teal-600`}
           >
             <span>{data}</span>
             <div className=" text-sm">
@@ -55,7 +55,7 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
         className="flex flex-col gap-y-2 md:hidden "
       >
         <h4 className=" font-semibold text-sm">{title}</h4>
-        <div className="py-2 px-4 border-2 flex justify-between items-center rounded-md bg-white ">
+        <div className="py-2 px-4 border-2 flex justify-between items-center rounded-md bg-white dark:bg-[#1F232A] ">
           {brand?.[0] === "All" && place === "Header" ? (
             <span>Brand</span>
           ) : (
@@ -81,7 +81,7 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
         className=" flex-col gap-y-2 hidden md:flex"
       >
         <h4 className=" font-semibold text-sm">{title}</h4>
-        <div className="py-2 px-4 border-2 flex justify-between items-center rounded-md bg-white cursor-pointer">
+        <div className="py-2 px-4 border-2 flex justify-between items-center rounded-md border-teal-700 dark:bg-[#1F232A] cursor-pointer">
           {brand?.[0] === "All" && place === "Header" ? (
             <span>Brand</span>
           ) : (

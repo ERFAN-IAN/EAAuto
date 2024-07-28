@@ -4,7 +4,7 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
       <h2 className="text-sm font-semibold">{title}</h2>
       {data.length === 3 ? (
         <div
-          className={` border-2 border-black grid grid-cols-3 text-center rounded-md mt-2`}
+          className={` border-2 border-teal-600  grid grid-cols-3 text-center rounded-md mt-2`}
         >
           {data.map((item, index) => {
             return (
@@ -12,8 +12,10 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
                 type="button"
                 key={index}
                 className={`${
-                  state === item.title ? `bg-[#eef0f4]` : " bg-white"
-                } py-2 border-r-black  rounded-l-md ${
+                  state === item.title
+                    ? `light:bg-[#eef0f4] dark:bg-[#1A1E24]`
+                    : " light:bg-white"
+                } py-2 border-r-teal-600  rounded-l-md ${
                   data.length !== index + 1 ? "border-r-2" : "rounded-r-md"
                 }`}
                 onClick={() => {
@@ -27,15 +29,17 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
         </div>
       ) : (
         <div
-          className={` border-2 border-black grid grid-cols-2 text-center rounded-md mt-2`}
+          className={` border-2 border-teal-600 grid grid-cols-2 text-center rounded-md mt-2`}
         >
           {data.map((item, index) => {
             return (
               <label
                 htmlFor={title}
                 className={`${
-                  state === item.title ? `bg-[#eef0f4]` : " bg-white"
-                } py-2 border-r-black ${
+                  state === item.title
+                    ? `bg-[#eef0f4] dark:bg-[#1A1E24]`
+                    : " light:bg-white"
+                } py-2 border-r-teal-600 ${
                   index === 0 ? `border-r-2` : ` rounded-r-md`
                 } rounded-l-md cursor-pointer`}
                 onClick={() => {

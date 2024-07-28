@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <ReactQuery>
         <html lang="en" suppressHydrationWarning>
-          <body className=" w-full flex flex-col items-center overflow-x-hidden">
+          <body className=" w-full flex flex-col items-center overflow-x-hidden dark:bg-[#1e232a] dark:text-[#A7ADBC]">
             <Providers>
               <Contextwrapper>
                 <Navbar />

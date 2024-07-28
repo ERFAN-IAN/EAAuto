@@ -20,7 +20,7 @@ const MultiSelectDesktop = ({
     <div
       className={`${
         modalState
-          ? "absolute bg-white    md:flex flex-col justify-between z-50"
+          ? "absolute bg-white dark:bg-[#1e232a] border-teal-600   md:flex flex-col justify-between z-50"
           : " w-full h-full bg-white left-0 top-0  z-10"
       } hidden rounded-xl shadow-xl border-2 ${
         headerpage
@@ -32,8 +32,8 @@ const MultiSelectDesktop = ({
         <div className="">
           <div
             className={`flex border-2 ${
-              outline && `border-black`
-            } mb-2 rounded-lg items-center py-2 pl-2`}
+              outline && `border-teal-600`
+            } mb-2 rounded-lg items-center py-2 pl-2 border-teal-600`}
           >
             <div className=" font-bold text-xl">
               <IoSearchOutline />
@@ -43,7 +43,7 @@ const MultiSelectDesktop = ({
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-2 pr-4  outline-none text-lg"
+              className="w-full pl-2 pr-4  outline-none  bg-transparent text-lg "
               onFocus={() => setOutline(true)}
               onBlur={() => setOutline(false)}
             />
@@ -122,7 +122,7 @@ const MultiSelectDesktop = ({
         <div className=" justify-end flex gap-x-2 text-sm font-semibold">
           <button
             type="button"
-            className=" bg-black text-white px-4 py-2 rounded-md"
+            className=" bg-black dark:bg-teal-800 text-white px-4 py-2 rounded-md"
             onClick={() => {
               setModal(false);
               document.body.style.overflowY = "visible";

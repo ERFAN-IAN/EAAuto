@@ -13,7 +13,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
     setIsMounted(true);
   }, []);
   return (
-    <div className=" bg-white">
+    <div className=" ">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -57,18 +57,18 @@ const SwiperSingleCarPage = ({ images, type }) => {
         </div>
       </Swiper>
       {isMounted ? (
-        <div className="bg-white">
+        <div className="">
           <Swiper
             modules={[Thumbs]}
             watchSlidesProgress
             onSwiper={setThumbsSwiper}
-            className="gallery-thumbs mt-2 bg-white singleCarAdvertLittleSwiper"
+            className="gallery-thumbs mt-2 singleCarAdvertLittleSwiper"
             slidesPerView={4}
             spaceBetween={6}
           >
             {images?.map((item, index) => {
               return (
-                <SwiperSlide key={index} className=" cursor-pointer">
+                <SwiperSlide key={index} className=" cursor-pointer rounded-xl">
                   <Image
                     src={item.secure_url}
                     width={0}

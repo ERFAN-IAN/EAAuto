@@ -38,7 +38,7 @@ function MoreFilters() {
   } = useGlobalContext();
   if (moreFiltersModal) {
     return (
-      <main className=" fixed top-0 left-0 w-full md:hidden h-full bg-white z-[60] overflow-y-scroll">
+      <main className=" fixed top-0 left-0 w-full md:hidden h-full bg-white dark:bg-inherit z-[60] overflow-y-scroll">
         <div className=" border-b-2 pl-6  py-4 font-semibold  flex justify-between">
           <button
             type="button"

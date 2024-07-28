@@ -8,13 +8,13 @@ const HamMenu = () => {
   const { hamMenu, setHamMenu } = useGlobalContext();
   return (
     <div
-      className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white z-[55] ${
+      className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white dark:bg-[#1e232a] z-[55] ${
         hamMenu ? " translate-x-[20rem]" : " translate-x-[0rem]"
       }`}
       onClick={(e) => e.stopPropagation()}
     >
       <ul
-        className=" font-semibold flex flex-col py-4 gap-y-6"
+        className=" font-semibold flex flex-col py-4"
         onClick={() => {
           setHamMenu(false);
 
@@ -24,7 +24,7 @@ const HamMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-x-4 items-center text-2xl border-b-2 pb-4 pl-4"
+            className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 pb-4 pl-4"
           >
             <span className="mt-1">
               <VscAccount />
@@ -35,7 +35,7 @@ const HamMenu = () => {
         <li>
           <Link
             href={"/search"}
-            className="flex gap-x-4 items-center text-2xl border-b-2 pb-4 pl-4"
+            className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
           >
             <span className="mt-1">
               <IoIosSearch />
@@ -46,7 +46,7 @@ const HamMenu = () => {
         <li>
           <Link
             href={"/"}
-            className="flex gap-x-4 items-center text-2xl border-b-2 pb-4 pl-4"
+            className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
           >
             <span className="mt-1">
               <FaRegBookmark />
@@ -57,7 +57,7 @@ const HamMenu = () => {
         <li>
           <Link
             href={"/newAd"}
-            className="flex gap-x-4 items-center text-2xl border-b-2 pb-4 pl-4"
+            className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
           >
             <span className="mt-1">
               <MdOutlineSell />

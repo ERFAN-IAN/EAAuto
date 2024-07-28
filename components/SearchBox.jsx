@@ -18,7 +18,7 @@ const SearchBox = ({ place, children }) => {
           type="search"
           name="text"
           id="text"
-          className=" border-2 rounded-md p-2 w-full"
+          className=" border-2 rounded-md p-2 w-full dark:bg-[#1F232A] border-teal-700 outline-none"
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {

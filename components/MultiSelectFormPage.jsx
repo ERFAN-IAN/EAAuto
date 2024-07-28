@@ -17,15 +17,15 @@ const MultiSelectFormPage = ({
         <div
           className={`${
             modalState
-              ? "fixed w-full h-full bg-white left-0 top-0  flex flex-col justify-between z-[61]"
+              ? "fixed w-full h-full bg-white dark:bg-[#1e232a] left-0 top-0  flex flex-col justify-between z-[61]"
               : "hidden w-full h-full bg-white left-0 top-0  z-10"
           }  md:hidden`}
         >
           <div className="flex flex-col gap-y-2 p-6">
             <div
               className={`flex border-2 ${
-                outline && `border-black`
-              } mb-2 rounded-lg items-center py-1 pl-2`}
+                outline && `border-teal-600`
+              } mb-2 rounded-lg items-center py-1 pl-2 border-teal-600 outline-none`}
             >
               <div className=" font-bold text-xl">
                 <IoSearchOutline />
@@ -35,7 +35,7 @@ const MultiSelectFormPage = ({
                 type="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-2 pr-4  outline-none text-lg"
+                className="w-full pl-2 pr-4  outline-none text-lg bg-transparent"
                 onFocus={() => setOutline(true)}
                 onBlur={() => setOutline(false)}
               />
@@ -97,7 +97,7 @@ const MultiSelectFormPage = ({
             <div className=" justify-end flex gap-x-2 text-sm font-semibold">
               <button
                 type="button"
-                className=" bg-black text-white px-4 py-2 rounded-md"
+                className=" bg-black text-white px-4 py-2 rounded-md dark:bg-teal-800"
                 onClick={() => {
                   setModal(false);
                   document.body.style.overflowY = "visible";
@@ -116,15 +116,15 @@ const MultiSelectFormPage = ({
         <div
           className={`${
             modalState
-              ? "absolute w-full bg-slate-50 flex flex-col justify-between z-[61] rounded-xl mt-4 border-2  shadow-xl"
+              ? "absolute w-full bg-slate-50 dark:bg-[#1e232a] flex flex-col justify-between z-[61] rounded-xl mt-4 border-2 border-teal-600 shadow-xl"
               : "hidden"
           } `}
         >
           <div className="flex flex-col p-6 max-h-60 overflow-y-scroll">
             <div
               className={`flex border-2 ${
-                outline && `border-black`
-              } mb-2 rounded-lg items-center py-1 pl-2`}
+                outline && `border-teal-600 outline-none`
+              } mb-2 rounded-lg items-center py-1 pl-2 border-teal-600 outline-none`}
             >
               <div className=" font-bold text-xl">
                 <IoSearchOutline />
@@ -134,7 +134,7 @@ const MultiSelectFormPage = ({
                 type="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-2 pr-4  outline-none text-lg"
+                className="w-full pl-2 pr-4  outline-none text-lg bg-transparent"
                 onFocus={() => setOutline(true)}
                 onBlur={() => setOutline(false)}
               />
@@ -197,7 +197,7 @@ const MultiSelectFormPage = ({
             <div className=" justify-end flex gap-x-2 text-sm font-semibold">
               <button
                 type="button"
-                className=" bg-black text-white px-4 py-2 rounded-md"
+                className=" bg-black text-white px-4 py-2 rounded-md dark:bg-teal-800"
                 onClick={() => {
                   setModal(false);
                   document.body.style.overflowY = "visible";

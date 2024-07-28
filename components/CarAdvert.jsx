@@ -69,11 +69,11 @@ const CarAdvert = ({ car }) => {
           </div>
         </Swiper>
       </div>
-      <div className="col-start-4 col-span-4 p-4 rounded-r-xl border-r-2 border-b-2 border-t-2 flex flex-col justify-between">
+      <div className="col-start-4 col-span-4 p-4 rounded-r-xl border-r-2 border-b-2 border-t-2 border-teal-600 flex flex-col justify-between">
         <div>
           <h3 className="text-xl md:text-2xl font-semibold">{title}</h3>
           <div className="flex items-center">
-            <span className="text-teal-600 font-bold text-lg md:text-2xl pr-2 border-r-2">
+            <span className="text-teal-600 font-bold text-lg md:text-2xl pr-2 border-r-2 border-teal-600">
               {formatPrice(price)}
             </span>
             <span className="md:text-lg pl-2">{`${milage} km`}</span>
@@ -82,8 +82,8 @@ const CarAdvert = ({ car }) => {
 
         <div>
           <div className="flex text-gray-500 text-xs">
-            <p className="border-r-2 pr-2">{city}</p>
-            <p className="border-r-2 px-2">{year}</p>
+            <p className="border-r-2 border-teal-600 pr-2">{city}</p>
+            <p className="border-r-2 border-teal-600  px-2">{year}</p>
             <p className="pl-2">{category}</p>
           </div>
         </div>
