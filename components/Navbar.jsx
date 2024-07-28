@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import ThemeSwitch from "./ThemeSwitch";
 const Navbar = () => {
   const {
     setHamMenu,
@@ -37,7 +38,7 @@ const Navbar = () => {
     <nav
       className={`${
         carsPage ? `hidden` : `flex`
-      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4 bg-white justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      } md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4  justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
       onClick={() => {
         setSortOpen(false);
         setIsModalBackgroundOpen(false);
@@ -62,7 +63,7 @@ const Navbar = () => {
         </div>
 
         <Link href={"/"} className="">
-          <span className=" font-bold text-black">EA </span>
+          <span className=" font-bold text-black dark:text-white">EA </span>
           <span className="font-bold text-teal-600">Auto</span>
         </Link>
         <div className="hidden md:flex ml-20 gap-x-4 items-center">
@@ -116,6 +117,7 @@ const Navbar = () => {
             <span className=" leading-20">Sell</span>
           </button>
         </Link>
+        <ThemeSwitch />
       </div>
     </nav>
   );

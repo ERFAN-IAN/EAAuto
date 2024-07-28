@@ -7,7 +7,7 @@ import { FaTwitter } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className="bg-[#eef0f4] w-full flex flex-col items-center mt-40 pb-20">
+    <footer className="bg-[#eef0f4] dark:bg-slate-600 w-full flex flex-col items-center mt-40 pb-20">
       <div className="mt-[-6.5rem]">
         <Image
           src={footerImage}
@@ -22,7 +22,7 @@ const Footer = () => {
           <span className=" font-bold text-black">EA </span>
           <span className="font-bold text-teal-600">Auto</span>
         </Link>
-        <div className="flex gap-x-4 text-4xl">
+        <div className="flex gap-x-4 text-4xl dark:text-black">
           <Link href={"/"} className=" cursor-pointer">
             <FaYoutube />
           </Link>
