@@ -69,7 +69,7 @@ const Header = () => {
               onClick={() => setBuysell(false)}
               className={`${
                 !buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
-              } py-4 font-semibold text-lg text-teal-600 border-b-[.2rem]  rounded-l-xl rounded-b-sm hover:bg-slate-100 transition-colors duration-150`}
+              } py-4 font-semibold text-lg text-teal-600 border-b-[.2rem]  rounded-ss-xl hover:bg-slate-100 transition-colors duration-150`}
             >
               Buy
             </button>
@@ -77,7 +77,7 @@ const Header = () => {
               onClick={() => setBuysell(true)}
               className={`${
                 buysell ? " border-teal-600 " : "border-b-2 border-gray-100"
-              } py-4 font-semibold text-lg border-b-[.2rem] text-teal-600 hover:bg-slate-100 transition-colors duration-150 rounded-r-xl rounded-b-sm`}
+              } py-4 font-semibold text-lg border-b-[.2rem] text-teal-600 hover:bg-slate-100 transition-colors duration-150 rounded-se-xl`}
             >
               Sell
             </button>

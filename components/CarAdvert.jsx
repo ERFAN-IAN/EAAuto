@@ -60,11 +60,11 @@ const CarAdvert = ({ car }) => {
               </SwiperSlide>
             );
           })}
-          <div className="hidden md:block absolute left-2 top-[50%] translate-y-[-50%] z-10 bg-slate-200 brightness-90 sbp cursor-pointer p-2  rounded-full opacity-0 group-hover:opacity-100 duration-200 transition-opacity">
+          <div className="hidden md:block absolute left-2 top-[50%] translate-y-[-50%] z-10 bg-slate-200 brightness-90 sbp cursor-pointer p-2  rounded-full opacity-0 group-hover:opacity-60 duration-200 transition-opacity">
             <FiChevronLeft />
           </div>
 
-          <div className="hidden md:block absolute z-10 right-2 top-[50%] translate-y-[-50%] bg-slate-200 brightness-90 cursor-pointer  rounded-full p-2 text-black sbn opacity-0 group-hover:opacity-100 duration-200 transition-opacity">
+          <div className="hidden md:block absolute z-10 right-2 top-[50%] translate-y-[-50%] bg-slate-200 brightness-90 cursor-pointer  rounded-full p-2 text-black sbn opacity-0 group-hover:opacity-60 duration-200 transition-opacity">
             <GoChevronRight />
           </div>
         </Swiper>

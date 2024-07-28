@@ -6,7 +6,7 @@ export const GET = async (request) => {
   const objectSearchParams = Object.fromEntries(searchParams);
   let car;
   const page = objectSearchParams.page || 1;
-  const limit = 2;
+  const limit = 5;
   let total;
   const skip = (page - 1) * limit;
   const searchPattern = new RegExp(objectSearchParams.searchText, "i");

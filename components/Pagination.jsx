@@ -13,7 +13,7 @@ const Pagination = () => {
   //the ref, total , useEffect and stuff is all to save the initial total valuse after fetch and keep the pagination box on the page
   const ref = useRef(1);
   const total = data?.total || ref.current;
-  let countPages = Math.ceil(total / 2);
+  let countPages = Math.ceil(total / 5);
   useEffect(() => {
     ref.current = total;
   }, [total]);
