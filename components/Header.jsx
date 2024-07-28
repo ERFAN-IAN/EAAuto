@@ -95,7 +95,9 @@ const Header = () => {
               <div className="mt-2 px-4 pt-[2.71rem] pb-4 flex flex-col justify-center gap-y-[2.99rem]">
                 <p className="block text-center text-xl">
                   Sell your car on{" "}
-                  <span className=" font-bold text-black">EA </span>
+                  <span className=" font-bold text-black dark:text-white">
+                    EA{" "}
+                  </span>
                   <span className="font-bold text-teal-600">Auto</span>
                 </p>
                 <Link href={"/newAd"} className="w-full">

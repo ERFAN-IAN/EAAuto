@@ -6,6 +6,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import ThemeSwitch from "./ThemeSwitch";
 const CarNavbar = () => {
   const carsPage = usePathname().startsWith("/cars");
   const router = useRouter();
@@ -26,7 +27,7 @@ const CarNavbar = () => {
         </Link>
       </div>
 
-      <div className="flex gap-x-4 text-xl">
+      <div className="flex gap-x-4 text-xl items-center">
         <FaRegBookmark />
         <FaBookmark />
         <div
@@ -41,6 +42,9 @@ const CarNavbar = () => {
           className=" cursor-pointer"
         >
           <FaShareAlt />
+        </div>
+        <div className="h-full w-6">
+          <ThemeSwitch />
         </div>
       </div>
     </nav>

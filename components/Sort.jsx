@@ -24,7 +24,7 @@ const Sort = () => {
         <div
           className={`${
             sortOpen ? `flex flex-col` : `hidden`
-          } bg-white p-4 shadow-xl rounded-xl items-start gap-y-2 font-semibold  border-2 w-full h-full`}
+          } bg-white dark:bg-[#1e232a] dark:border-teal-600 p-4 shadow-xl rounded-xl items-start gap-y-2 font-semibold  border-2 w-full h-full`}
         >
           <button
             onClick={() => {
@@ -32,7 +32,7 @@ const Sort = () => {
               setSortOpen(false);
             }}
             className={`${
-              sort === "ascending" ? `bg-slate-300` : ``
+              sort === "ascending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
             } p-2 w-full rounded-md text-left`}
           >
             Date ascending
@@ -43,7 +43,7 @@ const Sort = () => {
               setSortOpen(false);
             }}
             className={`${
-              sort === "descending" ? `bg-slate-300` : ``
+              sort === "descending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Date descending
@@ -54,7 +54,7 @@ const Sort = () => {
               setSortOpen(false);
             }}
             className={`${
-              sort === "pascending" ? `bg-slate-300` : ``
+              sort === "pascending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price ascending
@@ -65,7 +65,7 @@ const Sort = () => {
               setSortOpen(false);
             }}
             className={`${
-              sort === "pdescending" ? `bg-slate-300` : ``
+              sort === "pdescending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price descending
