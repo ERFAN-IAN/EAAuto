@@ -13,7 +13,7 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
                 key={index}
                 className={`${
                   state === item.title
-                    ? `light:bg-[#eef0f4] dark:bg-[#1A1E24]`
+                    ? `light:bg-[#eef0f4] dark:bg-black`
                     : " light:bg-white"
                 } py-2 border-r-teal-600  rounded-l-md ${
                   data.length !== index + 1 ? "border-r-2" : "rounded-r-md"
@@ -37,7 +37,7 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
                 htmlFor={title}
                 className={`${
                   state === item.title
-                    ? `bg-[#eef0f4] dark:bg-[#1A1E24]`
+                    ? `bg-[#eef0f4] dark:bg-black`
                     : " light:bg-white"
                 } py-2 border-r-teal-600 ${
                   index === 0 ? `border-r-2` : ` rounded-r-md`

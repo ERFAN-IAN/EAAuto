@@ -26,8 +26,8 @@ const multiSelect = ({
         <div className="">
           <div
             className={`flex border-2 ${
-              outline && `border-black`
-            } mb-2 rounded-lg items-center py-2 pl-2`}
+              outline && `border-teal-600`
+            } mb-2 rounded-lg items-center py-2 pl-2 border-teal-600`}
           >
             <div className=" font-bold text-xl">
               <IoSearchOutline />
@@ -37,7 +37,7 @@ const multiSelect = ({
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-2 pr-4  outline-none text-lg"
+              className="w-full pl-2 pr-4  outline-none text-lg dark:bg-transparent"
               onFocus={() => setOutline(true)}
               onBlur={() => setOutline(false)}
             />

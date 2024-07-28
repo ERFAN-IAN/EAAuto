@@ -76,7 +76,11 @@ const Header = () => {
               Buy
             </button>
             <button
-              onClick={() => setBuysell(true)}
+              onClick={() => {
+                setBuysell(true);
+                setIsModalBackgroundOpen(false);
+                setBrandModal(false);
+              }}
               className={`${
                 buysell
                   ? " border-teal-600 "

@@ -69,7 +69,7 @@ const Navbar = () => {
         <div className="hidden md:flex ml-20 gap-x-4 items-center">
           <Link
             href="/search"
-            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 dark:bg-[#1A1E24]"
+            className=" text-lg font-semibold   rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
             onClick={() => {
               setBrand(["All"]);
               setType("All");
@@ -90,7 +90,7 @@ const Navbar = () => {
           </Link>
           <Link
             href="/"
-            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 dark:bg-[#1A1E24]"
+            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
           >
             Bookmarks
           </Link>
@@ -100,14 +100,14 @@ const Navbar = () => {
       <div className="flex gap-x-2">
         {!session?.data?.user ? (
           <Link href={`/login`}>
-            <button className=" px-3 rounded-3xl border-2 border-black dark:border-[#A7ADBC] font-semibold ">
+            <button className="hidden md:flex px-3 rounded-3xl border-2 border-teal-600 dark:border-[#A7ADBC] font-semibold ">
               <span className=" leading-20">Login</span>
             </button>
           </Link>
         ) : (
           <button
             onClick={() => signOut()}
-            className=" px-4 rounded-3xl border-2 bg-red-600 text-white font-semibold pb-[0.1rem]"
+            className="hidden md:flex px-4 rounded-3xl border-2 border-teal-600  dark:text-white font-semibold "
           >
             logout
           </button>
@@ -117,7 +117,9 @@ const Navbar = () => {
             <span className=" leading-20">Sell</span>
           </button>
         </Link>
-        <ThemeSwitch />
+        <div className="h-full w-6">
+          <ThemeSwitch />
+        </div>
       </div>
     </nav>
   );

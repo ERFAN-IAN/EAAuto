@@ -8,7 +8,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-[#eef0f4] dark:bg-slate-600 w-full flex flex-col items-center mt-40 pb-20">
-      <div className="mt-[-6.5rem]">
+      <div className="mt-[-6.5rem] dark:mt-[-6.7rem]">
         <Image
           src={footerImage}
           width={0}

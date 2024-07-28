@@ -13,7 +13,7 @@ const LoginComp = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col gap-y-8 w-full max-w-[20rem] mt-[-15rem] md:mt-[-10rem] justify-center items-center border-2 shadow-xl rounded-xl px-8 py-8">
+    <div className=" flex flex-col gap-y-8 w-full max-w-[20rem] mt-[-15rem] md:mt-[-10rem] justify-center items-center border-2 border-teal-600 shadow-xl rounded-xl px-8 py-8">
       <p className=" font-semibold text-xl">Please Login</p>
       <button
         onClick={() => signIn(provider)}

@@ -157,7 +157,7 @@ const NewAdFrom = () => {
           id="title"
           name="title"
           type="text"
-          className="mt-2 rounded-lg p-2 border-2 border-teal-600  outline-none"
+          className="mt-2 rounded-lg p-2 border-2 dark:bg-[#1F232A] border-teal-600  outline-none"
           placeholder="eg. E39 M5"
           required
         ></input>
@@ -214,7 +214,7 @@ const NewAdFrom = () => {
             type="number"
             max={new Date().getFullYear()}
             min={1920}
-            className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+            className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
             placeholder={`${new Date().getFullYear()}`}
             required
           ></input>
@@ -229,7 +229,7 @@ const NewAdFrom = () => {
             type="number"
             min={0}
             max={1000000}
-            className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+            className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
             placeholder="22000"
             required
           ></input>
@@ -245,7 +245,7 @@ const NewAdFrom = () => {
             name="price"
             type="number"
             min={0}
-            className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+            className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
             placeholder={`2000$`}
             required
           ></input>
@@ -258,7 +258,7 @@ const NewAdFrom = () => {
             id="city"
             name="city"
             type="text"
-            className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+            className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
             placeholder="Ny"
             required
           ></input>
@@ -284,7 +284,7 @@ const NewAdFrom = () => {
         <textarea
           id="description"
           name="description"
-          className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+          className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
           placeholder="Add an optional description of the car"
           rows={4}
         ></textarea>
@@ -298,7 +298,7 @@ const NewAdFrom = () => {
           id="seller_name"
           name="seller_info.name"
           type="text"
-          className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+          className="mt-2 dark:bg-[#1F232A] rounded-lg p-2  border-2 border-teal-600 outline-none"
           required
         ></input>
       </div>
@@ -310,7 +310,7 @@ const NewAdFrom = () => {
           id="seller_email"
           name="seller_info.email"
           type="email"
-          className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+          className="mt-2 rounded-lg p-2 dark:bg-[#1F232A]  border-2 border-teal-600 outline-none"
           required
         ></input>
       </div>
@@ -322,7 +322,7 @@ const NewAdFrom = () => {
           id="seller_phone"
           name="seller_info.phone"
           type="tel"
-          className="mt-2 rounded-lg p-2  border-2 border-teal-600 outline-none"
+          className="mt-2 rounded-lg p-2 dark:bg-[#1F232A]  border-2 border-teal-600 outline-none"
         ></input>
       </div>
       <div className="flex flex-col">

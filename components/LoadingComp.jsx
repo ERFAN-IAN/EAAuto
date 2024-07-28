@@ -1,6 +1,6 @@
 const LoadingComp = () => {
   return (
-    <div className=" w-full flex items-center justify-center font-semibold leading-6 text-sm text-black  transition ease-in-out duration-150">
+    <div className=" w-full flex items-center justify-center font-semibold leading-6 text-sm   transition ease-in-out duration-150">
       <svg
         className="animate-spin -ml-1 mr-3 h-5 w-5 text-teal-600"
         xmlns="http://www.w3.org/2000/svg"

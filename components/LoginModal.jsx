@@ -23,12 +23,12 @@ const LoginModal = () => {
         loginModal && formPage ? `flex` : `hidden`
       } fixed top-0 left-0 w-full h-[110%] transition-all duration-300 backdrop-brightness-50  flex justify-center items-center z-0`}
     >
-      <div className=" flex justify-center items-center flex-col bg-white p-8 rounded-xl shadow-lg gap-y-8 mt-[-5rem]">
+      <div className=" flex justify-center items-center flex-col bg-white dark:bg-black dark:text-white dark:border-teal-600 dark:border-2 p-8 rounded-xl shadow-lg gap-y-8 mt-[-5rem]">
         <p className=" font-semibold text-xl text-center">
           Please login to post Advert
         </p>
         <Link href={`/login`} className="w-full flex justify-center">
-          <button className=" px-3 rounded-md border-2 border-black font-semibold ">
+          <button className=" px-3 rounded-md border-2 border-teal-600 font-semibold ">
             <span className=" leading-20">Login</span>
           </button>
         </Link>
