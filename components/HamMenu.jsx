@@ -9,20 +9,30 @@ import { signOut } from "next-auth/react";
 import { SlLogin } from "react-icons/sl";
 import { SlLogout } from "react-icons/sl";
 const HamMenu = () => {
-  const { hamMenu, setHamMenu } = useGlobalContext();
+  const { allStates, setAllStates } = useGlobalContext();
   const session = useSession();
   return (
     <div
       className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white dark:bg-[#1e232a] z-[55] ${
-        hamMenu ? " translate-x-[20rem]" : " translate-x-[0rem]"
+        allStates.hamMenu ? " translate-x-[20rem]" : " translate-x-[0rem]"
       }`}
       onClick={(e) => e.stopPropagation()}
+      onBlur={() => {
+        setAllStates((prev) => ({
+          ...prev,
+          hamMenu: false,
+        }));
+        // setHamMenu(false);
+      }}
     >
       <ul
         className=" font-semibold flex flex-col py-4"
         onClick={() => {
-          setHamMenu(false);
-
+          // setHamMenu(false);
+          setAllStates((prev) => ({
+            ...prev,
+            hamMenu: false,
+          }));
           document.body.style.overflowY = "visible";
         }}
       >

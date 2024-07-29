@@ -2,16 +2,15 @@
 import { useGlobalContext } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useEffect } from "react";
-const SearchBox = ({ place, children }) => {
-  const { searchText, setSearchText, brand, type, color, transmission } =
-    useGlobalContext();
-  const [search, setSearch] = useState(searchText || "");
-  useEffect(() => {
-    setSearchText(search);
-  }, [brand, type, color, transmission]);
+import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+const SearchBox = ({ children }) => {
+  const searchPage = usePathname().startsWith("/search");
+  const { allStates, setAllStates } = useGlobalContext();
+  const [search, setSearch] = useState(allStates.searchText || "");
+  const searchParams = Object.fromEntries(useSearchParams());
   const router = useRouter();
-  if ((place = "Header")) {
+  if (!searchPage) {
     return (
       <div className="flex flex-col gap-y-2">
         <input
@@ -27,23 +26,44 @@ const SearchBox = ({ place, children }) => {
                 brand: brand,
               }).toString();
               router.push(`/search?${queryString}`);
-
-              setSearchText(search);
+              setAllStates((prev) => ({
+                ...prev,
+                searchText: search,
+              }));
+              // setSearchText(search);
             }
           }}
-          defaultValue={searchText}
+          defaultValue={allStates.searchText}
         />
         {children}
         <button
           className=" bg-teal-700 transition-colors hover:bg-teal-800 duration-150 text-white px-4 py-2 rounded-md"
           onClick={() => {
+            setAllStates((prev) => ({
+              ...prev,
+              refreshYear: Math.random(),
+              yearMax: new Date().getFullYear(),
+              yearMin: 1920,
+              milageMin: 0,
+              milageMax: 1000000,
+              refreshMilage: Math.random(),
+            }));
+            // setRefreshYear(Math.random());
+            // setYearMax(new Date().getFullYear());
+            // setYearMin(1920);
+            // setMilageMin(0),
+            //   setMilageMax(1000000),
+            //   setRefreshMilage(Math.random());
             const queryString = new URLSearchParams({
               searchText: search,
-              brand: brand,
+              brand: allStates.brand,
             }).toString();
             router.push(`/search?${queryString}`);
-
-            setSearchText(search);
+            setAllStates((prev) => ({
+              ...prev,
+              searchText: search,
+            }));
+            // setSearchText(search);
           }}
         >
           Search
@@ -52,17 +72,30 @@ const SearchBox = ({ place, children }) => {
     );
   }
   return (
-    <div className="flex gap-x-2">
+    <div className="flex flex-col gap-y-2">
       <input
         type="search"
         name="text"
         id="text"
-        className=" border-2 rounded-md p-2 w-full"
-        onChange={(e) => setSearch(e.target.value)}
+        className="border-2 rounded-md p-2 w-full dark:bg-[#1F232A] border-teal-700 outline-none"
+        onChange={(e) => {
+          setSearch(e.target.value);
+        }}
+        value={search}
       />
       <button
-        className=" bg-black text-white px-4 py-2 rounded-md"
-        onClick={() => setSearchText(search)}
+        className=" bg-teal-700 transition-colors hover:bg-teal-800 duration-150 text-white px-4 py-2 rounded-md"
+        onClick={() => {
+          searchParams.searchText = search;
+          delete searchParams.page;
+          const queryString = new URLSearchParams(searchParams).toString();
+          router.push(`/search?${queryString}`);
+          setAllStates((prev) => ({
+            ...prev,
+            searchText: search,
+          }));
+          // setSearchText(search);
+        }}
       >
         Search
       </button>

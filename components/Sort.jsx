@@ -4,17 +4,19 @@ import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { FaSortAmountDownAlt } from "react-icons/fa";
 const Sort = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const objectSearchParams = Object.fromEntries(searchParams);
-  const { sortOpen, setSortOpen, setIsModalBackgroundOpen, sort, setSort } =
-    useGlobalContext();
-
+  const { allStates, setAllStates } = useGlobalContext();
+  const router = useRouter();
   return (
     <div className="flex flex-col items-end p-4 w-full relative">
       <div
         onClick={() => {
-          setSortOpen(!sortOpen);
+          setAllStates((prev) => ({
+            ...prev,
+            sortOpen: !prev.sortOpen,
+          }));
+          // setSortOpen(!sortOpen);
         }}
         className={`cursor-pointer`}
       >
@@ -23,49 +25,101 @@ const Sort = () => {
       <div className="absolute z-[52] mt-2 top-[80%] ">
         <div
           className={`${
-            sortOpen ? `flex flex-col` : `hidden`
+            allStates.sortOpen ? `flex flex-col` : `hidden`
           } bg-white dark:bg-[#1e232a] dark:border-teal-600 p-4 shadow-xl rounded-xl items-start gap-y-2 font-semibold  border-2 w-full h-full`}
         >
           <button
             onClick={() => {
-              setSort("ascending");
-              setSortOpen(false);
+              setAllStates((prev) => ({
+                ...prev,
+                sort: "ascending",
+                sortOpen: false,
+              }));
+              // setSort("ascending");
+              // setSortOpen(false);
+              objectSearchParams.sort = "ascending";
+              delete objectSearchParams.page;
+              const queryString = new URLSearchParams(objectSearchParams);
+              router.push(`/search?${queryString.toString()}`, {
+                scroll: false,
+              });
             }}
             className={`${
-              sort === "ascending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
+              allStates.sort === "ascending"
+                ? `bg-slate-300 dark:bg-[#343C47]`
+                : ``
             } p-2 w-full rounded-md text-left`}
           >
             Date ascending
           </button>
           <button
             onClick={() => {
-              setSort("descending");
-              setSortOpen(false);
+              setAllStates((prev) => ({
+                ...prev,
+                sort: "descending",
+                sortOpen: false,
+              }));
+              // setSort("descending");
+              // setSortOpen(false);
+              objectSearchParams.sort = "descending";
+              delete objectSearchParams.page;
+              const queryString = new URLSearchParams(objectSearchParams);
+              router.push(`/search?${queryString.toString()}`, {
+                scroll: false,
+              });
             }}
             className={`${
-              sort === "descending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
+              allStates.sort === "descending"
+                ? `bg-slate-300 dark:bg-[#343C47]`
+                : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Date descending
           </button>
           <button
             onClick={() => {
-              setSort("pascending");
-              setSortOpen(false);
+              setAllStates((prev) => ({
+                ...prev,
+                sort: "pascending",
+                sortOpen: false,
+              }));
+              // setSort("pascending");
+              // setSortOpen(false);
+              objectSearchParams.sort = "pascending";
+              delete objectSearchParams.page;
+              const queryString = new URLSearchParams(objectSearchParams);
+              router.push(`/search?${queryString.toString()}`, {
+                scroll: false,
+              });
             }}
             className={`${
-              sort === "pascending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
+              allStates.sort === "pascending"
+                ? `bg-slate-300 dark:bg-[#343C47]`
+                : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price ascending
           </button>
           <button
             onClick={() => {
-              setSort("pdescending");
-              setSortOpen(false);
+              setAllStates((prev) => ({
+                ...prev,
+                sort: "pdescending",
+                sortOpen: false,
+              }));
+              // setSort("pdescending");
+              // setSortOpen(false);
+              objectSearchParams.sort = "pdescending";
+              delete objectSearchParams.page;
+              const queryString = new URLSearchParams(objectSearchParams);
+              router.push(`/search?${queryString.toString()}`, {
+                scroll: false,
+              });
             }}
             className={`${
-              sort === "pdescending" ? `bg-slate-300 dark:bg-[#343C47]` : ``
+              allStates.sort === "pdescending"
+                ? `bg-slate-300 dark:bg-[#343C47]`
+                : ``
             }  p-2 w-full rounded-md text-left`}
           >
             Price descending

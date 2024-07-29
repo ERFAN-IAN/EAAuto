@@ -13,33 +13,14 @@ import { colors, brands, formTypes, formTransmissions } from "@/data";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import LoadingComp from "./LoadingComp";
+import { useRef } from "react";
 const NewAdFrom = () => {
   const session = useSession();
   const [submitting, isSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [base64, setBase64] = useState([]);
   const router = useRouter();
-  const {
-    setBrandModal,
-    setColorModal,
-    brand,
-    color,
-    formBrand,
-    setFormBrand,
-    setFormType,
-    setFormColor,
-    setFormTransmission,
-    formColor,
-    formTransmission,
-    formType,
-    formBrandModal,
-    setFormBrandModal,
-    formColorModal,
-    setFormColorModal,
-    categoryForm,
-    setcategoryForm,
-    setIsModalBackgroundOpen,
-  } = useGlobalContext();
+  const { allStates, setAllStates } = useGlobalContext();
   let toBase64 = (e) => {
     let t = [];
     for (let i of e) {
@@ -52,12 +33,20 @@ const NewAdFrom = () => {
     setBase64(t);
   };
   useEffect(() => {
-    setFormType("");
-    setFormBrand("");
-    setFormColor("");
-    setFormTransmission("");
+    setAllStates((prev) => ({
+      ...prev,
+      formBrand: "",
+      formType: "",
+      formColor: "",
+      formTransmission: "",
+    }));
+    // setFormType("");
+    // setFormBrand("");
+    // setFormColor("");
+    // setFormTransmission("");
     setLoading(false);
   }, []);
+  let progressToastId = useRef(null);
   if (loading) {
     return (
       <div className="w-full h-[100vh] flex justify-center items-center">
@@ -73,7 +62,6 @@ const NewAdFrom = () => {
       onSubmit={async (e) => {
         e.preventDefault();
 
-        let progressToastId;
         try {
           const formData = new FormData(e.currentTarget);
           const formObject = Object.fromEntries(formData);
@@ -82,12 +70,21 @@ const NewAdFrom = () => {
             toast.error("Please choose the advert type");
             return;
           }
-          if (!formObject.transmission) {
-            toast.error("Please choose the transmission type");
+          if (!formObject.brand) {
+            toast.error("Please choose the brand");
+            return;
+          }
+          if (!formObject.color) {
+            toast.error("Please choose the color");
             return;
           }
           if (!formObject.category) {
             toast.error("Please choose the category");
+            return;
+          }
+
+          if (!formObject.transmission) {
+            toast.error("Please choose the transmission type");
             return;
           }
           if (
@@ -96,26 +93,26 @@ const NewAdFrom = () => {
             formObject.milage === "" ||
             formObject.price === "" ||
             formObject.city === "" ||
-            formObject.category == "" ||
             formObject["seller_info.name"] === "" ||
             formObject["seller_info.email"] === "" ||
             formObject["seller_info.phone"] === "" ||
             formObject.images === ""
           ) {
             toast.error("Please fill All the fields");
-            return;
           }
-          progressToastId = toast("Please wait", {
-            closeButton: false,
-            position: "bottom-center",
-            autoClose: false,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: false,
-            draggable: false,
-            progress: undefined,
-            theme: "light",
-          });
+          const notify = () =>
+            (progressToastId.current = toast("Please wait", {
+              closeButton: false,
+              position: "bottom-center",
+              autoClose: false,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: false,
+              progress: undefined,
+              theme: "light",
+            }));
+          notify();
           isSubmitting(true);
           const response = await fetch(
             `${process.env.NEXT_PUBLIC_API_DOMAIN}/newad`,
@@ -136,7 +133,7 @@ const NewAdFrom = () => {
         } catch (error) {
           toast.error(error);
         } finally {
-          toast.dismiss(progressToastId);
+          const dismiss = () => toast.dismiss(progressToastId.current);
         }
       }}
       encType="multipart/form-data"
@@ -145,8 +142,8 @@ const NewAdFrom = () => {
       <RectSelector
         data={formTypes}
         title={`Advert Type`}
-        handleState={setFormType}
-        state={formType}
+        handleFunctionName={`formType`}
+        state={allStates.formType}
         name={"type"}
       />
       <div className="flex flex-col">
@@ -163,11 +160,28 @@ const NewAdFrom = () => {
         ></input>
       </div>
 
-      <div className="relative" onClick={() => setFormColorModal(false)}>
-        <div onClick={() => setIsModalBackgroundOpen(true)}>
+      <div
+        className="relative"
+        onClick={() => {
+          setAllStates((prev) => ({
+            ...prev,
+            formColorModal: false,
+          }));
+          // setFormColorModal(false);
+        }}
+      >
+        <div
+          onClick={() => {
+            setAllStates((prev) => ({
+              ...prev,
+              isModalBackgroundOpen: true,
+            }));
+            // setIsModalBackgroundOpen(true)
+          }}
+        >
           <ChevronSelector
-            setModal={setFormBrandModal}
-            data={formBrand}
+            modalName={`formBrandModal`}
+            data={allStates.formBrand}
             title={"Brand"}
             place={"form"}
           />
@@ -176,18 +190,23 @@ const NewAdFrom = () => {
         <MultiSelectFormPage
           name={"brand"}
           data={brands}
-          setModal={setFormBrandModal}
-          modalState={formBrandModal}
-          handleFunction={setFormBrand}
-          arrayResult={formBrand}
-          setIsModalBackgroundOpen={setIsModalBackgroundOpen}
+          modalName={`formBrandModal`}
+          handleFunctionName={`formBrand`}
         />
       </div>
       <div className="relative">
-        <div onClick={() => setIsModalBackgroundOpen(true)}>
+        <div
+          onClick={() => {
+            // setIsModalBackgroundOpen(true)
+            setAllStates((prev) => ({
+              ...prev,
+              isModalBackgroundOpen: true,
+            }));
+          }}
+        >
           <ChevronSelector
-            setModal={setFormColorModal}
-            data={formColor}
+            modalName={`formColorModal`}
+            data={allStates.formColor}
             title={"Color"}
             place={"form"}
           />
@@ -196,11 +215,8 @@ const NewAdFrom = () => {
         <MultiSelectFormPage
           name={"color"}
           data={colors}
-          setModal={setFormColorModal}
-          modalState={formColorModal}
-          handleFunction={setFormColor}
-          arrayResult={formColor}
-          setIsModalBackgroundOpen={setIsModalBackgroundOpen}
+          modalName={`formColorModal`}
+          handleFunctionName={`formColor`}
         />
       </div>
       <div className="flex w-full gap-x-2 ">
@@ -264,16 +280,12 @@ const NewAdFrom = () => {
           ></input>
         </div>
       </div>
-      <Category
-        handleFunc={setcategoryForm}
-        category={categoryForm}
-        place={"form"}
-      />
+      <Category place={"form"} />
       <RectSelector
         data={formTransmissions}
         title={`Transmission`}
-        handleState={setFormTransmission}
-        state={formTransmission}
+        handleFunctionName={`formTransmission`}
+        state={allStates.formTransmission}
         name={"transmission"}
       />
 

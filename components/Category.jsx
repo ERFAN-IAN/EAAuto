@@ -1,7 +1,36 @@
 import React from "react";
 import { categories } from "@/data";
 import Image from "next/image";
-const Category = ({ handleFunc, category, place }) => {
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useGlobalContext } from "@/context/context";
+import { useState } from "react";
+const Category = ({ place }) => {
+  const { allStates, setAllStates } = useGlobalContext();
+  const searchParams = Object.fromEntries(useSearchParams());
+  const [category, setLocalcategory] = useState(searchParams.category || "All");
+  const [formCategory, setFormCategory] = useState("");
+  const router = useRouter();
+  const handlecategory = (item) => {
+    if (item === category) {
+      setAllStates((prev) => ({
+        ...prev,
+        category: "All",
+      }));
+      // setcategory("All");
+      setLocalcategory("All");
+      return "All";
+    } else {
+      setAllStates((prev) => ({
+        ...prev,
+        category: item,
+      }));
+      // setcategory(item);
+      setLocalcategory(item);
+      return item;
+    }
+  };
+
   return (
     <div className="flex flex-col gap-y-4">
       <p className="font-semibold text-sm">Category</p>
@@ -16,13 +45,26 @@ const Category = ({ handleFunc, category, place }) => {
               key={index}
               className={`flex flex-col justify-center cursor-pointer   ${
                 place === "form" ? `gap-y-2` : `gap-y-2`
-              } ${category === item.title && `opacity-60`}`}
+              } ${
+                place !== "form"
+                  ? item.title === searchParams?.category && `opacity-60`
+                  : item.title === formCategory && `opacity-60`
+              }`}
             >
               <label
                 htmlFor={item.title}
                 className="cursor-pointer gap-y-2 flex flex-col"
                 onClick={() => {
-                  handleFunc(item.title);
+                  const category = handlecategory(item.title);
+                  searchParams.category = category;
+                  delete searchParams.page;
+                  const queryString = new URLSearchParams(searchParams);
+                  setFormCategory(item.title);
+                  if (place !== "form") {
+                    router.push(`/search?${queryString.toString()}`, {
+                      scroll: false,
+                    });
+                  }
                 }}
               >
                 <Image
@@ -43,7 +85,11 @@ const Category = ({ handleFunc, category, place }) => {
                 name="category"
                 id={item.title}
                 onChange={() => null}
-                checked={item.title === category}
+                checked={
+                  place !== "form"
+                    ? item.title === searchParams?.category
+                    : item.title === formCategory
+                }
                 className="w-0 h-0"
                 value={item.title}
               />

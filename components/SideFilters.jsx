@@ -8,61 +8,39 @@ import MultiSelectDesktop from "./MultiSelectDesktop";
 import { colors, brands } from "@/data";
 import MilageToFrom from "./MilageToFrom";
 import Category from "./Category";
+import MultiSelectColorDesktop from "./MultiSelectColorDesktop";
+import MultiSelectBrandDesktop from "./MultiSelectBrandDesktop";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 const SideFilters = () => {
-  const {
-    brand,
-    handleBrand,
-    setBrandModal,
-    moreFiltersModal,
-    setMoreFiltersModal,
-    type,
-    setType,
-    setColorModal,
-    color,
-    handleColor,
-    transmission,
-    setTransmission,
-    yearMin,
-    setYearMin,
-    yearMax,
-    setYearMax,
-    refreshYear,
-    setRefreshYear,
-    brandModal,
-    colorModal,
-    setIsModalBackgroundOpen,
-    isModalBackgroundOpen,
-    refreshMilage,
-    setRefreshMilage,
-    milageMin,
-    setMilageMin,
-    milageMax,
-    setMilageMax,
-    category,
-    handlecategory,
-  } = useGlobalContext();
+  const searchParams = Object.fromEntries(useSearchParams());
+  const router = useRouter();
+  const { allStates, setAllStates } = useGlobalContext();
   return (
-    <div
-      className={`w-full hidden md:flex flex-col h-full  relative rounded-xl ${
-        isModalBackgroundOpen && `z-50`
-      }`}
-    >
+    <div className={`w-full hidden md:flex flex-col h-full rounded-xl`}>
       <div className=" border-b-2 pl-6  py-4 font-semibold  flex justify-between ">
         <button
           type="button"
           className="p-2 ml-2 text-sm"
           onClick={() => {
-            handleBrand("All");
-            setType("All");
-            handleColor("All");
-            setTransmission("All");
-            setYearMin(1920);
-            setYearMax(2024);
-            setMilageMin(0),
-              setMilageMax(1000000),
-              setRefreshYear(Math.random());
-            setRefreshMilage(Math.random());
-            handlecategory("All");
+            setAllStates((prev) => ({
+              ...prev,
+              yearMin: 1920,
+              refreshYear: Math.random(),
+              yearMax: new Date().getFullYear(),
+              milageMin: 0,
+              milageMax: 1000000,
+              refreshMilage: Math.random(),
+              brand: ["All"],
+              color: ["All"],
+            }));
+            // setYearMin(1920);
+            // setRefreshYear(Math.random());
+            // setYearMax(new Date().getFullYear());
+            // setMilageMin(0),
+            //   setMilageMax(1000000),
+            //   setRefreshMilage(Math.random());
+            router.push("/search");
           }}
         >
           Clear filters
@@ -71,67 +49,90 @@ const SideFilters = () => {
 
       <div className="p-4 flex flex-col gap-y-6">
         <RectSelector
+          name={"type"}
           data={types}
-          state={type}
-          handleState={setType}
+          state={allStates.type}
+          handleFunctionName={`type`}
           title={"Type of car"}
         />
         <div className=" relative">
           <div
             onClick={() => {
-              setIsModalBackgroundOpen(true);
-              setColorModal(false);
+              setAllStates((prev) => ({
+                ...prev,
+                isModalBackgroundOpen: true,
+                colorModal: false,
+              }));
+              // setIsModalBackgroundOpen(true);
+              // setColorModal(false);
             }}
           >
             <ChevronSelector
-              setModal={setBrandModal}
-              data={brand}
+              modalName={`brandModal`}
+              data={searchParams?.brand ? [searchParams?.brand] : ["All"]}
               title={"Brand"}
             />
           </div>
-
-          <MultiSelectDesktop
+          <MultiSelectBrandDesktop
+            name={"brand"}
+            data={brands}
+            modalName={`brandModal`}
+            modalState={allStates.brandModal}
+          />
+          {/* <MultiSelectDesktop
             name={"brand"}
             data={brands}
             setModal={setBrandModal}
             modalState={brandModal}
             handleFunction={handleBrand}
             arrayResult={brand}
-          />
+          /> */}
         </div>
         <div className=" relative">
           <div
             onClick={() => {
-              setIsModalBackgroundOpen(true);
-              setBrandModal(false);
+              setAllStates((prev) => ({
+                ...prev,
+                isModalBackgroundOpen: true,
+                brandModal: false,
+              }));
+              // setIsModalBackgroundOpen(true);
+              // setBrandModal(false);
             }}
           >
             <ChevronSelector
-              setModal={setColorModal}
-              data={color}
+              modalName={`colorModal`}
+              data={searchParams?.color ? [searchParams?.color] : ["All"]}
               title={"Color"}
             />
           </div>
-
-          <MultiSelectDesktop
+          <MultiSelectColorDesktop
+            name={"color"}
+            data={colors}
+            modalName={`colorModal`}
+            modalState={allStates.colorModal}
+          />
+          {/* <MultiSelectDesktop
             name={"color"}
             data={colors}
             setModal={setColorModal}
             modalState={colorModal}
             handleFunction={handleColor}
             arrayResult={color}
-          />
+          /> */}
         </div>
         <RectSelector
+          name={"transmission"}
           data={transmissions}
-          state={transmission}
-          handleState={setTransmission}
+          state={allStates.transmission}
+          handleFunctionName={`transmission`}
+          // handleState={setTransmission}
           title={"Transmission"}
         />
-        <YearToFrom key={refreshYear} />
-        <MilageToFrom key={refreshMilage} />
+        <YearToFrom key={allStates.refreshYear} />
+        <MilageToFrom key={allStates.refreshMilage} />
 
-        <Category handleFunc={handlecategory} category={category} />
+        <Category />
       </div>
     </div>
   );

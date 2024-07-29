@@ -1,12 +1,19 @@
 "use client";
 import { FaChevronRight } from "react-icons/fa6";
-const ChevronSelector = ({ setModal, data, title, place, brand }) => {
+import { useGlobalContext } from "@/context/context";
+const ChevronSelector = ({ modalName, data, title, place, brand }) => {
+  const { allStates, setAllStates } = useGlobalContext();
+
   if (place === "form") {
     return (
       <>
         <div
           onClick={() => {
-            setModal(true);
+            setAllStates((prev) => ({
+              ...prev,
+              [modalName]: true,
+            }));
+            // setModal(true);
             document.body.style.overflow = "hidden";
           }}
           className="flex md:hidden flex-col gap-y-2 cursor-pointer "
@@ -25,7 +32,11 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
         </div>
         <div
           onClick={() => {
-            setModal(true);
+            setAllStates((prev) => ({
+              ...prev,
+              [modalName]: true,
+            }));
+            // setModal(true);
             // document.body.style.overflow = "hidden";
           }}
           className="hidden md:flex flex-col gap-y-2 cursor-pointer"
@@ -49,7 +60,11 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
     <>
       <div
         onClick={() => {
-          setModal(true);
+          setAllStates((prev) => ({
+            ...prev,
+            [modalName]: true,
+          }));
+          // setModal(true);
           document.body.style.overflow = "hidden";
         }}
         className="flex flex-col gap-y-2 md:hidden "
@@ -76,7 +91,11 @@ const ChevronSelector = ({ setModal, data, title, place, brand }) => {
       </div>
       <div
         onClick={() => {
-          setModal(true);
+          setAllStates((prev) => ({
+            ...prev,
+            [modalName]: true,
+          }));
+          // setModal(true);
         }}
         className=" flex-col gap-y-2 hidden md:flex"
       >

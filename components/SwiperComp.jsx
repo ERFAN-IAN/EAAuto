@@ -48,6 +48,7 @@ const SwiperComp = () => {
     handleScreenSize();
     setLoad(true);
     window.addEventListener("resize", handleScreenSize);
+    return () => window.removeEventListener("resize", handleScreenSize);
   }, []);
   if (!load) {
     return (

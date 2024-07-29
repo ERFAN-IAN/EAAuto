@@ -42,10 +42,10 @@ export const GET = async (request) => {
     delete objectSearchParams.yearMin;
     delete objectSearchParams.yearMax;
   }
-  if (objectSearchParams.milageMax && objectSearchParams.milageMin) {
+  if (objectSearchParams.milageMax || objectSearchParams.milageMin) {
     objectSearchParams.milage = {
-      $gt: parseInt(objectSearchParams.milageMin) - 1,
-      $lt: parseInt(objectSearchParams.milageMax) + 1,
+      $gt: parseInt(objectSearchParams.milageMin || 1) - 1,
+      $lt: parseInt(objectSearchParams.milageMax || 1000000) + 1,
     };
     delete objectSearchParams.milageMin;
     delete objectSearchParams.milageMax;

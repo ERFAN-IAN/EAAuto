@@ -7,32 +7,25 @@ import ChevronSelector from "./ChevronSelector";
 import { useGlobalContext } from "@/context/context";
 import { useState } from "react";
 import MultiSelectDesktop from "./MultiSelectDesktop";
-import { colors, brands } from "@/data";
+import { brands } from "@/data";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useRef } from "react";
 import Link from "next/link";
+import MultiSelectBrandDesktop from "./MultiSelectBrandDesktop";
 const Header = () => {
-  const {
-    brand,
-    setBrandModal,
-    brandModal,
-    handleBrand,
-    setIsModalBackgroundOpen,
-    isModalBackgroundOpen,
-    searchText,
-    setBrand,
-    refreshSearchText,
-    setRefreshSearchText,
-    setSearchText,
-  } = useGlobalContext();
+  const { allStates, setAllStates } = useGlobalContext();
   const [buysell, setBuysell] = useState(false);
-  const router = useRouter();
-  const initial = useRef(0);
   useEffect(() => {
-    setBrand(["All"]);
-    setSearchText("");
-    setRefreshSearchText(Math.random());
+    setAllStates((prev) => {
+      return {
+        ...prev,
+        brand: ["All"],
+        searchText: "",
+        refreshSearchText: Math.random(),
+      };
+    });
+    // setBrand(["All"]);
+    // setSearchText("");
+    // setRefreshSearchText(Math.random());
   }, []);
   return (
     <section className="grid grid-rows-1 md:relative w-full h-[24rem] mt-[3rem] md:mt-[2rem] md:rounded-t-lg">
@@ -61,7 +54,7 @@ const Header = () => {
         </h2>
         <div
           className={`${
-            isModalBackgroundOpen ? `z-50` : ``
+            allStates.isModalBackgroundOpen ? `z-50` : ``
           } rounded-xl shadow-lg mt-[2rem] md:mt-0 bg-white dark:bg-[#1e232a] flex flex-col`}
         >
           <div className="grid grid-cols-2">
@@ -78,8 +71,13 @@ const Header = () => {
             <button
               onClick={() => {
                 setBuysell(true);
-                setIsModalBackgroundOpen(false);
-                setBrandModal(false);
+                setAllStates((prev) => ({
+                  ...prev,
+                  isModalBackgroundOpen: false,
+                  brandModal: false,
+                }));
+                // setIsModalBackgroundOpen(false);
+                // setBrandModal(false);
               }}
               className={`${
                 buysell
@@ -109,22 +107,31 @@ const Header = () => {
             )}
             {!buysell && (
               <div className="mt-2 p-4">
-                <SearchBox place={"Header"} key={refreshSearchText}>
+                <SearchBox place={"Header"} key={allStates.refreshSearchText}>
                   <div className={`mt-[-.5rem] relative `}>
                     <div
                       onClick={() => {
-                        setIsModalBackgroundOpen(true);
+                        setAllStates((prev) => ({
+                          ...prev,
+                          isModalBackgroundOpen: true,
+                        }));
+                        // setIsModalBackgroundOpen(true);
                       }}
                     >
                       <ChevronSelector
-                        setModal={setBrandModal}
-                        data={brand}
+                        modalName={`brandModal`}
+                        data={allStates.brand}
                         place={"Header"}
-                        brand={brand}
+                        brand={allStates.brand}
                       />
                     </div>
-
-                    <MultiSelectDesktop
+                    <MultiSelectBrandDesktop
+                      data={brands}
+                      name={"brand"}
+                      modalName={`brandModal`}
+                      headerpage={true}
+                    />
+                    {/* <MultiSelectDesktop
                       name={"brand"}
                       data={brands}
                       setModal={setBrandModal}
@@ -132,7 +139,7 @@ const Header = () => {
                       handleFunction={handleBrand}
                       arrayResult={brand}
                       headerpage={true}
-                    />
+                    /> */}
                   </div>
                 </SearchBox>
               </div>

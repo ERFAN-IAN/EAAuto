@@ -1,4 +1,14 @@
-const rectSelector = ({ data, state, handleState, title, name }) => {
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useGlobalContext } from "@/context/context";
+import { useState } from "react";
+const rectSelector = ({ data, state, handleFunctionName, title, name }) => {
+  const { allStates, setAllStates } = useGlobalContext();
+  const searchParams = Object.fromEntries(useSearchParams());
+  const router = useRouter();
+  const [currentState, setCurrentState] = useState(
+    searchParams[`${name}`] || "All"
+  );
   return (
     <div className="text-sm font-semibold">
       <h2 className="text-sm font-semibold">{title}</h2>
@@ -12,14 +22,27 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
                 type="button"
                 key={index}
                 className={`${
-                  state === item.title
-                    ? `light:bg-[#eef0f4] dark:bg-black`
+                  searchParams[`${name}`] === item.title
+                    ? `bg-[#eef0f4] dark:bg-black`
                     : " light:bg-white"
                 } py-2 border-r-teal-600  rounded-l-md ${
                   data.length !== index + 1 ? "border-r-2" : "rounded-r-md"
                 }`}
                 onClick={() => {
-                  handleState(item.title);
+                  setAllStates((prev) => ({
+                    ...prev,
+                    [handleFunctionName]: item.title,
+                    refreshSearchText: Math.random(),
+                  }));
+                  // handleState(item.title);
+                  setCurrentState(item.title);
+                  // setRefreshSearchText(Math.random());
+                  searchParams[`${name}`] = item.title;
+                  delete searchParams.page;
+                  const queryString = new URLSearchParams(searchParams);
+                  router.push(`/search?${queryString.toString()}`, {
+                    scroll: false,
+                  });
                 }}
               >
                 {item.title}
@@ -43,7 +66,11 @@ const rectSelector = ({ data, state, handleState, title, name }) => {
                   index === 0 ? `border-r-2` : ` rounded-r-md`
                 } rounded-l-md cursor-pointer`}
                 onClick={() => {
-                  handleState(item.title);
+                  setAllStates((prev) => ({
+                    ...prev,
+                    [handleFunctionName]: item.title,
+                  }));
+                  // handleState(item.title);
                 }}
                 key={index}
               >

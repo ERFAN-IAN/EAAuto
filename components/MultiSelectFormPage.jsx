@@ -1,22 +1,18 @@
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
-const MultiSelectFormPage = ({
-  name,
-  data,
-  setModal,
-  modalState,
-  handleFunction,
-  arrayResult,
-  setIsModalBackgroundOpen,
-}) => {
+import { useGlobalContext } from "@/context/context";
+const MultiSelectFormPage = ({ name, data, modalName, handleFunctionName }) => {
+  const { allStates, setAllStates } = useGlobalContext();
   const [search, setSearch] = useState("");
   const [outline, setOutline] = useState(false);
+  const checkedValue =
+    name === "brand" ? allStates.formBrand : allStates.formColor;
   return (
     <>
       <div className="md:hidden">
         <div
           className={`${
-            modalState
+            allStates[modalName]
               ? "fixed w-full h-full bg-white dark:bg-[#1e232a] left-0 top-0  flex flex-col justify-between z-[61]"
               : "hidden w-full h-full bg-white left-0 top-0  z-10"
           }  md:hidden`}
@@ -63,9 +59,15 @@ const MultiSelectFormPage = ({
                     <div
                       className="flex justify-between"
                       onClick={() => {
-                        handleFunction(item.title);
-                        setModal(false);
-                        setIsModalBackgroundOpen(false);
+                        setAllStates((prev) => ({
+                          ...prev,
+                          [modalName]: false,
+                          isModalBackgroundOpen: false,
+                          [handleFunctionName]: item.title,
+                        }));
+                        // handleFunction(item.title);
+                        // setModal(false);
+                        // setIsModalBackgroundOpen(false);
                         document.body.style.overflowY = "visible";
                       }}
                     >
@@ -82,11 +84,16 @@ const MultiSelectFormPage = ({
                         value={item.title}
                         className="mr-2 cursor-pointer opacity-0"
                         onChange={() => {
-                          handleFunction(item.title);
-                          setModal(false);
+                          setAllStates((prev) => ({
+                            ...prev,
+                            [modalName]: false,
+                            [handleFunctionName]: item.title,
+                          }));
+                          // handleFunction(item.title);
+                          // setModal(false);
                           document.body.style.overflowY = "visible";
                         }}
-                        checked={arrayResult === item.title}
+                        checked={checkedValue === item.title}
                       />
                     </div>
                   </div>
@@ -115,7 +122,7 @@ const MultiSelectFormPage = ({
       <div className="hidden md:block  ">
         <div
           className={`${
-            modalState
+            allStates[modalName]
               ? "absolute w-full bg-slate-50 dark:bg-[#1e232a] flex flex-col justify-between z-[61] rounded-xl mt-4 border-2 border-teal-600 shadow-xl"
               : "hidden"
           } `}
@@ -162,9 +169,15 @@ const MultiSelectFormPage = ({
                     <div
                       className="flex justify-between"
                       onClick={() => {
-                        handleFunction(item.title);
-                        setModal(false);
-                        setIsModalBackgroundOpen(false);
+                        setAllStates((prev) => ({
+                          ...prev,
+                          [modalName]: false,
+                          isModalBackgroundOpen: false,
+                          [handleFunctionName]: item.title,
+                        }));
+                        // handleFunction(item.title);
+                        // setModal(false);
+                        // setIsModalBackgroundOpen(false);
                         document.body.style.overflowY = "visible";
                       }}
                     >
@@ -181,12 +194,17 @@ const MultiSelectFormPage = ({
                         value={item.title}
                         className="mr-2 cursor-pointer opacity-0"
                         onChange={() => {
-                          handleFunction(item.title);
-                          setModal(false);
+                          setAllStates((prev) => ({
+                            ...prev,
+                            [modalName]: false,
+                            [handleFunctionName]: item.title,
+                          }));
+                          // handleFunction(item.title);
+                          // setModal(false);
 
                           document.body.style.overflowY = "visible";
                         }}
-                        checked={arrayResult === item.title}
+                        checked={checkedValue === item.title}
                       />
                     </div>
                   </div>
@@ -199,9 +217,14 @@ const MultiSelectFormPage = ({
                 type="button"
                 className=" bg-black text-white px-4 py-2 rounded-md dark:bg-teal-800"
                 onClick={() => {
-                  setModal(false);
+                  setAllStates((prev) => ({
+                    ...prev,
+                    [modalName]: false,
+                    isModalBackgroundOpen: false,
+                  }));
+                  // setModal(false);
                   document.body.style.overflowY = "visible";
-                  setIsModalBackgroundOpen(false);
+                  // setIsModalBackgroundOpen(false);
                   //   setIsModalBackgroundOpen(false);
                 }}
               >
