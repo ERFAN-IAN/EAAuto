@@ -19,6 +19,7 @@ const YearToFrom = () => {
       setAllStates((prev) => ({
         ...prev,
         refreshSearchText: Math.random(),
+        refreshYear: Math.random(),
         yearMin: itemMin,
         yearMax: itemMax,
       }));
@@ -39,6 +40,7 @@ const YearToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         yearMin: itemMin,
+        refreshYear: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`yearMin`] = itemMin;
@@ -56,6 +58,7 @@ const YearToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         yearMax: itemMax,
+        refreshYear: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`yearMax`] = itemMax;

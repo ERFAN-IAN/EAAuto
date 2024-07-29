@@ -16,6 +16,7 @@ const MilageToFrom = () => {
         refreshSearchText: Math.random(),
         milageMin: itemMin,
         milageMax: itemMax,
+        refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`milageMin`] = itemMin;
@@ -34,6 +35,7 @@ const MilageToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         milageMin: itemMin,
+        refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`milageMin`] = itemMin;
@@ -51,6 +53,7 @@ const MilageToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         milageMax: itemMax,
+        refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`milageMax`] = itemMax;
