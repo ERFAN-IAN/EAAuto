@@ -13,9 +13,7 @@ const multiSelect = ({ name, data, modalName }) => {
   // const checkedValue = name === "brand" ? localBrand : localColor;
   const handleColor = (item) => {
     if (!allStates.color.includes(item)) {
-      console.log(1);
       const filterAll = allStates.color.filter((e) => e !== "All");
-      console.log("rrr", allStates.color);
       setAllStates((prev) => ({
         ...prev,
         color: [...filterAll, item].toString().split(","),
@@ -23,7 +21,6 @@ const multiSelect = ({ name, data, modalName }) => {
 
       return [...filterAll, item].toString().split(",");
     } else {
-      console.log(2);
       let temp = allStates.color.filter((e) => e != item);
       setAllStates((prev) => ({
         ...prev,
@@ -34,9 +31,7 @@ const multiSelect = ({ name, data, modalName }) => {
   };
   const handleBrand = (item) => {
     if (!allStates.brand.includes(item)) {
-      console.log(1);
       const filterAll = allStates.brand.filter((e) => e !== "All");
-      console.log("rrr", allStates.brand);
       setAllStates((prev) => ({
         ...prev,
         brand: [...filterAll, item].toString().split(","),
@@ -44,7 +39,6 @@ const multiSelect = ({ name, data, modalName }) => {
 
       return [...filterAll, item].toString().split(",");
     } else {
-      console.log(2);
       let temp = allStates.brand.filter((e) => e != item);
       setAllStates((prev) => ({
         ...prev,
@@ -151,7 +145,6 @@ const multiSelect = ({ name, data, modalName }) => {
                     className="mr-2 cursor-pointer"
                     onChange={() => {
                       const func = handleFunction(item.title);
-                      console.log(func);
                       setAllStates((prev) => ({
                         ...prev,
                         refreshSearchText: Math.random(),

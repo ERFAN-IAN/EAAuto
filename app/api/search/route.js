@@ -34,17 +34,17 @@ export const GET = async (request) => {
     { title: searchPattern },
     { description: searchPattern },
   ];
-  if (objectSearchParams.yearMax && objectSearchParams.yearMin) {
+  if (objectSearchParams.yearMax || objectSearchParams.yearMin) {
     objectSearchParams.year = {
-      $gt: parseInt(objectSearchParams.yearMin) - 1,
-      $lt: parseInt(objectSearchParams.yearMax) + 1,
+      $gt: parseInt(objectSearchParams.yearMin || 1920) - 1,
+      $lt: parseInt(objectSearchParams.yearMax || new Date().getFullYear()) + 1,
     };
     delete objectSearchParams.yearMin;
     delete objectSearchParams.yearMax;
   }
   if (objectSearchParams.milageMax || objectSearchParams.milageMin) {
     objectSearchParams.milage = {
-      $gt: parseInt(objectSearchParams.milageMin || 1) - 1,
+      $gt: parseInt(objectSearchParams.milageMin || 0) - 1,
       $lt: parseInt(objectSearchParams.milageMax || 1000000) + 1,
     };
     delete objectSearchParams.milageMin;

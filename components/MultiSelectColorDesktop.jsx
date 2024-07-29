@@ -11,9 +11,7 @@ const MultiSelectColorDesktop = ({ name, data, modalName, headerpage }) => {
   const router = useRouter();
   const handleColor = (item) => {
     if (!allStates.color.includes(item)) {
-      console.log(1);
       const filterAll = allStates.color.filter((e) => e !== "All");
-      console.log("rrr", allStates.color);
       setAllStates((prev) => ({
         ...prev,
         color: [...filterAll, item].toString().split(","),
@@ -21,7 +19,6 @@ const MultiSelectColorDesktop = ({ name, data, modalName, headerpage }) => {
 
       return [...filterAll, item].toString().split(",");
     } else {
-      console.log(2);
       let temp = allStates.color.filter((e) => e != item);
       setAllStates((prev) => ({
         ...prev,

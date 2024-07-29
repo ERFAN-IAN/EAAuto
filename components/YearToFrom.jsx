@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "@/context/context";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
@@ -14,12 +14,41 @@ const YearToFrom = () => {
   );
 
   const router = useRouter();
+  const ref = useRef(0);
+  useEffect(() => {
+    if (ref.current < 1) {
+      // to keep useEffect from running on mount
+      ref.current++;
+      return;
+    }
+    const timeOutID = setTimeout(() => {
+      delete searchParams.page;
+      delete searchParams.yearMax;
+      delete searchParams.yearMin;
+      const queryString = new URLSearchParams(searchParams).toString();
+
+      const finalUrl = `/search?${queryString}&yearMax=${
+        ymax < ymin ? ymin : ymax
+      }&yearMin=${ymax < ymin ? ymax : ymin}`;
+      router.push(finalUrl, {
+        scroll: false,
+      });
+    }, 500);
+    const timeOutID2 = setTimeout(() => {
+      setAllStates((prev) => ({ ...prev, refreshYear: Math.random() }));
+      //for syncing pc ui with mobile ui
+    }, 10000);
+    return () => {
+      clearTimeout(timeOutID);
+      clearTimeout(timeOutID2);
+    };
+  }, [allStates.yearMin, allStates.yearMax]);
   const handleState = ({ itemMin, itemMax }) => {
     if (itemMin && itemMax) {
       setAllStates((prev) => ({
         ...prev,
         refreshSearchText: Math.random(),
-        refreshYear: Math.random(),
+        // refreshYear: Math.random(),
         yearMin: itemMin,
         yearMax: itemMax,
       }));
@@ -27,46 +56,50 @@ const YearToFrom = () => {
       searchParams[`yearMin`] = itemMin;
       searchParams[`yearMax`] = itemMax;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     } else if (itemMin) {
-      if (itemMin < 1920 || itemMin > ymax) {
+      if (itemMin < 1920 || itemMin > ymax || itemMin.toString().length !== 4) {
         return;
       }
       setAllStates((prev) => ({
         ...prev,
         refreshSearchText: Math.random(),
         yearMin: itemMin,
-        refreshYear: Math.random(),
+        // refreshYear: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`yearMin`] = itemMin;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     } else if (itemMax) {
-      if (itemMax > new Date().getFullYear() || itemMax < ymin) {
+      if (
+        itemMax > new Date().getFullYear() ||
+        itemMax < ymin ||
+        itemMax.toString().length !== 4
+      ) {
         return;
       }
       setAllStates((prev) => ({
         ...prev,
         refreshSearchText: Math.random(),
         yearMax: itemMax,
-        refreshYear: Math.random(),
+        // refreshYear: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`yearMax`] = itemMax;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     }
   };

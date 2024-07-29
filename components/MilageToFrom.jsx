@@ -1,14 +1,44 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "@/context/context";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useRef } from "react";
 const MilageToFrom = () => {
   const { allStates, setAllStates } = useGlobalContext();
   const searchParams = Object.fromEntries(useSearchParams());
   const router = useRouter();
   const [mMin, setMMin] = useState(allStates.milageMin || 1);
   const [mMax, setMMax] = useState(allStates.milageMax || 1000000);
+  const ref = useRef(0);
+  useEffect(() => {
+    if (ref.current < 1) {
+      // to keep useEffect from running on mount
+      ref.current++;
+      return;
+    }
+    const timeOutID = setTimeout(() => {
+      delete searchParams.page;
+      delete searchParams.milageMax;
+      delete searchParams.milageMin;
+      const queryString = new URLSearchParams(searchParams).toString();
+
+      const finalUrl = `/search?${queryString}&milageMax=${
+        mMax < mMin ? mMin : mMax
+      }&milageMin=${mMax < mMin ? mMax : mMin}`;
+      router.push(finalUrl, {
+        scroll: false,
+      });
+    }, 500);
+    const timeOutID2 = setTimeout(() => {
+      setAllStates((prev) => ({ ...prev, refreshMilage: Math.random() }));
+      //for syncing pc ui with mobile ui
+    }, 10000);
+    return () => {
+      clearTimeout(timeOutID);
+      clearTimeout(timeOutID2);
+    };
+  }, [allStates.milageMin, allStates.milageMax]);
   const handleState = ({ itemMin, itemMax }) => {
     if (itemMin && itemMax) {
       setAllStates((prev) => ({
@@ -16,16 +46,16 @@ const MilageToFrom = () => {
         refreshSearchText: Math.random(),
         milageMin: itemMin,
         milageMax: itemMax,
-        refreshMilage: Math.random(),
+        // refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`milageMin`] = itemMin;
       searchParams[`milageMax`] = itemMax;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     } else if (itemMin) {
       if (itemMin < 0 || itemMin > mMax) {
@@ -35,15 +65,15 @@ const MilageToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         milageMin: itemMin,
-        refreshMilage: Math.random(),
+        // refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
       searchParams[`milageMin`] = itemMin;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     } else if (itemMax) {
       if (itemMax > 1000000 || itemMax < mMin) {
@@ -53,15 +83,17 @@ const MilageToFrom = () => {
         ...prev,
         refreshSearchText: Math.random(),
         milageMax: itemMax,
-        refreshMilage: Math.random(),
+        // refreshMilage: Math.random(),
       }));
       // setRefreshSearchText(Math.random());
-      searchParams[`milageMax`] = itemMax;
+      // searchParams[`milageMax`] = itemMax;
       delete searchParams.page;
-      const queryString = new URLSearchParams(searchParams);
-      router.push(`/search?${queryString.toString()}`, {
-        scroll: false,
-      });
+      delete searchParams.milageMax;
+      delete searchParams.milageMin;
+      // const queryString = new URLSearchParams(searchParams);
+      // router.push(`/search?${queryString.toString()}`, {
+      //   scroll: false,
+      // });
       return;
     }
   };
