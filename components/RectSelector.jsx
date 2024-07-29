@@ -25,6 +25,10 @@ const rectSelector = ({ data, state, handleFunctionName, title, name }) => {
                   searchParams[`${name}`] === item.title
                     ? `bg-[#eef0f4] dark:bg-black`
                     : " light:bg-white"
+                } ${
+                  index === 0 &&
+                  !searchParams[`${name}`] &&
+                  `bg-[#eef0f4] dark:bg-black`
                 } py-2 border-r-teal-600  rounded-l-md ${
                   data.length !== index + 1 ? "border-r-2" : "rounded-r-md"
                 }`}
