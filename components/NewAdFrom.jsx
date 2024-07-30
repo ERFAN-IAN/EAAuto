@@ -19,6 +19,7 @@ const NewAdFrom = () => {
   const [submitting, isSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
   const [base64, setBase64] = useState([]);
+  const [fileSize, setFileSize] = useState(0);
   const router = useRouter();
   const { allStates, setAllStates } = useGlobalContext();
   let toBase64 = (e) => {
@@ -66,6 +67,7 @@ const NewAdFrom = () => {
           const formData = new FormData(e.currentTarget);
           const formObject = Object.fromEntries(formData);
           formObject.images = base64;
+
           if (!formObject.type) {
             toast.error("Please choose the advert type");
             return;
@@ -100,6 +102,18 @@ const NewAdFrom = () => {
           ) {
             toast.error("Please fill All the fields");
           }
+          if (fileSize === 0) {
+            toast.error("Please choose at least one image");
+            return;
+          }
+          if (fileSize > 4194304) {
+            toast.error(
+              `Maximum upload size for all your images combined is 4MB, current size: ${(
+                fileSize / 1048576
+              ).toFixed(2)}MB`
+            );
+            return;
+          }
           const notify = () =>
             (progressToastId.current = toast("Please wait", {
               closeButton: false,
@@ -121,6 +135,7 @@ const NewAdFrom = () => {
               body: JSON.stringify(formObject),
             }
           );
+          toast.dismiss();
           isSubmitting(false);
           const toJson = await response.json();
           if (toJson.id) {
@@ -132,8 +147,6 @@ const NewAdFrom = () => {
           }
         } catch (error) {
           toast.error(error);
-        } finally {
-          const dismiss = () => toast.dismiss(progressToastId.current);
         }
       }}
       encType="multipart/form-data"
@@ -350,6 +363,11 @@ const NewAdFrom = () => {
           accept="image/*"
           required
           onChange={(e) => {
+            let sizelet = 0;
+            for (let { size } of e.target.files) {
+              sizelet = sizelet + size;
+            }
+            setFileSize(sizelet);
             toBase64(e.target.files);
           }}
         ></input>
