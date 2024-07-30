@@ -106,9 +106,9 @@ const NewAdFrom = () => {
             toast.error("Please choose at least one image");
             return;
           }
-          if (fileSize > 3984588) {
+          if (fileSize > 3145728) {
             toast.error(
-              `Maximum upload size for all your images combined is 3.8MB, current size: ${(
+              `Maximum upload size for all your images combined is 3MB, current size: ${(
                 fileSize / 1048576
               ).toFixed(2)}MB`
             );
@@ -244,7 +244,7 @@ const NewAdFrom = () => {
             max={new Date().getFullYear()}
             min={1920}
             className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
-            placeholder={`${new Date().getFullYear()}`}
+            placeholder={`eg. ${new Date().getFullYear()}`}
             required
           ></input>
         </div>
@@ -259,7 +259,7 @@ const NewAdFrom = () => {
             min={0}
             max={1000000}
             className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
-            placeholder="22000"
+            placeholder="eg. 22000"
             required
           ></input>
         </div>
@@ -267,7 +267,7 @@ const NewAdFrom = () => {
       <div className="grid grid-cols-2 w-full gap-x-2 ">
         <div className="flex flex-col w-full">
           <label htmlFor="price" className="font-semibold">
-            Price
+            {`Price (USD)`}
           </label>
           <input
             id="price"
@@ -275,7 +275,7 @@ const NewAdFrom = () => {
             type="number"
             min={0}
             className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
-            placeholder={`2000$`}
+            placeholder={`eg. 2000`}
             required
           ></input>
         </div>
@@ -288,7 +288,7 @@ const NewAdFrom = () => {
             name="city"
             type="text"
             className="mt-2 rounded-lg p-2 dark:bg-[#1F232A] border-2 border-teal-600 outline-none"
-            placeholder="Ny"
+            placeholder="eg. Ny"
             required
           ></input>
         </div>
