@@ -106,7 +106,7 @@ const NewAdFrom = () => {
             toast.error("Please choose at least one image");
             return;
           }
-          if ((fileSize > 3, 984, 588)) {
+          if (fileSize > 3984588) {
             toast.error(
               `Maximum upload size for all your images combined is 3.8MB, current size: ${(
                 fileSize / 1048576
