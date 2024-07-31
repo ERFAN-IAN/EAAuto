@@ -38,7 +38,7 @@ const HamMenu = () => {
       >
         <li>
           <Link
-            href={"/"}
+            href={"/myAccount"}
             className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 pb-4 pl-4"
           >
             <span className="mt-1">
@@ -60,7 +60,7 @@ const HamMenu = () => {
         </li>
         <li>
           <Link
-            href={"/"}
+            href={"/bookmarks"}
             className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
           >
             <span className="mt-1">
