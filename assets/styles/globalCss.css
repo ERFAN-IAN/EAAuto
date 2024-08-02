@@ -124,7 +124,6 @@ body {
 .singleCarAdvertLittleSwiper {
   height: clamp(5rem, 10vw, 8rem);
 }
-/* .class {
-  background-color: #1e232a;
-  color: white;
-} */
+.squareCarSwiper {
+  height: clamp(13rem, 30vw, 14rem);
+}

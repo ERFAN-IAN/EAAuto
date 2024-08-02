@@ -30,7 +30,7 @@ const SquareCardAd = ({ car }) => {
       href={`/cars/${_id}`}
       className="w-full   relative rounded-xl shadow-lg hover:shadow-xl"
     >
-      <div className=" col-span-3 group rounded-xl">
+      <div className="  group rounded-xl">
         <Swiper
           slidesPerView={1}
           spaceBetween={10}
@@ -42,7 +42,7 @@ const SquareCardAd = ({ car }) => {
             prevEl: ".sbbp",
           }}
           modules={[Pagination, Navigation]}
-          className="  rounded-t-xl carAdvertSwiper"
+          className="  rounded-t-xl squareCarSwiper "
         >
           {images.map((item, index) => {
             return (
