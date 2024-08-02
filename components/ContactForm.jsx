@@ -1,5 +1,3 @@
-import React from "react";
-
 const ContactForm = () => {
   return (
     <aside className="  w-full shadow-xl rounded-xl dark:bg-transparent">
