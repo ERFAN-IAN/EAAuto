@@ -1,7 +1,7 @@
 const page = () => {
   return (
-    <div className="flex w-full h-full items-center justify-center">
-      <p className="mt-[13rem]">Coming Soon!</p>
+    <div className="flex w-full h-[100vh] items-center justify-center">
+      <p className="mt-[-10rem]">Coming Soon!</p>
     </div>
   );
 };
