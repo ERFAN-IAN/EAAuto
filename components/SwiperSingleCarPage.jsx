@@ -34,7 +34,7 @@ const SwiperSingleCarPage = ({ images, type }) => {
           return (
             <SwiperSlide
               key={index}
-              className=" bg-[#eef0f4] z-[-100] hover:text-white rounded-md transition-all duration-100  object-center"
+              className="  z-[-100] hover:text-white rounded-md transition-all duration-100  object-center"
             >
               <Image
                 src={item.secure_url}

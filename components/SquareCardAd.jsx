@@ -42,13 +42,13 @@ const SquareCardAd = ({ car }) => {
             prevEl: ".sbbp",
           }}
           modules={[Pagination, Navigation]}
-          className=" bg-white rounded-t-xl carAdvertSwiper"
+          className="  rounded-t-xl carAdvertSwiper"
         >
           {images.map((item, index) => {
             return (
               <SwiperSlide
                 key={index}
-                className=" bg-[#eef0f4] z-[-100]  hover:text-white rounded-md cursor-pointer transition-all duration-100"
+                className="  z-[-100]  hover:text-white rounded-md cursor-pointer transition-all duration-100"
               >
                 <Image
                   src={item.secure_url}
