@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useState } from "react";
 const Bookmark = ({ bookmarking }) => {
+  return null;
   const session = useSession();
   const [isBookmarking, setIsBookMarking] = useState(false);
   const getBookmarks = async () => {
