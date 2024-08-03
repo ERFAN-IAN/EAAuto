@@ -7,6 +7,7 @@ import "swiper/css";
 import Footer from "@/components/Footer";
 import ReactQuery from "@/react query/ReactQuery";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import CarNavbar from "@/components/CarNavbar";
 import AuthProvider from "@/authprovider/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
             <Providers>
               <Contextwrapper>
                 <Navbar />
+                <CarNavbar />
                 <div className="layout">{children}</div>
 
                 <ModalHouse />
