@@ -6,10 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/react query/ReactQuery";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
-import { useState } from "react";
 const Bookmark = ({ bookmarking }) => {
   const session = useSession();
-  const [isBookmarking, setIsBookMarking] = useState(false);
+
   const getBookmarks = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_DOMAIN}/bookmark`
@@ -51,25 +50,16 @@ const Bookmark = ({ bookmarking }) => {
       <div>
         <div
           onClick={async () => {
-            if (isBookmarking) {
-              return;
-            }
-            setIsBookMarking(true);
             const bookmarkStatus = await bookmarking(id);
             if (bookmarkStatus) {
               await queryClient.invalidateQueries(["bookmark", `${id}`]);
               toast.dismiss();
               toast.success("Bookmark removed", { closeOnClick: true });
-              setIsBookMarking(false);
             } else {
               toast.error("There was an error");
-              setIsBookMarking(false);
             }
           }}
-          className={`cursor-pointer ${
-            isBookmarking &&
-            `bg-white dark:bg-[#292F38] opacity-50 cursor-default`
-          }`}
+          className=" cursor-pointer"
         >
           <FaBookmark />
         </div>
@@ -80,25 +70,16 @@ const Bookmark = ({ bookmarking }) => {
     <div>
       <div
         onClick={async () => {
-          if (isBookmarking) {
-            return;
-          }
-          setIsBookMarking(true);
           const bookmarkStatus = await bookmarking(id);
           if (bookmarkStatus) {
             await queryClient.invalidateQueries(["bookmark", `${id}`]);
             toast.dismiss();
             toast.success("Bookmark Added", { closeOnClick: true });
-            setIsBookMarking(false);
           } else {
             toast.error("There was an error");
-            setIsBookMarking(false);
           }
         }}
-        className={`cursor-pointer ${
-          isBookmarking &&
-          `bg-white dark:bg-[#292F38] opacity-50 cursor-default`
-        }`}
+        className=" cursor-pointer"
       >
         <FaRegBookmark />
       </div>
