@@ -50,10 +50,14 @@ const Bookmark = ({ bookmarking }) => {
       <div>
         <div
           onClick={async () => {
-            await bookmarking(id);
-            queryClient.invalidateQueries(["bookmark", `${id}`]);
-            toast.dismiss();
-            toast.success("Bookmark removed", { closeOnClick: true });
+            const bookmarkStatus = await bookmarking(id);
+            if (bookmarkStatus) {
+              await queryClient.invalidateQueries(["bookmark", `${id}`]);
+              toast.dismiss();
+              toast.success("Bookmark removed", { closeOnClick: true });
+            } else {
+              toast.error("There was an error");
+            }
           }}
           className=" cursor-pointer"
         >
@@ -66,10 +70,14 @@ const Bookmark = ({ bookmarking }) => {
     <div>
       <div
         onClick={async () => {
-          await bookmarking(id);
-          queryClient.invalidateQueries(["bookmark", `${id}`]);
-          toast.dismiss();
-          toast.success("Bookmark Added", { closeOnClick: true });
+          const bookmarkStatus = await bookmarking(id);
+          if (bookmarkStatus) {
+            await queryClient.invalidateQueries(["bookmark", `${id}`]);
+            toast.dismiss();
+            toast.success("Bookmark Added", { closeOnClick: true });
+          } else {
+            toast.error("There was an error");
+          }
         }}
         className=" cursor-pointer"
       >
