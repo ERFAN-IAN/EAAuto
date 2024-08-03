@@ -1,6 +1,10 @@
 const ContactForm = () => {
   return (
-    <aside className="  w-full shadow-xl rounded-xl dark:bg-transparent">
+    <aside className="  w-full shadow-xl rounded-xl dark:bg-transparent relative">
+      <div className="absolute inset-0 opacity-50 bg-white rounded-xl flex justify-center items-center z-[10]"></div>
+      <div className="absolute inset-0 rounded-xl flex justify-center items-center z-[20] text-white text-2xl font-semibold">
+        <p className=" bg-red-400 rounded-lg p-4">Under development</p>
+      </div>
       <form className=" sticky flex flex-col gap-y-4 p-4 top-5 rounded-xl">
         <p className=" text-center font-semibold text-xl">Contact the seller</p>
         <textarea
