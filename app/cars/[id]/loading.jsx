@@ -6,7 +6,7 @@ const page = () => {
       <CarNavbar />
       <div className="h-full  md:mt-8 grid grid-cols-10  gap-x-2">
         <div className="hidden md:block sticky top-[6.3rem] bg-white dark:bg-[#1e232a] z-20 col-span-3 col-start-8 self-start">
-          <ContactForm />
+          {/* <ContactForm /> */}
         </div>
         <div className="col-span-10 md:col-span-7 col-start-1 row-start-1">
           <div className=" w-full">
