@@ -5,7 +5,6 @@ import { queryClient } from "@/react query/ReactQuery";
 import LoadingComp from "./LoadingComp";
 import { useSession } from "next-auth/react";
 const ContactForm = () => {
-  return null;
   const id = useParams();
   const getButtonStatus = async () => {
     const resp = await fetch(
