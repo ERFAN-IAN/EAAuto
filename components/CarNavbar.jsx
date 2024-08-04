@@ -1,12 +1,12 @@
 "use client";
 import { FaShareAlt } from "react-icons/fa";
-import { FaRegBookmark } from "react-icons/fa6";
-import { FaBookmark } from "react-icons/fa6";
+
 import { FaChevronLeft } from "react-icons/fa6";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import ThemeSwitch from "./ThemeSwitch";
+import BookmarkComp from "./BookmarkComp";
 const CarNavbar = () => {
   const carsPage = usePathname().startsWith("/cars");
   const router = useRouter();
@@ -28,8 +28,7 @@ const CarNavbar = () => {
       </div>
 
       <div className="flex gap-x-4 text-xl items-center">
-        <FaRegBookmark />
-        <FaBookmark />
+        <BookmarkComp />
         <div
           onClick={async () => {
             if (navigator.share) {
