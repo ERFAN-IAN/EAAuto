@@ -8,7 +8,7 @@ export const GET = async () => {
     const session = await getServerSession(authOptions);
     if (!session) {
       return new Response(JSON.stringify({ messgage: "please login" }), {
-        status: 401,
+        status: 200,
       });
     }
     const user = await User.find({ _id: session.user.id });
@@ -18,7 +18,7 @@ export const GET = async () => {
     });
   } catch (error) {
     return new Response(JSON.stringify({ error: error }), {
-      status: 200,
+      status: 500,
     });
   }
 };

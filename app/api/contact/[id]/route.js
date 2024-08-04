@@ -9,7 +9,9 @@ export const PUT = async (request, { params }) => {
     const session = await getServerSession(authOptions);
     const formData = await request.json();
     if (!session) {
-      return new Response(JSON.stringify({ message: "ss" }), { status: 401 });
+      return new Response(JSON.stringify({ message: "Please login" }), {
+        status: 401,
+      });
     }
     const car = await Car.find({ _id: params.id });
     const tempObj = {
@@ -26,12 +28,14 @@ export const PUT = async (request, { params }) => {
       car: car[0]._id,
     });
     if (message.length > 0) {
-      return new Response(JSON.stringify({ message: "ss" }), { status: 401 });
+      return new Response(JSON.stringify({ message: "not allowed" }), {
+        status: 401,
+      });
     }
     const toMessages = await Message.create(tempObj);
     return new Response(JSON.stringify({ message: car }), { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ message: "ss" }), { status: 500 });
+    return new Response(JSON.stringify({ message: error }), { status: 500 });
   }
 };
 export const GET = async (request, { params }) => {
@@ -40,7 +44,7 @@ export const GET = async (request, { params }) => {
     const session = await getServerSession(authOptions);
     if (!session) {
       return new Response(JSON.stringify({ message: "please login" }), {
-        status: 401,
+        status: 200,
       });
     }
     // const car = await Car.find({ _id: params.id });
@@ -54,6 +58,6 @@ export const GET = async (request, { params }) => {
       return new Response(JSON.stringify({ exists: false }), { status: 200 });
     }
   } catch (error) {
-    return new Response(JSON.stringify({ message: "ss" }), { status: 500 });
+    return new Response(JSON.stringify({ message: error }), { status: 500 });
   }
 };
