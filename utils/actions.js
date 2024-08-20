@@ -23,6 +23,7 @@ export const bookmarking = async (id) => {
       if (!resp) {
         return false;
       }
+      revalidatePath("/bookmarks", "page");
       return true;
     } else {
       userBookmarks = [...userBookmarks, id];
@@ -32,6 +33,7 @@ export const bookmarking = async (id) => {
       );
       if (!resp) {
       }
+      revalidatePath("/bookmarks", "page");
       return true;
     }
   } catch (error) {
