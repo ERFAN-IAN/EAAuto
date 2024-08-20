@@ -20,7 +20,7 @@ const Bookmark = () => {
   };
   const id = usePathname().split(`/cars/`)[1];
   const { data } = useQuery({
-    queryKey: ["bookmark", `${id}`],
+    queryKey: ["bookmark"],
     queryFn: getBookmarks,
   });
   const userBookmarks = data?.bookmarks;

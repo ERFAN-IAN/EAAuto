@@ -2,6 +2,8 @@
 import User from "@/models/User";
 import authOptions from "./authOptions";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
+
 export const bookmarking = async (id) => {
   try {
     const session = await getServerSession(authOptions);
@@ -21,6 +23,7 @@ export const bookmarking = async (id) => {
       if (!resp) {
         return false;
       }
+      revalidatePath("/bookmarks");
       return true;
     } else {
       userBookmarks = [...userBookmarks, id];
@@ -30,8 +33,28 @@ export const bookmarking = async (id) => {
       );
       if (!resp) {
       }
+      revalidatePath("/bookmarks");
       return true;
     }
+  } catch (error) {
+    return false;
+  }
+};
+export const deleteBookmark = async (id) => {
+  try {
+    const session = await getServerSession(authOptions);
+    if (!session) {
+      return;
+    }
+    const user = await User.find({ _id: session.user.id });
+    let userBookmarks = user[0].bookmarks;
+    userBookmarks = userBookmarks.filter((item) => item.toString() !== id);
+    const resp = await User.findOneAndUpdate(
+      { _id: session.user.id },
+      { bookmarks: userBookmarks }
+    );
+    revalidatePath("/bookmarks");
+    return true;
   } catch (error) {
     return false;
   }

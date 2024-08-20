@@ -3,7 +3,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 const LoginModal = () => {
-  const formPage = usePathname().startsWith("/newAd");
+  const formPage =
+    usePathname().startsWith("/newAd") ||
+    usePathname().startsWith("/bookmarks");
   const session = useSession();
   return (
     <div
