@@ -13,9 +13,21 @@ export const GET = async () => {
     }
     const user = await User.find({ _id: session.user.id });
     const userBookmarks = user[0].bookmarks;
-    return new Response(JSON.stringify({ bookmarks: userBookmarks }), {
-      status: 200,
-    });
+    const populate = await User.find({ _id: session.user.id }).populate(
+      "bookmarks"
+    );
+
+    const bookmarksPopulated = populate[0].bookmarks;
+
+    return new Response(
+      JSON.stringify({
+        bookmarks: userBookmarks,
+        bookmarksPopulated: bookmarksPopulated,
+      }),
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     return new Response(JSON.stringify({ error: error }), {
       status: 500,

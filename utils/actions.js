@@ -2,7 +2,6 @@
 import User from "@/models/User";
 import authOptions from "./authOptions";
 import { getServerSession } from "next-auth";
-import { revalidatePath } from "next/cache";
 
 export const bookmarking = async (id) => {
   try {
@@ -23,7 +22,7 @@ export const bookmarking = async (id) => {
       if (!resp) {
         return false;
       }
-      revalidatePath("/bookmarks", "page");
+
       return true;
     } else {
       userBookmarks = [...userBookmarks, id];
@@ -33,7 +32,7 @@ export const bookmarking = async (id) => {
       );
       if (!resp) {
       }
-      revalidatePath("/bookmarks", "page");
+
       return true;
     }
   } catch (error) {
@@ -53,7 +52,6 @@ export const deleteBookmark = async (id) => {
       { _id: session.user.id },
       { bookmarks: userBookmarks }
     );
-    revalidatePath("/bookmarks");
     return true;
   } catch (error) {
     return false;

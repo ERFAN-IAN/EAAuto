@@ -40,7 +40,7 @@ const CarAdvert = ({ car, bookmark }) => {
           onClick={async () => {
             setIsDeletingBookmark(true);
             await deleteBookmark(_id);
-            queryClient.invalidateQueries(["bookmark"]);
+            queryClient.refetchQueries("bookmark");
           }}
           disabled={isDeletingBookmark}
         >
