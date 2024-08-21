@@ -58,7 +58,7 @@ const Bookmark = () => {
             setIsBookMarking(true);
             const bookmarkStatus = await bookmarking(id);
             if (bookmarkStatus) {
-              await queryClient.invalidateQueries(["bookmark", `${id}`]);
+              await queryClient.invalidateQueries(["bookmark"]);
               toast.dismiss();
               toast.success("Bookmark removed", { closeOnClick: true });
               setIsBookMarking(false);

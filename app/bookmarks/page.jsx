@@ -1,35 +1,34 @@
-import connectDB from "@/config/database";
-import User from "@/models/User";
-import { getServerSession } from "next-auth";
-import authOptions from "@/utils/authOptions";
-import Car from "@/models/Car";
+"use client";
 import CarAdvert from "@/components/CarAdvert";
+import LoadingComp from "@/components/LoadingComp";
 import LoginModal from "@/components/LoginModal";
-
-export const dynamic = "force-dynamic";
-const page = async () => {
-  let bookmarks;
-  try {
-    await connectDB();
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return <LoginModal />;
-    }
-    const data = await User.find({ _id: session?.user?.id })
-      .populate("bookmarks")
-      .lean();
-    bookmarks = JSON.parse(JSON.stringify(data[0].bookmarks));
-  } catch (error) {
-    console.log(error);
+import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
+const page = () => {
+  const session = useSession();
+  if (!session) {
+    return <LoginModal />;
+  }
+  const { data, isLoading } = useQuery({
+    queryKey: ["bookmark"],
+    queryFn: async () => {
+      const resp = await fetch(
+        `${process.env.NEXT_PUBLIC_API_DOMAIN}/bookmark`
+      );
+      return await resp.json();
+    },
+  });
+  const bookmarks = data?.bookmarksPopulated;
+  if (isLoading) {
     return (
-      <div className="flex w-full h-[100vh] items-center justify-center">
-        <p>There was an error</p>
+      <div className="mt-20">
+        <LoadingComp />
       </div>
     );
   }
   return (
     <div className="mt-8 grid lg:grid-cols-2 gap-4 w-full items-center justify-center">
-      {bookmarks.map((item, index) => {
+      {bookmarks?.map((item, index) => {
         return <CarAdvert car={item} key={item.description} bookmark={true} />;
       })}
     </div>
