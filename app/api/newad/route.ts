@@ -37,7 +37,6 @@ export const POST = async (request: NextRequest) => {
       owner: new Types.ObjectId(session?.user?.id),
     };
     const images = JSON.parse(formObject.images);
-    console.log(images);
     if (images.length > 4) {
       return new Response(
         JSON.stringify({

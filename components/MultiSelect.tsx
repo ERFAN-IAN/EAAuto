@@ -161,7 +161,6 @@ const multiSelect = ({
                       value={item.title}
                       className="mr-2 cursor-pointer"
                       onChange={() => {
-                        console.log(allStates[name]);
                         const func =
                           name === "brand"
                             ? handleBrand(

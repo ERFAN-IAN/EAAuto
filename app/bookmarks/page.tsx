@@ -47,7 +47,6 @@ const bookmarkSchema = z
   })
   .or(z.object({ message: z.string() }));
 const t = bookmarkSchema.safeParse({ bookmarks: [], bookmarksPopulated: [] });
-console.log("tttttttt", t);
 export type BookmarkData = z.infer<typeof bookmarkSchema>;
 const page = () => {
   const session = useSession();
@@ -73,7 +72,6 @@ const page = () => {
   }
   const testData = bookmarkSchema.safeParse(data);
   if (data && !testData.success) {
-    console.log(data);
     return <p className=" font-semibold">There was an error!</p>;
   }
   let bookmarks;

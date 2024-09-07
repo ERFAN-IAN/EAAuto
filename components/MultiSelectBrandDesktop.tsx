@@ -102,7 +102,6 @@ const MultiSelectBrandDesktop = ({
                     className="mr-2 cursor-pointer"
                     onChange={() => {
                       const brands = handleBrand(item.title);
-                      console.log(allStates.brand);
                       setAllStates((prev) => ({
                         ...prev,
                         refreshSearchText: Math.random(),
