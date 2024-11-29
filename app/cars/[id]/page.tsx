@@ -1,4 +1,4 @@
-import SwiperSingleCarPage from "@/components/SwiperSingleCarPage";
+// import SwiperSingleCarPage from "@/components/SwiperSingleCarPage";
 import ContactForm from "@/components/ContactForm";
 import CarDetails from "@/components/CarDetails";
 import { ICar } from "@/models/Car";
@@ -17,7 +17,7 @@ const page = async ({ params }: { params: { id: string } }) => {
         <ContactForm />
       </div>
       <div className="col-span-10 md:col-span-7 col-start-1 row-start-1">
-        <SwiperSingleCarPage images={car?.images} type={car?.type} />
+        {/* <SwiperSingleCarPage images={car?.images} type={car?.type} /> */}
 
         <CarDetails car={car} />
         <div className=" md:hidden light:bg-white z-20 mt-10">
