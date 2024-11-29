@@ -91,12 +91,12 @@ const Navbar = () => {
           >
             Search
           </Link>
-          {/* <Link
+          <Link
             href="/bookmarks"
             className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
           >
             Bookmarks
-          </Link> */}
+          </Link>
           <Link
             href="/messages"
             className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"

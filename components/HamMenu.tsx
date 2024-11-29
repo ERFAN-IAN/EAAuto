@@ -2,7 +2,7 @@ import { useGlobalContext } from "@/context/context";
 import Link from "next/link";
 import { VscAccount } from "react-icons/vsc";
 import { IoIosSearch } from "react-icons/io";
-// import { FaRegBookmark } from "react-icons/fa6";
+import { FaRegBookmark } from "react-icons/fa6";
 import { MdOutlineSell } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -58,7 +58,7 @@ const HamMenu = () => {
             Search
           </Link>
         </li>
-        {/* <li>
+        <li>
           <Link
             href={"/bookmarks"}
             className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
@@ -68,7 +68,7 @@ const HamMenu = () => {
             </span>
             Bookmarks
           </Link>
-        </li> */}
+        </li>
         <li>
           <Link
             href={"/messages"}
