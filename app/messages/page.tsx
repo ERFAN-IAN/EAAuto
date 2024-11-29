@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import Message, { IMessage } from "@/models/Message";
 import authOptions from "@/utils/authOptions";
 import SingleMessgae from "@/components/SingleMessgae";
-export const page = async () => {
+const page = async () => {
   let messages: IMessage[] = [];
   try {
     const session = await getServerSession(authOptions);
