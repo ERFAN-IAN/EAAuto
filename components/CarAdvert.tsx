@@ -7,12 +7,12 @@ import { FiChevronLeft } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
 import { RxCross2 } from "react-icons/rx";
-import { deleteBookmark } from "@/utils/actions";
+// import { deleteBookmark } from "@/utils/actions";
 import { useState } from "react";
 import { queryClient } from "@/react query/ReactQuery";
 import { ICar } from "@/models/Car";
 const CarAdvert = ({ car, bookmark }: { car: ICar; bookmark?: boolean }) => {
-  const [isDeletingBookmark, setIsDeletingBookmark] = useState(false);
+  // const [isDeletingBookmark, setIsDeletingBookmark] = useState(false);
   const {
     seller_info,
     _id,
@@ -33,7 +33,7 @@ const CarAdvert = ({ car, bookmark }: { car: ICar; bookmark?: boolean }) => {
   } = car;
   return (
     <div className=" relative">
-      {bookmark && (
+      {/* {bookmark && (
         <button
           className={`absolute top-[4%] right-[2%] z-[10] rounded-full bg-slate-300 dark:bg-slate-600 p-[.15rem] text-black cursor-pointer ${
             isDeletingBookmark && `opacity-50`
@@ -47,7 +47,7 @@ const CarAdvert = ({ car, bookmark }: { car: ICar; bookmark?: boolean }) => {
         >
           <RxCross2 />
         </button>
-      )}
+      )} */}
 
       <Link
         href={`/cars/${_id}`}
