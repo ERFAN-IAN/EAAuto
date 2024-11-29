@@ -13,7 +13,7 @@ const HamMenu = () => {
   const session = useSession();
   return (
     <div
-      className={`fixed top-[4.25rem] left-[-20rem] md:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white dark:bg-[#1e232a] z-[55] ${
+      className={`fixed top-[4.25rem] left-[-20rem] lg:hidden w-[20rem] h-full transition-transform ease-in-out duration-300 bg-white dark:bg-[#1e232a] z-[55] ${
         allStates.hamMenu ? " translate-x-[20rem]" : " translate-x-[0rem]"
       }`}
       onClick={(e) => e.stopPropagation()}
@@ -67,6 +67,15 @@ const HamMenu = () => {
               <FaRegBookmark />
             </span>
             Bookmarks
+          </Link>
+        </li>
+        <li>
+          <Link
+            href={"/messages"}
+            className="flex gap-x-4 items-center text-2xl border-b-2 border-teal-600 py-4 pl-4"
+          >
+            <span className="mt-1">{/* <IoIosSearch /> */}</span>
+            Messages
           </Link>
         </li>
         <li>

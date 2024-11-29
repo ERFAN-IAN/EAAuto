@@ -1,5 +1,8 @@
 import connectDB from "@/config/database";
+import mongoose from "mongoose";
+import Car from "@/models/Car";
 import User from "@/models/User";
+
 import authOptions from "@/utils/authOptions";
 import { getServerSession } from "next-auth";
 export const GET = async () => {

@@ -12,7 +12,7 @@ import AuthProvider from "@/authprovider/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import OverflowComp from "@/components/OverflowComp";
-import { Providers } from "./providers";
+import { Providers } from "../components/providers";
 import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {

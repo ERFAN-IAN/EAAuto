@@ -27,7 +27,7 @@ const Header = () => {
     // setRefreshSearchText(Math.random());
   }, []);
   return (
-    <section className="grid grid-rows-1 md:relative w-full h-[24rem] mt-[3rem] md:mt-[2rem] md:rounded-t-lg">
+    <section className="grid grid-rows-1 md:relative w-full h-[24rem] mt-[3rem] md:mt-[1rem] md:rounded-t-lg">
       <div className="row-span-4 inset-0 absolute top-[4rem] md:top-0 z-[-2] md:rounded-t-lg">
         <Image
           src={mobileh}

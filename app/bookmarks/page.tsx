@@ -1,4 +1,7 @@
 "use client";
+import { ICar } from "@/models/Car";
+// car has to imported for mongoose errors! DO NOT REMOVE!
+import Car from "@/models/Car";
 import CarAdvert from "@/components/CarAdvert";
 import LoadingComp from "@/components/LoadingComp";
 import LoginModal from "@/components/LoginModal";
@@ -6,47 +9,44 @@ import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { z } from "zod";
 import mongoose from "mongoose";
-import { ICar } from "@/models/Car";
-const bookmarkSchema = z
-  .object({
-    bookmarks: z.string().array(),
-    bookmarksPopulated: z
-      .object({
-        seller_info: z.object({
-          name: z.string(),
-          email: z.string(),
-          phone: z.string(),
-        }),
-        _id: z.string().refine((val) => {
-          return mongoose.Types.ObjectId.isValid(val);
-        }),
-        owner: z.string(),
-        title: z.string(),
-        type: z.string(),
-        brand: z.string(),
-        year: z.number(),
-        milage: z.number(),
-        category: z.string(),
-        color: z.string(),
-        transmission: z.string(),
-        price: z.number(),
-        description: z.string(),
-        city: z.string(),
-        images: z
-          .object({
-            public_id: z.string(),
-            signature: z.string(),
-            secure_url: z.string(),
-            _id: z.string(),
-          })
-          .array(),
-        is_featured: z.boolean(),
-        is_published: z.boolean(),
-      })
-      .array(),
-  })
-  .or(z.object({ message: z.string() }));
-const t = bookmarkSchema.safeParse({ bookmarks: [], bookmarksPopulated: [] });
+
+const bookmarkSchema = z.object({
+  bookmarks: z.string().array(),
+  bookmarksPopulated: z
+    .object({
+      seller_info: z.object({
+        name: z.string(),
+        email: z.string(),
+        phone: z.string(),
+      }),
+      _id: z.string().refine((val) => {
+        return mongoose.Types.ObjectId.isValid(val);
+      }),
+      owner: z.string(),
+      title: z.string(),
+      type: z.string(),
+      brand: z.string(),
+      year: z.number(),
+      milage: z.number(),
+      category: z.string(),
+      color: z.string(),
+      transmission: z.string(),
+      price: z.number(),
+      description: z.string(),
+      city: z.string(),
+      images: z
+        .object({
+          public_id: z.string(),
+          signature: z.string(),
+          secure_url: z.string(),
+          _id: z.string(),
+        })
+        .array(),
+      is_featured: z.boolean(),
+      is_published: z.boolean(),
+    })
+    .array(),
+});
 export type BookmarkData = z.infer<typeof bookmarkSchema>;
 const page = () => {
   const session = useSession();
@@ -71,9 +71,9 @@ const page = () => {
     );
   }
   const testData = bookmarkSchema.safeParse(data);
-  if (data && !testData.success) {
-    return <p className=" font-semibold">There was an error!</p>;
-  }
+  // if (!testData.success) {
+  //   return <p className=" font-semibold">There was an error!</p>;
+  // }
   let bookmarks;
   if (testData.success) {
     if (`bookmarksPopulated` in data) {

@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav
       className={`${
         carsPage ? `hidden` : `flex`
-      } dark:bg-[#292F38] bg-white md:max-w-[98%]  lg:max-w-[61.25rem]  z-[55] py-4  px-4  justify-between items-center sticky top-0 md:relative w-full md:top-[1rem] md:rounded-lg md:shadow-md `}
+      } dark:bg-[#292F38] bg-white   lg:max-w-[61.25rem]  z-[55] py-4  px-4  justify-between items-center sticky top-0 lg:relative w-full lg:top-[1rem] md:rounded-lg md:shadow-md `}
       onClick={() => {
         setAllStates((prev) => ({
           ...prev,
@@ -31,7 +31,7 @@ const Navbar = () => {
     >
       <div className="flex gap-x-2 text-3xl items-center   self-center">
         <div
-          className=" cursor-pointer md:hidden"
+          className=" cursor-pointer lg:hidden"
           onClick={() => {
             setAllStates((prev) => ({
               ...prev,
@@ -54,7 +54,7 @@ const Navbar = () => {
           <span className=" font-bold text-black dark:text-white">EA </span>
           <span className="font-bold text-teal-600">Auto</span>
         </Link>
-        <div className="hidden md:flex ml-20 gap-x-4 items-center">
+        <div className="hidden lg:flex ml-20 gap-x-4 items-center">
           <Link
             href="/search"
             className=" text-lg font-semibold   rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
@@ -96,6 +96,18 @@ const Navbar = () => {
             className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
           >
             Bookmarks
+          </Link>
+          <Link
+            href="/messages"
+            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
+          >
+            Messages
+          </Link>
+          <Link
+            href="/myAccount"
+            className=" text-lg font-semibold  rounded-lg px-4 py-2 bg-slate-50 hover:bg-slate-100 transition-colors duration-200 dark:bg-[#232830] dark:hover:bg-[#1A1E24]"
+          >
+            Account
           </Link>
         </div>
       </div>

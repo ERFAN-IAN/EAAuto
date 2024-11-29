@@ -2,11 +2,14 @@ import SwiperSingleCarPage from "@/components/SwiperSingleCarPage";
 import ContactForm from "@/components/ContactForm";
 import CarDetails from "@/components/CarDetails";
 import { ICar } from "@/models/Car";
+import Car from "@/models/Car";
 const page = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  const data = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/cars/${id}`);
-  const tj = await data.json();
-  const car: ICar = tj?.car;
+  const data = await Car.find({ _id: id });
+  const car: ICar = JSON.parse(JSON.stringify(data[0]));
+  // const data = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/cars/${id}`);
+  // const tj = await data.json();
+  // const car: ICar = tj?.car;
 
   return (
     <div className="h-full  md:mt-8 grid grid-cols-10  gap-x-2">
