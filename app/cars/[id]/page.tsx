@@ -3,10 +3,18 @@ import ContactForm from "@/components/ContactForm";
 import CarDetails from "@/components/CarDetails";
 import { ICar } from "@/models/Car";
 import Car from "@/models/Car";
+import connectDB from "@/config/database";
 const page = async ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  const data = await Car.find({ _id: id });
-  const car: ICar = JSON.parse(JSON.stringify(data[0]));
+  let car: ICar;
+  try {
+    await connectDB();
+    const data = await Car.find({ _id: id });
+    car = JSON.parse(JSON.stringify(data[0]));
+  } catch (error) {
+    return <p className="mt-12">There was an erroe!</p>;
+  }
+
   // const data = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/cars/${id}`);
   // const tj = await data.json();
   // const car: ICar = tj?.car;
